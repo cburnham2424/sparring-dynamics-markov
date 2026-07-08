@@ -119,21 +119,26 @@ def build_joint_transition_matrix():
     return joint
 
 
-def theoretical_marginal_distributions():
+def joint_stationary_distribution():
+    """4x4 theoretical joint stationary distribution P(F1=i, F2=j)."""
     joint = build_joint_transition_matrix()
     eigenvalues, eigenvectors = np.linalg.eig(joint.T)
     idx = np.argmin(np.abs(eigenvalues - 1.0))
     stationary = np.real(eigenvectors[:, idx])
     stationary = stationary / stationary.sum()
-    stationary = stationary.reshape(N_STATES, N_STATES)  # [f1_state, f2_state]
-
-    f1_marginal = stationary.sum(axis=1)
-    f2_marginal = stationary.sum(axis=0)
-    return f1_marginal, f2_marginal
+    return stationary.reshape(N_STATES, N_STATES)  # [f1_state, f2_state]
 
 
 def empirical_distribution(sequence):
     counts = np.bincount(sequence, minlength=N_STATES)
+    return counts / counts.sum()
+
+
+def empirical_joint_distribution(f1_seq, f2_seq):
+    """4x4 empirical joint distribution of (F1 state, F2 state) pairs."""
+    counts = np.zeros((N_STATES, N_STATES))
+    for f1, f2 in zip(f1_seq, f2_seq):
+        counts[f1, f2] += 1
     return counts / counts.sum()
 
 
@@ -185,15 +190,50 @@ def plot_results(f1_theoretical, f1_empirical, f1_seq,
     plt.close(fig)
 
 
+def plot_joint_heatmaps(theoretical_joint, empirical_joint,
+                         filename="sparring_markov_two_agent_heatmap.png"):
+    fig, axes = plt.subplots(1, 2, figsize=(12, 5.5))
+    panels = [
+        ("Theoretical Joint Distribution", theoretical_joint),
+        ("Empirical Joint Distribution", empirical_joint),
+    ]
+    vmax = max(theoretical_joint.max(), empirical_joint.max())
+
+    for ax, (title, matrix) in zip(axes, panels):
+        im = ax.imshow(matrix, cmap="Blues", vmin=0, vmax=vmax)
+        ax.set_xticks(range(N_STATES))
+        ax.set_xticklabels(STATES)
+        ax.set_yticks(range(N_STATES))
+        ax.set_yticklabels(STATES)
+        ax.set_xlabel("Fighter 2 state")
+        ax.set_ylabel("Fighter 1 state")
+        ax.set_title(title)
+
+        for i in range(N_STATES):
+            for j in range(N_STATES):
+                value = matrix[i, j]
+                text_color = "white" if value > vmax * 0.6 else "black"
+                ax.text(j, i, f"{value:.3f}", ha="center", va="center", color=text_color)
+
+        fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04, label="Probability")
+
+    fig.tight_layout()
+    fig.savefig(filename, dpi=150)
+    plt.close(fig)
+
+
 def main():
     for name, matrix in [("Fighter 1", F1_BASE), ("Fighter 2", F2_BASE)]:
         row_sums = matrix.sum(axis=1)
         assert np.allclose(row_sums, 1.0), f"{name} base rows must sum to 1.0, got {row_sums}"
 
     f1_seq, f2_seq = simulate()
-    f1_theoretical, f2_theoretical = theoretical_marginal_distributions()
+    theoretical_joint = joint_stationary_distribution()
+    f1_theoretical = theoretical_joint.sum(axis=1)
+    f2_theoretical = theoretical_joint.sum(axis=0)
     f1_empirical = empirical_distribution(f1_seq)
     f2_empirical = empirical_distribution(f2_seq)
+    empirical_joint = empirical_joint_distribution(f1_seq, f2_seq)
 
     print("Two-Agent Interacting Sparring Markov Chain")
     print("=" * 60)
@@ -205,7 +245,9 @@ def main():
     print_distribution_table("Fighter 2 (Counter-Puncher) — Marginal Distribution", f2_theoretical, f2_empirical)
 
     plot_results(f1_theoretical, f1_empirical, f1_seq, f2_theoretical, f2_empirical, f2_seq)
+    plot_joint_heatmaps(theoretical_joint, empirical_joint)
     print("Saved plot to sparring_markov_two_agent.png")
+    print("Saved plot to sparring_markov_two_agent_heatmap.png")
 
 
 if __name__ == "__main__":
