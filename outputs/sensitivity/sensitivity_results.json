@@ -1,0 +1,3967 @@
+{
+  "metadata": {
+    "n_simulations_1d": 50,
+    "n_simulations_2d": 20,
+    "n_steps": 300,
+    "random_seed": 42,
+    "baseline_params": {
+      "selection_strength": 1.0,
+      "memory_decay": 0.95,
+      "memory_growth": 1.5,
+      "steepness": 0.6
+    },
+    "timestamp": "2026-07-09 04:34:44"
+  },
+  "single_sweeps": {
+    "selection_strength": [
+      {
+        "param_name": "selection_strength",
+        "param_value": 0.0,
+        "params": {
+          "selection_strength": 0.0,
+          "memory_decay": 0.95,
+          "memory_growth": 1.5,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 142.54000000000008,
+        "f2_mean_fitness": 136.148,
+        "f1_std_fitness": 4.056991948903677,
+        "f2_std_fitness": 4.222497568298365,
+        "f1_ci_lower": 141.38701564535015,
+        "f1_ci_upper": 143.69298435465,
+        "f2_ci_lower": 134.94797946875124,
+        "f2_ci_upper": 137.34802053124875,
+        "f1_win_rate": 0.92,
+        "f2_win_rate": 0.08,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.3697999999999999,
+          0.19253333333333336,
+          0.18739999999999998,
+          0.2502666666666667
+        ],
+        "f2_mean_occupancy": [
+          0.3058666666666668,
+          0.32506666666666667,
+          0.20373333333333332,
+          0.16533333333333336
+        ],
+        "f1_mean_lambda": 0.9468296863353161,
+        "f2_mean_lambda": 0.8701046070665259,
+        "ci_overlap": false,
+        "runtime_s": 1.5418927669525146
+      },
+      {
+        "param_name": "selection_strength",
+        "param_value": 0.25,
+        "params": {
+          "selection_strength": 0.25,
+          "memory_decay": 0.95,
+          "memory_growth": 1.5,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 142.42600000000002,
+        "f2_mean_fitness": 137.258,
+        "f1_std_fitness": 4.211684911756618,
+        "f2_std_fitness": 4.170796918908343,
+        "f1_ci_lower": 141.22905239173997,
+        "f1_ci_upper": 143.62294760826006,
+        "f2_ci_lower": 136.07267263073498,
+        "f2_ci_upper": 138.44332736926503,
+        "f1_win_rate": 0.82,
+        "f2_win_rate": 0.18,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.3771333333333333,
+          0.1868,
+          0.18506666666666668,
+          0.251
+        ],
+        "f2_mean_occupancy": [
+          0.3118666666666666,
+          0.3284666666666667,
+          0.19620000000000004,
+          0.1634666666666667
+        ],
+        "f1_mean_lambda": 0.9477799336710815,
+        "f2_mean_lambda": 0.8904403751304923,
+        "ci_overlap": false,
+        "runtime_s": 1.5795249938964844
+      },
+      {
+        "param_name": "selection_strength",
+        "param_value": 0.5,
+        "params": {
+          "selection_strength": 0.5,
+          "memory_decay": 0.95,
+          "memory_growth": 1.5,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 141.66000000000005,
+        "f2_mean_fitness": 137.79799999999994,
+        "f1_std_fitness": 3.616797546144364,
+        "f2_std_fitness": 3.9118600409002005,
+        "f1_ci_lower": 140.63211751042115,
+        "f1_ci_upper": 142.68788248957895,
+        "f2_ci_lower": 136.6862616772367,
+        "f2_ci_upper": 138.9097383227632,
+        "f1_win_rate": 0.84,
+        "f2_win_rate": 0.16,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.38299999999999995,
+          0.18259999999999996,
+          0.18079999999999996,
+          0.2536
+        ],
+        "f2_mean_occupancy": [
+          0.3186666666666666,
+          0.33593333333333336,
+          0.18500000000000003,
+          0.1604
+        ],
+        "f1_mean_lambda": 0.9454845305689945,
+        "f2_mean_lambda": 0.8879173972279818,
+        "ci_overlap": false,
+        "runtime_s": 1.5281124114990234
+      },
+      {
+        "param_name": "selection_strength",
+        "param_value": 0.75,
+        "params": {
+          "selection_strength": 0.75,
+          "memory_decay": 0.95,
+          "memory_growth": 1.5,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 141.31800000000004,
+        "f2_mean_fitness": 138.18399999999997,
+        "f1_std_fitness": 4.045692594776399,
+        "f2_std_fitness": 3.937126269921496,
+        "f1_ci_lower": 140.16822688626223,
+        "f1_ci_upper": 142.46777311373785,
+        "f2_ci_lower": 137.06508109439864,
+        "f2_ci_upper": 139.3029189056013,
+        "f1_win_rate": 0.78,
+        "f2_win_rate": 0.22,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.38939999999999986,
+          0.18133333333333326,
+          0.17380000000000007,
+          0.2554666666666666
+        ],
+        "f2_mean_occupancy": [
+          0.3253333333333333,
+          0.3388666666666667,
+          0.17926666666666666,
+          0.1565333333333333
+        ],
+        "f1_mean_lambda": 0.9533071725660313,
+        "f2_mean_lambda": 0.8911155923807776,
+        "ci_overlap": false,
+        "runtime_s": 1.5278544425964355
+      },
+      {
+        "param_name": "selection_strength",
+        "param_value": 1.0,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.95,
+          "memory_growth": 1.5,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 140.83999999999997,
+        "f2_mean_fitness": 138.53999999999996,
+        "f1_std_fitness": 4.315420853503999,
+        "f2_std_fitness": 3.7976362143215363,
+        "f1_ci_lower": 139.61357096329343,
+        "f1_ci_upper": 142.06642903670652,
+        "f2_ci_lower": 137.46072372957306,
+        "f2_ci_upper": 139.61927627042687,
+        "f1_win_rate": 0.74,
+        "f2_win_rate": 0.26,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.3949333333333333,
+          0.17880000000000001,
+          0.16806666666666664,
+          0.2582
+        ],
+        "f2_mean_occupancy": [
+          0.32853333333333323,
+          0.34546666666666664,
+          0.17499999999999993,
+          0.15100000000000002
+        ],
+        "f1_mean_lambda": 0.961987910276987,
+        "f2_mean_lambda": 0.8817336043451144,
+        "ci_overlap": true,
+        "runtime_s": 1.525435447692871
+      },
+      {
+        "param_name": "selection_strength",
+        "param_value": 1.5,
+        "params": {
+          "selection_strength": 1.5,
+          "memory_decay": 0.95,
+          "memory_growth": 1.5,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 139.99400000000003,
+        "f2_mean_fitness": 139.88599999999988,
+        "f1_std_fitness": 4.0810367830356356,
+        "f2_std_fitness": 3.8174149817457828,
+        "f1_ci_lower": 138.8341821790989,
+        "f1_ci_upper": 141.15381782090117,
+        "f2_ci_lower": 138.80110266606545,
+        "f2_ci_upper": 140.97089733393432,
+        "f1_win_rate": 0.5,
+        "f2_win_rate": 0.5,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.4051333333333334,
+          0.16840000000000002,
+          0.15973333333333334,
+          0.26673333333333327
+        ],
+        "f2_mean_occupancy": [
+          0.34259999999999996,
+          0.3616000000000001,
+          0.1573333333333333,
+          0.13846666666666668
+        ],
+        "f1_mean_lambda": 0.9657240510796714,
+        "f2_mean_lambda": 0.8915611113776651,
+        "ci_overlap": true,
+        "runtime_s": 1.5240027904510498
+      },
+      {
+        "param_name": "selection_strength",
+        "param_value": 2.0,
+        "params": {
+          "selection_strength": 2.0,
+          "memory_decay": 0.95,
+          "memory_growth": 1.5,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 139.36800000000005,
+        "f2_mean_fitness": 140.7019999999999,
+        "f1_std_fitness": 4.360417504818371,
+        "f2_std_fitness": 3.6009913600993366,
+        "f1_ci_lower": 138.12878305648212,
+        "f1_ci_upper": 140.60721694351798,
+        "f2_ci_lower": 139.6786095787924,
+        "f2_ci_upper": 141.72539042120744,
+        "f1_win_rate": 0.42,
+        "f2_win_rate": 0.58,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.4145999999999999,
+          0.16479999999999995,
+          0.14760000000000004,
+          0.273
+        ],
+        "f2_mean_occupancy": [
+          0.35226666666666673,
+          0.37606666666666677,
+          0.14533333333333331,
+          0.1263333333333333
+        ],
+        "f1_mean_lambda": 0.9680469962142962,
+        "f2_mean_lambda": 0.8974713822831915,
+        "ci_overlap": true,
+        "runtime_s": 1.5201880931854248
+      }
+    ],
+    "memory_decay": [
+      {
+        "param_name": "memory_decay",
+        "param_value": 0.8,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.8,
+          "memory_growth": 1.5,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 140.33800000000005,
+        "f2_mean_fitness": 139.87600000000003,
+        "f1_std_fitness": 3.883607096712102,
+        "f2_std_fitness": 4.27334214183986,
+        "f1_ci_lower": 139.23429107513357,
+        "f1_ci_upper": 141.44170892486653,
+        "f2_ci_lower": 138.66152960083176,
+        "f2_ci_upper": 141.0904703991683,
+        "f1_win_rate": 0.62,
+        "f2_win_rate": 0.38,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.3985333333333333,
+          0.12860000000000002,
+          0.20946666666666666,
+          0.26339999999999997
+        ],
+        "f2_mean_occupancy": [
+          0.32866666666666666,
+          0.2872,
+          0.21179999999999993,
+          0.17233333333333337
+        ],
+        "f1_mean_lambda": 0.3109599810563964,
+        "f2_mean_lambda": 0.20209190689945156,
+        "ci_overlap": true,
+        "runtime_s": 1.5315303802490234
+      },
+      {
+        "param_name": "memory_decay",
+        "param_value": 0.85,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.85,
+          "memory_growth": 1.5,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 140.12200000000007,
+        "f2_mean_fitness": 139.12600000000003,
+        "f1_std_fitness": 4.005979714050936,
+        "f2_std_fitness": 4.117747055894329,
+        "f1_ci_lower": 138.98351316208712,
+        "f1_ci_upper": 141.26048683791302,
+        "f2_ci_lower": 137.95574923498808,
+        "f2_ci_upper": 140.296250765012,
+        "f1_win_rate": 0.64,
+        "f2_win_rate": 0.36,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.39813333333333323,
+          0.1416,
+          0.1988666666666667,
+          0.2614
+        ],
+        "f2_mean_occupancy": [
+          0.32786666666666664,
+          0.29706666666666653,
+          0.20666666666666672,
+          0.16839999999999994
+        ],
+        "f1_mean_lambda": 0.48719223519539784,
+        "f2_mean_lambda": 0.3159012095389741,
+        "ci_overlap": true,
+        "runtime_s": 1.5600287914276123
+      },
+      {
+        "param_name": "memory_decay",
+        "param_value": 0.9,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.9,
+          "memory_growth": 1.5,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 140.33800000000005,
+        "f2_mean_fitness": 138.57399999999996,
+        "f1_std_fitness": 4.405371952606993,
+        "f2_std_fitness": 4.105934480624791,
+        "f1_ci_lower": 139.08600714378005,
+        "f1_ci_upper": 141.58999285622005,
+        "f2_ci_lower": 137.4071063317349,
+        "f2_ci_upper": 139.74089366826502,
+        "f1_win_rate": 0.72,
+        "f2_win_rate": 0.28,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.3963333333333333,
+          0.1613333333333333,
+          0.18293333333333334,
+          0.25939999999999996
+        ],
+        "f2_mean_occupancy": [
+          0.3282,
+          0.31453333333333333,
+          0.19533333333333336,
+          0.16193333333333337
+        ],
+        "f1_mean_lambda": 0.7533022774774117,
+        "f2_mean_lambda": 0.5396240372658023,
+        "ci_overlap": true,
+        "runtime_s": 1.5853893756866455
+      },
+      {
+        "param_name": "memory_decay",
+        "param_value": 0.92,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.92,
+          "memory_growth": 1.5,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 140.184,
+        "f2_mean_fitness": 138.41799999999998,
+        "f1_std_fitness": 4.49200468860497,
+        "f2_std_fitness": 4.115857338714847,
+        "f1_ci_lower": 138.9073863926264,
+        "f1_ci_upper": 141.4606136073736,
+        "f2_ci_lower": 137.2482862866682,
+        "f2_ci_upper": 139.58771371333177,
+        "f1_win_rate": 0.72,
+        "f2_win_rate": 0.28,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.39473333333333327,
+          0.17053333333333337,
+          0.17673333333333335,
+          0.25799999999999995
+        ],
+        "f2_mean_occupancy": [
+          0.32939999999999997,
+          0.32666666666666666,
+          0.1856666666666667,
+          0.1582666666666667
+        ],
+        "f1_mean_lambda": 0.8653990653711141,
+        "f2_mean_lambda": 0.6697669057931764,
+        "ci_overlap": true,
+        "runtime_s": 1.5242340564727783
+      },
+      {
+        "param_name": "memory_decay",
+        "param_value": 0.95,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.95,
+          "memory_growth": 1.5,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 140.83999999999997,
+        "f2_mean_fitness": 138.53999999999996,
+        "f1_std_fitness": 4.315420853503999,
+        "f2_std_fitness": 3.7976362143215363,
+        "f1_ci_lower": 139.61357096329343,
+        "f1_ci_upper": 142.06642903670652,
+        "f2_ci_lower": 137.46072372957306,
+        "f2_ci_upper": 139.61927627042687,
+        "f1_win_rate": 0.74,
+        "f2_win_rate": 0.26,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.3949333333333333,
+          0.17880000000000001,
+          0.16806666666666664,
+          0.2582
+        ],
+        "f2_mean_occupancy": [
+          0.32853333333333323,
+          0.34546666666666664,
+          0.17499999999999993,
+          0.15100000000000002
+        ],
+        "f1_mean_lambda": 0.961987910276987,
+        "f2_mean_lambda": 0.8817336043451144,
+        "ci_overlap": true,
+        "runtime_s": 1.5020558834075928
+      },
+      {
+        "param_name": "memory_decay",
+        "param_value": 0.97,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.97,
+          "memory_growth": 1.5,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 141.322,
+        "f2_mean_fitness": 138.92799999999994,
+        "f1_std_fitness": 4.022959109909025,
+        "f2_std_fitness": 4.045912020995086,
+        "f1_ci_lower": 140.17868767117596,
+        "f1_ci_upper": 142.46531232882404,
+        "f2_ci_lower": 137.77816452602076,
+        "f2_ci_upper": 140.07783547397912,
+        "f1_win_rate": 0.72,
+        "f2_win_rate": 0.28,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.3955333333333332,
+          0.17939999999999998,
+          0.16573333333333337,
+          0.2593333333333334
+        ],
+        "f2_mean_occupancy": [
+          0.32986666666666664,
+          0.35253333333333337,
+          0.16873333333333332,
+          0.14886666666666673
+        ],
+        "f1_mean_lambda": 0.9831633024029621,
+        "f2_mean_lambda": 0.9645067666878565,
+        "ci_overlap": false,
+        "runtime_s": 1.540900468826294
+      },
+      {
+        "param_name": "memory_decay",
+        "param_value": 0.99,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.99,
+          "memory_growth": 1.5,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 140.914,
+        "f2_mean_fitness": 138.72199999999995,
+        "f1_std_fitness": 4.1370900746435595,
+        "f2_std_fitness": 4.080780737625007,
+        "f1_ci_lower": 139.7382520098837,
+        "f1_ci_upper": 142.08974799011628,
+        "f2_ci_lower": 137.56225494639938,
+        "f2_ci_upper": 139.88174505360053,
+        "f1_win_rate": 0.66,
+        "f2_win_rate": 0.34,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.3949333333333332,
+          0.18073333333333338,
+          0.16506666666666664,
+          0.2592666666666667
+        ],
+        "f2_mean_occupancy": [
+          0.33013333333333345,
+          0.3571999999999999,
+          0.16553333333333334,
+          0.14713333333333334
+        ],
+        "f1_mean_lambda": 0.9954082711746212,
+        "f2_mean_lambda": 0.9927540734751696,
+        "ci_overlap": true,
+        "runtime_s": 1.5214848518371582
+      }
+    ],
+    "memory_growth": [
+      {
+        "param_name": "memory_growth",
+        "param_value": 0.5,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.95,
+          "memory_growth": 0.5,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 140.18000000000006,
+        "f2_mean_fitness": 139.19200000000004,
+        "f1_std_fitness": 3.887604582227343,
+        "f2_std_fitness": 3.8839197536845607,
+        "f1_ci_lower": 139.07515500232026,
+        "f1_ci_upper": 141.28484499767987,
+        "f2_ci_lower": 138.08820221900513,
+        "f2_ci_upper": 140.29579778099495,
+        "f1_win_rate": 0.7,
+        "f2_win_rate": 0.3,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.3974666666666666,
+          0.1375333333333333,
+          0.20193333333333333,
+          0.26306666666666667
+        ],
+        "f2_mean_occupancy": [
+          0.3282,
+          0.29399999999999993,
+          0.20846666666666672,
+          0.16933333333333334
+        ],
+        "f1_mean_lambda": 0.4915739566203954,
+        "f2_mean_lambda": 0.28653246108122377,
+        "ci_overlap": true,
+        "runtime_s": 1.5296940803527832
+      },
+      {
+        "param_name": "memory_growth",
+        "param_value": 0.8,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.95,
+          "memory_growth": 0.8,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 140.178,
+        "f2_mean_fitness": 138.17399999999998,
+        "f1_std_fitness": 4.215486027610527,
+        "f2_std_fitness": 4.3436939983175815,
+        "f1_ci_lower": 138.9799721265669,
+        "f1_ci_upper": 141.3760278734331,
+        "f2_ci_lower": 136.93953582444246,
+        "f2_ci_upper": 139.4084641755575,
+        "f1_win_rate": 0.7,
+        "f2_win_rate": 0.3,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.3952666666666667,
+          0.16639999999999996,
+          0.17953333333333332,
+          0.2588
+        ],
+        "f2_mean_occupancy": [
+          0.3276666666666667,
+          0.31753333333333333,
+          0.1941333333333334,
+          0.1606666666666667
+        ],
+        "f1_mean_lambda": 0.8363892620466205,
+        "f2_mean_lambda": 0.5601232140784351,
+        "ci_overlap": true,
+        "runtime_s": 1.5092113018035889
+      },
+      {
+        "param_name": "memory_growth",
+        "param_value": 1.0,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.95,
+          "memory_growth": 1.0,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 140.202,
+        "f2_mean_fitness": 138.432,
+        "f1_std_fitness": 4.295203304684363,
+        "f2_std_fitness": 3.8996828756466924,
+        "f1_ci_lower": 138.98131672709383,
+        "f1_ci_upper": 141.42268327290617,
+        "f2_ci_lower": 137.32372238931066,
+        "f2_ci_upper": 139.54027761068932,
+        "f1_win_rate": 0.66,
+        "f2_win_rate": 0.34,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.39513333333333345,
+          0.1734,
+          0.17366666666666666,
+          0.25780000000000003
+        ],
+        "f2_mean_occupancy": [
+          0.32839999999999997,
+          0.32946666666666663,
+          0.1862,
+          0.15593333333333334
+        ],
+        "f1_mean_lambda": 0.9188319457937439,
+        "f2_mean_lambda": 0.7224726675733047,
+        "ci_overlap": true,
+        "runtime_s": 1.5121502876281738
+      },
+      {
+        "param_name": "memory_growth",
+        "param_value": 1.2,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.95,
+          "memory_growth": 1.2,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 140.84800000000007,
+        "f2_mean_fitness": 138.85599999999994,
+        "f1_std_fitness": 4.131474016742743,
+        "f2_std_fitness": 4.148476976492658,
+        "f1_ci_lower": 139.67384807587948,
+        "f1_ci_upper": 142.02215192412066,
+        "f2_ci_lower": 137.6770158881843,
+        "f2_ci_upper": 140.0349841118156,
+        "f1_win_rate": 0.72,
+        "f2_win_rate": 0.28,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.39520000000000005,
+          0.1760666666666667,
+          0.17106666666666664,
+          0.2576666666666667
+        ],
+        "f2_mean_occupancy": [
+          0.3282666666666667,
+          0.3395333333333334,
+          0.17966666666666672,
+          0.15253333333333338
+        ],
+        "f1_mean_lambda": 0.9437161924808961,
+        "f2_mean_lambda": 0.8125105386708023,
+        "ci_overlap": true,
+        "runtime_s": 1.5663063526153564
+      },
+      {
+        "param_name": "memory_growth",
+        "param_value": 1.5,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.95,
+          "memory_growth": 1.5,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 140.83999999999997,
+        "f2_mean_fitness": 138.53999999999996,
+        "f1_std_fitness": 4.315420853503999,
+        "f2_std_fitness": 3.7976362143215363,
+        "f1_ci_lower": 139.61357096329343,
+        "f1_ci_upper": 142.06642903670652,
+        "f2_ci_lower": 137.46072372957306,
+        "f2_ci_upper": 139.61927627042687,
+        "f1_win_rate": 0.74,
+        "f2_win_rate": 0.26,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.3949333333333333,
+          0.17880000000000001,
+          0.16806666666666664,
+          0.2582
+        ],
+        "f2_mean_occupancy": [
+          0.32853333333333323,
+          0.34546666666666664,
+          0.17499999999999993,
+          0.15100000000000002
+        ],
+        "f1_mean_lambda": 0.961987910276987,
+        "f2_mean_lambda": 0.8817336043451144,
+        "ci_overlap": true,
+        "runtime_s": 1.5931200981140137
+      },
+      {
+        "param_name": "memory_growth",
+        "param_value": 2.0,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.95,
+          "memory_growth": 2.0,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 141.078,
+        "f2_mean_fitness": 138.78599999999997,
+        "f1_std_fitness": 4.012342691938346,
+        "f2_std_fitness": 3.876302151193427,
+        "f1_ci_lower": 139.93770482377985,
+        "f1_ci_upper": 142.21829517622015,
+        "f2_ci_lower": 137.68436711767947,
+        "f2_ci_upper": 139.88763288232047,
+        "f1_win_rate": 0.72,
+        "f2_win_rate": 0.28,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.3953333333333333,
+          0.17919999999999997,
+          0.1668,
+          0.2586666666666667
+        ],
+        "f2_mean_occupancy": [
+          0.3296666666666666,
+          0.34913333333333335,
+          0.17146666666666666,
+          0.14973333333333336
+        ],
+        "f1_mean_lambda": 0.9667531457973177,
+        "f2_mean_lambda": 0.9193410027277846,
+        "ci_overlap": false,
+        "runtime_s": 1.533308744430542
+      },
+      {
+        "param_name": "memory_growth",
+        "param_value": 2.5,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.95,
+          "memory_growth": 2.5,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 141.10800000000006,
+        "f2_mean_fitness": 138.83599999999996,
+        "f1_std_fitness": 3.975837224114321,
+        "f2_std_fitness": 3.9528734059245,
+        "f1_ci_lower": 139.9780795629439,
+        "f1_ci_upper": 142.23792043705623,
+        "f2_ci_lower": 137.71260580786353,
+        "f2_ci_upper": 139.9593941921364,
+        "f1_win_rate": 0.74,
+        "f2_win_rate": 0.26,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.39559999999999995,
+          0.17939999999999995,
+          0.16613333333333336,
+          0.2588666666666667
+        ],
+        "f2_mean_occupancy": [
+          0.3299333333333333,
+          0.3502,
+          0.17053333333333337,
+          0.14933333333333335
+        ],
+        "f1_mean_lambda": 0.9672615047711065,
+        "f2_mean_lambda": 0.9310262150424283,
+        "ci_overlap": false,
+        "runtime_s": 1.5299594402313232
+      }
+    ],
+    "steepness": [
+      {
+        "param_name": "steepness",
+        "param_value": 0.1,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.95,
+          "memory_growth": 1.5,
+          "steepness": 0.1
+        },
+        "f1_mean_fitness": 140.982,
+        "f2_mean_fitness": 139.25599999999994,
+        "f1_std_fitness": 4.145747267762856,
+        "f2_std_fitness": 4.180721546941521,
+        "f1_ci_lower": 139.8037916628218,
+        "f1_ci_upper": 142.1602083371782,
+        "f2_ci_lower": 138.06785208265592,
+        "f2_ci_upper": 140.44414791734397,
+        "f1_win_rate": 0.76,
+        "f2_win_rate": 0.24,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.3960666666666668,
+          0.1743333333333333,
+          0.17173333333333332,
+          0.25786666666666674
+        ],
+        "f2_mean_occupancy": [
+          0.3283333333333332,
+          0.3435333333333333,
+          0.17620000000000005,
+          0.15193333333333336
+        ],
+        "f1_mean_lambda": 0.9193086861504858,
+        "f2_mean_lambda": 0.8279938180720512,
+        "ci_overlap": true,
+        "runtime_s": 1.519576072692871
+      },
+      {
+        "param_name": "steepness",
+        "param_value": 0.2,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.95,
+          "memory_growth": 1.5,
+          "steepness": 0.2
+        },
+        "f1_mean_fitness": 141.054,
+        "f2_mean_fitness": 139.2199999999999,
+        "f1_std_fitness": 4.23142808912893,
+        "f2_std_fitness": 4.1640345427805,
+        "f1_ci_lower": 139.85144144281327,
+        "f1_ci_upper": 142.25655855718674,
+        "f2_ci_lower": 138.03659447676608,
+        "f2_ci_upper": 140.40340552323374,
+        "f1_win_rate": 0.78,
+        "f2_win_rate": 0.22,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.3964000000000001,
+          0.17473333333333332,
+          0.17060000000000003,
+          0.2582666666666667
+        ],
+        "f2_mean_occupancy": [
+          0.3286,
+          0.34419999999999995,
+          0.1754,
+          0.1518
+        ],
+        "f1_mean_lambda": 0.9249029766590675,
+        "f2_mean_lambda": 0.8345009924876514,
+        "ci_overlap": true,
+        "runtime_s": 1.5180902481079102
+      },
+      {
+        "param_name": "steepness",
+        "param_value": 0.4,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.95,
+          "memory_growth": 1.5,
+          "steepness": 0.4
+        },
+        "f1_mean_fitness": 141.09400000000002,
+        "f2_mean_fitness": 139.04599999999994,
+        "f1_std_fitness": 4.349309586308038,
+        "f2_std_fitness": 4.014220131645244,
+        "f1_ci_lower": 139.85793989199385,
+        "f1_ci_upper": 142.3300601080062,
+        "f2_ci_lower": 137.9051712613187,
+        "f2_ci_upper": 140.18682873868116,
+        "f1_win_rate": 0.76,
+        "f2_win_rate": 0.24,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.396,
+          0.17653333333333332,
+          0.16926666666666665,
+          0.2582000000000001
+        ],
+        "f2_mean_occupancy": [
+          0.32853333333333323,
+          0.34506666666666663,
+          0.17459999999999998,
+          0.1518
+        ],
+        "f1_mean_lambda": 0.9438862744659438,
+        "f2_mean_lambda": 0.8563646743991239,
+        "ci_overlap": true,
+        "runtime_s": 1.541964054107666
+      },
+      {
+        "param_name": "steepness",
+        "param_value": 0.6,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.95,
+          "memory_growth": 1.5,
+          "steepness": 0.6
+        },
+        "f1_mean_fitness": 140.83999999999997,
+        "f2_mean_fitness": 138.53999999999996,
+        "f1_std_fitness": 4.315420853503999,
+        "f2_std_fitness": 3.7976362143215363,
+        "f1_ci_lower": 139.61357096329343,
+        "f1_ci_upper": 142.06642903670652,
+        "f2_ci_lower": 137.46072372957306,
+        "f2_ci_upper": 139.61927627042687,
+        "f1_win_rate": 0.74,
+        "f2_win_rate": 0.26,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.3949333333333333,
+          0.17880000000000001,
+          0.16806666666666664,
+          0.2582
+        ],
+        "f2_mean_occupancy": [
+          0.32853333333333323,
+          0.34546666666666664,
+          0.17499999999999993,
+          0.15100000000000002
+        ],
+        "f1_mean_lambda": 0.961987910276987,
+        "f2_mean_lambda": 0.8817336043451144,
+        "ci_overlap": true,
+        "runtime_s": 1.5420289039611816
+      },
+      {
+        "param_name": "steepness",
+        "param_value": 0.8,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.95,
+          "memory_growth": 1.5,
+          "steepness": 0.8
+        },
+        "f1_mean_fitness": 141.33,
+        "f2_mean_fitness": 138.72199999999998,
+        "f1_std_fitness": 4.156786926343523,
+        "f2_std_fitness": 4.046176829894537,
+        "f1_ci_lower": 140.14865422656743,
+        "f1_ci_upper": 142.5113457734326,
+        "f2_ci_lower": 137.57208926816426,
+        "f2_ci_upper": 139.8719107318357,
+        "f1_win_rate": 0.7,
+        "f2_win_rate": 0.3,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.39480000000000004,
+          0.17919999999999997,
+          0.1672666666666667,
+          0.2587333333333334
+        ],
+        "f2_mean_occupancy": [
+          0.3293333333333333,
+          0.34720000000000006,
+          0.17280000000000004,
+          0.15066666666666667
+        ],
+        "f1_mean_lambda": 0.9759743107808653,
+        "f2_mean_lambda": 0.9080955290677466,
+        "ci_overlap": false,
+        "runtime_s": 1.5405652523040771
+      },
+      {
+        "param_name": "steepness",
+        "param_value": 1.0,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.95,
+          "memory_growth": 1.5,
+          "steepness": 1.0
+        },
+        "f1_mean_fitness": 141.204,
+        "f2_mean_fitness": 138.63400000000001,
+        "f1_std_fitness": 3.9806655171194243,
+        "f2_std_fitness": 3.9234829383274805,
+        "f1_ci_lower": 140.07270737725437,
+        "f1_ci_upper": 142.33529262274564,
+        "f2_ci_lower": 137.5189584863362,
+        "f2_ci_upper": 139.74904151366383,
+        "f1_win_rate": 0.72,
+        "f2_win_rate": 0.28,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.39446666666666663,
+          0.17966666666666664,
+          0.1671333333333333,
+          0.25873333333333337
+        ],
+        "f2_mean_occupancy": [
+          0.3291333333333334,
+          0.34893333333333343,
+          0.172,
+          0.14993333333333336
+        ],
+        "f1_mean_lambda": 0.9853894329824914,
+        "f2_mean_lambda": 0.9287833121572622,
+        "ci_overlap": false,
+        "runtime_s": 1.515665054321289
+      },
+      {
+        "param_name": "steepness",
+        "param_value": 1.5,
+        "params": {
+          "selection_strength": 1.0,
+          "memory_decay": 0.95,
+          "memory_growth": 1.5,
+          "steepness": 1.5
+        },
+        "f1_mean_fitness": 141.30800000000002,
+        "f2_mean_fitness": 138.73799999999997,
+        "f1_std_fitness": 4.084507314230199,
+        "f2_std_fitness": 3.9648398583096234,
+        "f1_ci_lower": 140.14719586504648,
+        "f1_ci_upper": 142.46880413495356,
+        "f2_ci_lower": 137.61120497972425,
+        "f2_ci_upper": 139.8647950202757,
+        "f1_win_rate": 0.76,
+        "f2_win_rate": 0.24,
+        "tie_rate": 0.0,
+        "f1_mean_occupancy": [
+          0.3949999999999999,
+          0.18006666666666668,
+          0.16599999999999998,
+          0.2589333333333334
+        ],
+        "f2_mean_occupancy": [
+          0.33026666666666665,
+          0.3507333333333333,
+          0.16953333333333329,
+          0.14946666666666664
+        ],
+        "f1_mean_lambda": 0.995741676852284,
+        "f2_mean_lambda": 0.9539027578322056,
+        "ci_overlap": false,
+        "runtime_s": 1.6580073833465576
+      }
+    ]
+  },
+  "pairwise_sweeps": {
+    "selection_strength_x_memory_decay": {
+      "grid_results": [
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.0,
+          "param2_name": "memory_decay",
+          "param2_value": 0.8,
+          "params": {
+            "selection_strength": 0.0,
+            "memory_decay": 0.8,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 138.28000000000006,
+          "f2_mean_fitness": 136.38000000000005,
+          "fitness_diff": 1.9000000000000057,
+          "f1_ci_lower": 136.58732500513278,
+          "f1_ci_upper": 139.97267499486733,
+          "f2_ci_lower": 134.72360618338215,
+          "f2_ci_upper": 138.03639381661796,
+          "f1_win_rate": 0.7,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.0,
+          "param2_name": "memory_decay",
+          "param2_value": 0.9,
+          "params": {
+            "selection_strength": 0.0,
+            "memory_decay": 0.9,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 139.105,
+          "f2_mean_fitness": 135.53000000000003,
+          "fitness_diff": 3.57499999999996,
+          "f1_ci_lower": 137.0303721276885,
+          "f1_ci_upper": 141.17962787231147,
+          "f2_ci_lower": 133.48635338823408,
+          "f2_ci_upper": 137.57364661176598,
+          "f1_win_rate": 0.8,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.0,
+          "param2_name": "memory_decay",
+          "param2_value": 0.95,
+          "params": {
+            "selection_strength": 0.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 141.12000000000006,
+          "f2_mean_fitness": 135.875,
+          "fitness_diff": 5.245000000000061,
+          "f1_ci_lower": 139.62770559948513,
+          "f1_ci_upper": 142.612294400515,
+          "f2_ci_lower": 133.97198455597515,
+          "f2_ci_upper": 137.77801544402485,
+          "f1_win_rate": 0.9,
+          "ci_overlap": false
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.0,
+          "param2_name": "memory_decay",
+          "param2_value": 0.99,
+          "params": {
+            "selection_strength": 0.0,
+            "memory_decay": 0.99,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 141.905,
+          "f2_mean_fitness": 136.45,
+          "fitness_diff": 5.4550000000000125,
+          "f1_ci_lower": 140.43693739861126,
+          "f1_ci_upper": 143.37306260138874,
+          "f2_ci_lower": 134.55648130260082,
+          "f2_ci_upper": 138.34351869739916,
+          "f1_win_rate": 0.9,
+          "ci_overlap": false
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.5,
+          "param2_name": "memory_decay",
+          "param2_value": 0.8,
+          "params": {
+            "selection_strength": 0.5,
+            "memory_decay": 0.8,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 138.89500000000007,
+          "f2_mean_fitness": 137.91500000000005,
+          "fitness_diff": 0.9800000000000182,
+          "f1_ci_lower": 137.56262039672262,
+          "f1_ci_upper": 140.2273796032775,
+          "f2_ci_lower": 136.2632985635885,
+          "f2_ci_upper": 139.5667014364116,
+          "f1_win_rate": 0.7,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.5,
+          "param2_name": "memory_decay",
+          "param2_value": 0.9,
+          "params": {
+            "selection_strength": 0.5,
+            "memory_decay": 0.9,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 139.05500000000006,
+          "f2_mean_fitness": 137.90499999999994,
+          "fitness_diff": 1.1500000000001194,
+          "f1_ci_lower": 137.34950982158293,
+          "f1_ci_upper": 140.7604901784172,
+          "f2_ci_lower": 135.9255191918401,
+          "f2_ci_upper": 139.8844808081598,
+          "f1_win_rate": 0.7,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.5,
+          "param2_name": "memory_decay",
+          "param2_value": 0.95,
+          "params": {
+            "selection_strength": 0.5,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 140.29000000000005,
+          "f2_mean_fitness": 137.81499999999997,
+          "fitness_diff": 2.4750000000000796,
+          "f1_ci_lower": 138.77605439476673,
+          "f1_ci_upper": 141.80394560523337,
+          "f2_ci_lower": 135.92143411895051,
+          "f2_ci_upper": 139.70856588104942,
+          "f1_win_rate": 0.75,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.5,
+          "param2_name": "memory_decay",
+          "param2_value": 0.99,
+          "params": {
+            "selection_strength": 0.5,
+            "memory_decay": 0.99,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 141.07000000000002,
+          "f2_mean_fitness": 138.27999999999997,
+          "fitness_diff": 2.790000000000049,
+          "f1_ci_lower": 139.531265785655,
+          "f1_ci_upper": 142.60873421434505,
+          "f2_ci_lower": 136.411295374919,
+          "f2_ci_upper": 140.14870462508094,
+          "f1_win_rate": 0.75,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 1.0,
+          "param2_name": "memory_decay",
+          "param2_value": 0.8,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.8,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 139.36000000000007,
+          "f2_mean_fitness": 139.16500000000002,
+          "fitness_diff": 0.19500000000005002,
+          "f1_ci_lower": 137.64386805623155,
+          "f1_ci_upper": 141.0761319437686,
+          "f2_ci_lower": 137.06042595513765,
+          "f2_ci_upper": 141.2695740448624,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 1.0,
+          "param2_name": "memory_decay",
+          "param2_value": 0.9,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.9,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 139.97,
+          "f2_mean_fitness": 138.495,
+          "fitness_diff": 1.4749999999999943,
+          "f1_ci_lower": 137.8653807643492,
+          "f1_ci_upper": 142.0746192356508,
+          "f2_ci_lower": 136.27135602518183,
+          "f2_ci_upper": 140.71864397481818,
+          "f1_win_rate": 0.75,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 1.0,
+          "param2_name": "memory_decay",
+          "param2_value": 0.95,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 140.36999999999998,
+          "f2_mean_fitness": 138.64499999999995,
+          "fitness_diff": 1.7250000000000227,
+          "f1_ci_lower": 138.0976568152682,
+          "f1_ci_upper": 142.64234318473174,
+          "f2_ci_lower": 136.96601022550124,
+          "f2_ci_upper": 140.32398977449867,
+          "f1_win_rate": 0.7,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 1.0,
+          "param2_name": "memory_decay",
+          "param2_value": 0.99,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.99,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 140.845,
+          "f2_mean_fitness": 139.05499999999998,
+          "fitness_diff": 1.7900000000000205,
+          "f1_ci_lower": 138.8612141907212,
+          "f1_ci_upper": 142.8287858092788,
+          "f2_ci_lower": 137.22602275642978,
+          "f2_ci_upper": 140.88397724357017,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 2.0,
+          "param2_name": "memory_decay",
+          "param2_value": 0.8,
+          "params": {
+            "selection_strength": 2.0,
+            "memory_decay": 0.8,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 139.39000000000007,
+          "f2_mean_fitness": 141.95,
+          "fitness_diff": -2.559999999999917,
+          "f1_ci_lower": 137.99966177258653,
+          "f1_ci_upper": 140.7803382274136,
+          "f2_ci_lower": 140.25195987156934,
+          "f2_ci_upper": 143.64804012843064,
+          "f1_win_rate": 0.2,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 2.0,
+          "param2_name": "memory_decay",
+          "param2_value": 0.9,
+          "params": {
+            "selection_strength": 2.0,
+            "memory_decay": 0.9,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 138.965,
+          "f2_mean_fitness": 139.79499999999996,
+          "fitness_diff": -0.8299999999999557,
+          "f1_ci_lower": 136.98110959085744,
+          "f1_ci_upper": 140.94889040914256,
+          "f2_ci_lower": 137.7984703590435,
+          "f2_ci_upper": 141.7915296409564,
+          "f1_win_rate": 0.4,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 2.0,
+          "param2_name": "memory_decay",
+          "param2_value": 0.95,
+          "params": {
+            "selection_strength": 2.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 139.175,
+          "f2_mean_fitness": 140.15499999999992,
+          "fitness_diff": -0.9799999999999045,
+          "f1_ci_lower": 137.21292765277505,
+          "f1_ci_upper": 141.13707234722497,
+          "f2_ci_lower": 138.07343771886786,
+          "f2_ci_upper": 142.23656228113197,
+          "f1_win_rate": 0.4,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 2.0,
+          "param2_name": "memory_decay",
+          "param2_value": 0.99,
+          "params": {
+            "selection_strength": 2.0,
+            "memory_decay": 0.99,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 139.22500000000002,
+          "f2_mean_fitness": 140.13499999999993,
+          "fitness_diff": -0.9099999999999113,
+          "f1_ci_lower": 137.33792301492562,
+          "f1_ci_upper": 141.11207698507442,
+          "f2_ci_lower": 137.91276663293158,
+          "f2_ci_upper": 142.3572333670683,
+          "f1_win_rate": 0.45,
+          "ci_overlap": true
+        }
+      ],
+      "f1_fitness_grid": [
+        [
+          138.28000000000006,
+          139.105,
+          141.12000000000006,
+          141.905
+        ],
+        [
+          138.89500000000007,
+          139.05500000000006,
+          140.29000000000005,
+          141.07000000000002
+        ],
+        [
+          139.36000000000007,
+          139.97,
+          140.36999999999998,
+          140.845
+        ],
+        [
+          139.39000000000007,
+          138.965,
+          139.175,
+          139.22500000000002
+        ]
+      ],
+      "f2_fitness_grid": [
+        [
+          136.38000000000005,
+          135.53000000000003,
+          135.875,
+          136.45
+        ],
+        [
+          137.91500000000005,
+          137.90499999999994,
+          137.81499999999997,
+          138.27999999999997
+        ],
+        [
+          139.16500000000002,
+          138.495,
+          138.64499999999995,
+          139.05499999999998
+        ],
+        [
+          141.95,
+          139.79499999999996,
+          140.15499999999992,
+          140.13499999999993
+        ]
+      ],
+      "fitness_diff_grid": [
+        [
+          1.9000000000000057,
+          3.57499999999996,
+          5.245000000000061,
+          5.4550000000000125
+        ],
+        [
+          0.9800000000000182,
+          1.1500000000001194,
+          2.4750000000000796,
+          2.790000000000049
+        ],
+        [
+          0.19500000000005002,
+          1.4749999999999943,
+          1.7250000000000227,
+          1.7900000000000205
+        ],
+        [
+          -2.559999999999917,
+          -0.8299999999999557,
+          -0.9799999999999045,
+          -0.9099999999999113
+        ]
+      ],
+      "ci_overlap_grid": [
+        [
+          true,
+          true,
+          false,
+          false
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ]
+      ],
+      "f1_win_rate_grid": [
+        [
+          0.7,
+          0.8,
+          0.9,
+          0.9
+        ],
+        [
+          0.7,
+          0.7,
+          0.75,
+          0.75
+        ],
+        [
+          0.6,
+          0.75,
+          0.7,
+          0.6
+        ],
+        [
+          0.2,
+          0.4,
+          0.4,
+          0.45
+        ]
+      ],
+      "param1_name": "selection_strength",
+      "param2_name": "memory_decay",
+      "param1_values": [
+        0.0,
+        0.5,
+        1.0,
+        2.0
+      ],
+      "param2_values": [
+        0.8,
+        0.9,
+        0.95,
+        0.99
+      ]
+    },
+    "selection_strength_x_memory_growth": {
+      "grid_results": [
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.0,
+          "param2_name": "memory_growth",
+          "param2_value": 0.5,
+          "params": {
+            "selection_strength": 0.0,
+            "memory_decay": 0.95,
+            "memory_growth": 0.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 138.3700000000001,
+          "f2_mean_fitness": 136.14500000000007,
+          "fitness_diff": 2.2250000000000227,
+          "f1_ci_lower": 136.57360872318623,
+          "f1_ci_upper": 140.16639127681395,
+          "f2_ci_lower": 134.52336127235208,
+          "f2_ci_upper": 137.76663872764806,
+          "f1_win_rate": 0.7,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.0,
+          "param2_name": "memory_growth",
+          "param2_value": 1.0,
+          "params": {
+            "selection_strength": 0.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.0,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 140.62500000000003,
+          "f2_mean_fitness": 135.65500000000003,
+          "fitness_diff": 4.969999999999999,
+          "f1_ci_lower": 139.12590168052776,
+          "f1_ci_upper": 142.1240983194723,
+          "f2_ci_lower": 133.6567965532402,
+          "f2_ci_upper": 137.65320344675985,
+          "f1_win_rate": 0.85,
+          "ci_overlap": false
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.0,
+          "param2_name": "memory_growth",
+          "param2_value": 1.5,
+          "params": {
+            "selection_strength": 0.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 141.12000000000006,
+          "f2_mean_fitness": 135.875,
+          "fitness_diff": 5.245000000000061,
+          "f1_ci_lower": 139.62770559948513,
+          "f1_ci_upper": 142.612294400515,
+          "f2_ci_lower": 133.97198455597515,
+          "f2_ci_upper": 137.77801544402485,
+          "f1_win_rate": 0.9,
+          "ci_overlap": false
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.0,
+          "param2_name": "memory_growth",
+          "param2_value": 2.5,
+          "params": {
+            "selection_strength": 0.0,
+            "memory_decay": 0.95,
+            "memory_growth": 2.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 141.49500000000003,
+          "f2_mean_fitness": 136.295,
+          "fitness_diff": 5.2000000000000455,
+          "f1_ci_lower": 139.9226655127305,
+          "f1_ci_upper": 143.06733448726956,
+          "f2_ci_lower": 134.38596041654034,
+          "f2_ci_upper": 138.20403958345963,
+          "f1_win_rate": 0.9,
+          "ci_overlap": false
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.5,
+          "param2_name": "memory_growth",
+          "param2_value": 0.5,
+          "params": {
+            "selection_strength": 0.5,
+            "memory_decay": 0.95,
+            "memory_growth": 0.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 138.29000000000008,
+          "f2_mean_fitness": 136.95,
+          "fitness_diff": 1.3400000000000887,
+          "f1_ci_lower": 136.71477754095858,
+          "f1_ci_upper": 139.86522245904158,
+          "f2_ci_lower": 135.06038182483593,
+          "f2_ci_upper": 138.83961817516405,
+          "f1_win_rate": 0.8,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.5,
+          "param2_name": "memory_growth",
+          "param2_value": 1.0,
+          "params": {
+            "selection_strength": 0.5,
+            "memory_decay": 0.95,
+            "memory_growth": 1.0,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 139.77500000000003,
+          "f2_mean_fitness": 137.19,
+          "fitness_diff": 2.5850000000000364,
+          "f1_ci_lower": 138.23373741971446,
+          "f1_ci_upper": 141.3162625802856,
+          "f2_ci_lower": 134.97745634128572,
+          "f2_ci_upper": 139.40254365871428,
+          "f1_win_rate": 0.8,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.5,
+          "param2_name": "memory_growth",
+          "param2_value": 1.5,
+          "params": {
+            "selection_strength": 0.5,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 140.29000000000005,
+          "f2_mean_fitness": 137.81499999999997,
+          "fitness_diff": 2.4750000000000796,
+          "f1_ci_lower": 138.77605439476673,
+          "f1_ci_upper": 141.80394560523337,
+          "f2_ci_lower": 135.92143411895051,
+          "f2_ci_upper": 139.70856588104942,
+          "f1_win_rate": 0.75,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.5,
+          "param2_name": "memory_growth",
+          "param2_value": 2.5,
+          "params": {
+            "selection_strength": 0.5,
+            "memory_decay": 0.95,
+            "memory_growth": 2.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 140.565,
+          "f2_mean_fitness": 138.23499999999999,
+          "fitness_diff": 2.3300000000000125,
+          "f1_ci_lower": 138.89455982033783,
+          "f1_ci_upper": 142.23544017966216,
+          "f2_ci_lower": 136.3605868494812,
+          "f2_ci_upper": 140.10941315051878,
+          "f1_win_rate": 0.7,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 1.0,
+          "param2_name": "memory_growth",
+          "param2_value": 0.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 0.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 139.18000000000006,
+          "f2_mean_fitness": 138.235,
+          "fitness_diff": 0.94500000000005,
+          "f1_ci_lower": 137.40891131809462,
+          "f1_ci_upper": 140.9510886819055,
+          "f2_ci_lower": 136.33468830274907,
+          "f2_ci_upper": 140.13531169725096,
+          "f1_win_rate": 0.65,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 1.0,
+          "param2_name": "memory_growth",
+          "param2_value": 1.0,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.0,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 139.95999999999998,
+          "f2_mean_fitness": 138.83499999999998,
+          "fitness_diff": 1.125,
+          "f1_ci_lower": 137.8913863549168,
+          "f1_ci_upper": 142.02861364508317,
+          "f2_ci_lower": 136.83110456534203,
+          "f2_ci_upper": 140.83889543465793,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 1.0,
+          "param2_name": "memory_growth",
+          "param2_value": 1.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 140.36999999999998,
+          "f2_mean_fitness": 138.64499999999995,
+          "fitness_diff": 1.7250000000000227,
+          "f1_ci_lower": 138.0976568152682,
+          "f1_ci_upper": 142.64234318473174,
+          "f2_ci_lower": 136.96601022550124,
+          "f2_ci_upper": 140.32398977449867,
+          "f1_win_rate": 0.7,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 1.0,
+          "param2_name": "memory_growth",
+          "param2_value": 2.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 2.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 140.89000000000001,
+          "f2_mean_fitness": 139.45999999999998,
+          "fitness_diff": 1.4300000000000352,
+          "f1_ci_lower": 138.8840561277254,
+          "f1_ci_upper": 142.89594387227464,
+          "f2_ci_lower": 137.84870771321613,
+          "f2_ci_upper": 141.07129228678383,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 2.0,
+          "param2_name": "memory_growth",
+          "param2_value": 0.5,
+          "params": {
+            "selection_strength": 2.0,
+            "memory_decay": 0.95,
+            "memory_growth": 0.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 139.17000000000002,
+          "f2_mean_fitness": 140.41499999999996,
+          "fitness_diff": -1.2449999999999477,
+          "f1_ci_lower": 137.4492592533891,
+          "f1_ci_upper": 140.89074074661093,
+          "f2_ci_lower": 138.395403026611,
+          "f2_ci_upper": 142.43459697338892,
+          "f1_win_rate": 0.3,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 2.0,
+          "param2_name": "memory_growth",
+          "param2_value": 1.0,
+          "params": {
+            "selection_strength": 2.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.0,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 139.64500000000004,
+          "f2_mean_fitness": 140.3549999999999,
+          "fitness_diff": -0.7099999999998658,
+          "f1_ci_lower": 137.78781317007497,
+          "f1_ci_upper": 141.5021868299251,
+          "f2_ci_lower": 138.16452442133848,
+          "f2_ci_upper": 142.54547557866132,
+          "f1_win_rate": 0.35,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 2.0,
+          "param2_name": "memory_growth",
+          "param2_value": 1.5,
+          "params": {
+            "selection_strength": 2.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 139.175,
+          "f2_mean_fitness": 140.15499999999992,
+          "fitness_diff": -0.9799999999999045,
+          "f1_ci_lower": 137.21292765277505,
+          "f1_ci_upper": 141.13707234722497,
+          "f2_ci_lower": 138.07343771886786,
+          "f2_ci_upper": 142.23656228113197,
+          "f1_win_rate": 0.4,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 2.0,
+          "param2_name": "memory_growth",
+          "param2_value": 2.5,
+          "params": {
+            "selection_strength": 2.0,
+            "memory_decay": 0.95,
+            "memory_growth": 2.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 138.91500000000005,
+          "f2_mean_fitness": 140.1649999999999,
+          "fitness_diff": -1.249999999999858,
+          "f1_ci_lower": 136.86093415615528,
+          "f1_ci_upper": 140.96906584384482,
+          "f2_ci_lower": 138.04416513826598,
+          "f2_ci_upper": 142.28583486173383,
+          "f1_win_rate": 0.4,
+          "ci_overlap": true
+        }
+      ],
+      "f1_fitness_grid": [
+        [
+          138.3700000000001,
+          140.62500000000003,
+          141.12000000000006,
+          141.49500000000003
+        ],
+        [
+          138.29000000000008,
+          139.77500000000003,
+          140.29000000000005,
+          140.565
+        ],
+        [
+          139.18000000000006,
+          139.95999999999998,
+          140.36999999999998,
+          140.89000000000001
+        ],
+        [
+          139.17000000000002,
+          139.64500000000004,
+          139.175,
+          138.91500000000005
+        ]
+      ],
+      "f2_fitness_grid": [
+        [
+          136.14500000000007,
+          135.65500000000003,
+          135.875,
+          136.295
+        ],
+        [
+          136.95,
+          137.19,
+          137.81499999999997,
+          138.23499999999999
+        ],
+        [
+          138.235,
+          138.83499999999998,
+          138.64499999999995,
+          139.45999999999998
+        ],
+        [
+          140.41499999999996,
+          140.3549999999999,
+          140.15499999999992,
+          140.1649999999999
+        ]
+      ],
+      "fitness_diff_grid": [
+        [
+          2.2250000000000227,
+          4.969999999999999,
+          5.245000000000061,
+          5.2000000000000455
+        ],
+        [
+          1.3400000000000887,
+          2.5850000000000364,
+          2.4750000000000796,
+          2.3300000000000125
+        ],
+        [
+          0.94500000000005,
+          1.125,
+          1.7250000000000227,
+          1.4300000000000352
+        ],
+        [
+          -1.2449999999999477,
+          -0.7099999999998658,
+          -0.9799999999999045,
+          -1.249999999999858
+        ]
+      ],
+      "ci_overlap_grid": [
+        [
+          true,
+          false,
+          false,
+          false
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ]
+      ],
+      "f1_win_rate_grid": [
+        [
+          0.7,
+          0.85,
+          0.9,
+          0.9
+        ],
+        [
+          0.8,
+          0.8,
+          0.75,
+          0.7
+        ],
+        [
+          0.65,
+          0.6,
+          0.7,
+          0.6
+        ],
+        [
+          0.3,
+          0.35,
+          0.4,
+          0.4
+        ]
+      ],
+      "param1_name": "selection_strength",
+      "param2_name": "memory_growth",
+      "param1_values": [
+        0.0,
+        0.5,
+        1.0,
+        2.0
+      ],
+      "param2_values": [
+        0.5,
+        1.0,
+        1.5,
+        2.5
+      ]
+    },
+    "selection_strength_x_steepness": {
+      "grid_results": [
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.0,
+          "param2_name": "steepness",
+          "param2_value": 0.1,
+          "params": {
+            "selection_strength": 0.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.1
+          },
+          "f1_mean_fitness": 140.98500000000004,
+          "f2_mean_fitness": 135.825,
+          "fitness_diff": 5.160000000000053,
+          "f1_ci_lower": 139.5042083504131,
+          "f1_ci_upper": 142.46579164958698,
+          "f2_ci_lower": 133.74385867122032,
+          "f2_ci_upper": 137.90614132877965,
+          "f1_win_rate": 0.9,
+          "ci_overlap": false
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.0,
+          "param2_name": "steepness",
+          "param2_value": 0.4,
+          "params": {
+            "selection_strength": 0.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.4
+          },
+          "f1_mean_fitness": 141.06000000000006,
+          "f2_mean_fitness": 135.905,
+          "fitness_diff": 5.155000000000058,
+          "f1_ci_lower": 139.60100190362158,
+          "f1_ci_upper": 142.51899809637854,
+          "f2_ci_lower": 133.96332791706382,
+          "f2_ci_upper": 137.84667208293618,
+          "f1_win_rate": 0.9,
+          "ci_overlap": false
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.0,
+          "param2_name": "steepness",
+          "param2_value": 0.8,
+          "params": {
+            "selection_strength": 0.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.8
+          },
+          "f1_mean_fitness": 141.25000000000006,
+          "f2_mean_fitness": 136.01500000000004,
+          "fitness_diff": 5.235000000000014,
+          "f1_ci_lower": 139.75177669028503,
+          "f1_ci_upper": 142.7482233097151,
+          "f2_ci_lower": 134.1557782599672,
+          "f2_ci_upper": 137.87422174003288,
+          "f1_win_rate": 0.9,
+          "ci_overlap": false
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.0,
+          "param2_name": "steepness",
+          "param2_value": 1.5,
+          "params": {
+            "selection_strength": 0.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 1.5
+          },
+          "f1_mean_fitness": 141.34500000000003,
+          "f2_mean_fitness": 136.27,
+          "fitness_diff": 5.075000000000017,
+          "f1_ci_lower": 139.65915800259955,
+          "f1_ci_upper": 143.0308419974005,
+          "f2_ci_lower": 134.21925799740293,
+          "f2_ci_upper": 138.3207420025971,
+          "f1_win_rate": 0.85,
+          "ci_overlap": false
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.5,
+          "param2_name": "steepness",
+          "param2_value": 0.1,
+          "params": {
+            "selection_strength": 0.5,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.1
+          },
+          "f1_mean_fitness": 139.78000000000003,
+          "f2_mean_fitness": 138.17499999999998,
+          "fitness_diff": 1.6050000000000466,
+          "f1_ci_lower": 138.05922575567462,
+          "f1_ci_upper": 141.50077424432544,
+          "f2_ci_lower": 136.078075814076,
+          "f2_ci_upper": 140.27192418592398,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.5,
+          "param2_name": "steepness",
+          "param2_value": 0.4,
+          "params": {
+            "selection_strength": 0.5,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.4
+          },
+          "f1_mean_fitness": 139.90000000000003,
+          "f2_mean_fitness": 137.83499999999998,
+          "fitness_diff": 2.0650000000000546,
+          "f1_ci_lower": 138.27179692262285,
+          "f1_ci_upper": 141.5282030773772,
+          "f2_ci_lower": 135.92241290428782,
+          "f2_ci_upper": 139.74758709571213,
+          "f1_win_rate": 0.7,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.5,
+          "param2_name": "steepness",
+          "param2_value": 0.8,
+          "params": {
+            "selection_strength": 0.5,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.8
+          },
+          "f1_mean_fitness": 140.75500000000005,
+          "f2_mean_fitness": 138.08499999999998,
+          "fitness_diff": 2.6700000000000728,
+          "f1_ci_lower": 139.1095081603434,
+          "f1_ci_upper": 142.4004918396567,
+          "f2_ci_lower": 136.13114716168414,
+          "f2_ci_upper": 140.03885283831582,
+          "f1_win_rate": 0.75,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 0.5,
+          "param2_name": "steepness",
+          "param2_value": 1.5,
+          "params": {
+            "selection_strength": 0.5,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 1.5
+          },
+          "f1_mean_fitness": 140.69,
+          "f2_mean_fitness": 138.09,
+          "fitness_diff": 2.5999999999999943,
+          "f1_ci_lower": 139.01235482361162,
+          "f1_ci_upper": 142.36764517638838,
+          "f2_ci_lower": 136.24743169597983,
+          "f2_ci_upper": 139.93256830402018,
+          "f1_win_rate": 0.85,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 1.0,
+          "param2_name": "steepness",
+          "param2_value": 0.1,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.1
+          },
+          "f1_mean_fitness": 140.675,
+          "f2_mean_fitness": 139.71499999999997,
+          "fitness_diff": 0.9600000000000364,
+          "f1_ci_lower": 138.63554474693345,
+          "f1_ci_upper": 142.71445525306657,
+          "f2_ci_lower": 137.58256440045,
+          "f2_ci_upper": 141.84743559954995,
+          "f1_win_rate": 0.65,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 1.0,
+          "param2_name": "steepness",
+          "param2_value": 0.4,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.4
+          },
+          "f1_mean_fitness": 140.60500000000002,
+          "f2_mean_fitness": 139.16999999999996,
+          "fitness_diff": 1.4350000000000591,
+          "f1_ci_lower": 138.33476956040053,
+          "f1_ci_upper": 142.8752304395995,
+          "f2_ci_lower": 137.23542855172818,
+          "f2_ci_upper": 141.10457144827174,
+          "f1_win_rate": 0.7,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 1.0,
+          "param2_name": "steepness",
+          "param2_value": 0.8,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.8
+          },
+          "f1_mean_fitness": 140.98000000000005,
+          "f2_mean_fitness": 139.015,
+          "fitness_diff": 1.9650000000000603,
+          "f1_ci_lower": 138.78111332598553,
+          "f1_ci_upper": 143.17888667401456,
+          "f2_ci_lower": 137.31019943166658,
+          "f2_ci_upper": 140.7198005683334,
+          "f1_win_rate": 0.65,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 1.0,
+          "param2_name": "steepness",
+          "param2_value": 1.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 1.5
+          },
+          "f1_mean_fitness": 141.26500000000004,
+          "f2_mean_fitness": 139.275,
+          "fitness_diff": 1.9900000000000375,
+          "f1_ci_lower": 139.24963153053866,
+          "f1_ci_upper": 143.28036846946142,
+          "f2_ci_lower": 137.5061730659286,
+          "f2_ci_upper": 141.0438269340714,
+          "f1_win_rate": 0.65,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 2.0,
+          "param2_name": "steepness",
+          "param2_value": 0.1,
+          "params": {
+            "selection_strength": 2.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.1
+          },
+          "f1_mean_fitness": 139.55,
+          "f2_mean_fitness": 140.39999999999995,
+          "fitness_diff": -0.8499999999999375,
+          "f1_ci_lower": 137.58389967907632,
+          "f1_ci_upper": 141.5161003209237,
+          "f2_ci_lower": 138.23709002964432,
+          "f2_ci_upper": 142.56290997035558,
+          "f1_win_rate": 0.45,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 2.0,
+          "param2_name": "steepness",
+          "param2_value": 0.4,
+          "params": {
+            "selection_strength": 2.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.4
+          },
+          "f1_mean_fitness": 139.275,
+          "f2_mean_fitness": 140.26499999999993,
+          "fitness_diff": -0.9899999999999238,
+          "f1_ci_lower": 137.29212095400837,
+          "f1_ci_upper": 141.25787904599164,
+          "f2_ci_lower": 138.06807106676817,
+          "f2_ci_upper": 142.4619289332317,
+          "f1_win_rate": 0.45,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 2.0,
+          "param2_name": "steepness",
+          "param2_value": 0.8,
+          "params": {
+            "selection_strength": 2.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.8
+          },
+          "f1_mean_fitness": 139.07500000000002,
+          "f2_mean_fitness": 140.16499999999994,
+          "fitness_diff": -1.0899999999999181,
+          "f1_ci_lower": 137.12376864686397,
+          "f1_ci_upper": 141.02623135313607,
+          "f2_ci_lower": 138.11875029667345,
+          "f2_ci_upper": 142.21124970332642,
+          "f1_win_rate": 0.45,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "selection_strength",
+          "param1_value": 2.0,
+          "param2_name": "steepness",
+          "param2_value": 1.5,
+          "params": {
+            "selection_strength": 2.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 1.5
+          },
+          "f1_mean_fitness": 138.98500000000004,
+          "f2_mean_fitness": 140.04999999999995,
+          "fitness_diff": -1.0649999999999125,
+          "f1_ci_lower": 137.0399584545373,
+          "f1_ci_upper": 140.93004154546279,
+          "f2_ci_lower": 137.91085913988488,
+          "f2_ci_upper": 142.18914086011503,
+          "f1_win_rate": 0.4,
+          "ci_overlap": true
+        }
+      ],
+      "f1_fitness_grid": [
+        [
+          140.98500000000004,
+          141.06000000000006,
+          141.25000000000006,
+          141.34500000000003
+        ],
+        [
+          139.78000000000003,
+          139.90000000000003,
+          140.75500000000005,
+          140.69
+        ],
+        [
+          140.675,
+          140.60500000000002,
+          140.98000000000005,
+          141.26500000000004
+        ],
+        [
+          139.55,
+          139.275,
+          139.07500000000002,
+          138.98500000000004
+        ]
+      ],
+      "f2_fitness_grid": [
+        [
+          135.825,
+          135.905,
+          136.01500000000004,
+          136.27
+        ],
+        [
+          138.17499999999998,
+          137.83499999999998,
+          138.08499999999998,
+          138.09
+        ],
+        [
+          139.71499999999997,
+          139.16999999999996,
+          139.015,
+          139.275
+        ],
+        [
+          140.39999999999995,
+          140.26499999999993,
+          140.16499999999994,
+          140.04999999999995
+        ]
+      ],
+      "fitness_diff_grid": [
+        [
+          5.160000000000053,
+          5.155000000000058,
+          5.235000000000014,
+          5.075000000000017
+        ],
+        [
+          1.6050000000000466,
+          2.0650000000000546,
+          2.6700000000000728,
+          2.5999999999999943
+        ],
+        [
+          0.9600000000000364,
+          1.4350000000000591,
+          1.9650000000000603,
+          1.9900000000000375
+        ],
+        [
+          -0.8499999999999375,
+          -0.9899999999999238,
+          -1.0899999999999181,
+          -1.0649999999999125
+        ]
+      ],
+      "ci_overlap_grid": [
+        [
+          false,
+          false,
+          false,
+          false
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ]
+      ],
+      "f1_win_rate_grid": [
+        [
+          0.9,
+          0.9,
+          0.9,
+          0.85
+        ],
+        [
+          0.6,
+          0.7,
+          0.75,
+          0.85
+        ],
+        [
+          0.65,
+          0.7,
+          0.65,
+          0.65
+        ],
+        [
+          0.45,
+          0.45,
+          0.45,
+          0.4
+        ]
+      ],
+      "param1_name": "selection_strength",
+      "param2_name": "steepness",
+      "param1_values": [
+        0.0,
+        0.5,
+        1.0,
+        2.0
+      ],
+      "param2_values": [
+        0.1,
+        0.4,
+        0.8,
+        1.5
+      ]
+    },
+    "memory_decay_x_memory_growth": {
+      "grid_results": [
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.8,
+          "param2_name": "memory_growth",
+          "param2_value": 0.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.8,
+            "memory_growth": 0.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 138.62500000000009,
+          "f2_mean_fitness": 138.94500000000005,
+          "fitness_diff": -0.31999999999996476,
+          "f1_ci_lower": 136.92428873553345,
+          "f1_ci_upper": 140.32571126446672,
+          "f2_ci_lower": 136.5957102278007,
+          "f2_ci_upper": 141.2942897721994,
+          "f1_win_rate": 0.55,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.8,
+          "param2_name": "memory_growth",
+          "param2_value": 1.0,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.8,
+            "memory_growth": 1.0,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 138.38000000000008,
+          "f2_mean_fitness": 138.67500000000004,
+          "fitness_diff": -0.2949999999999591,
+          "f1_ci_lower": 136.82113149237398,
+          "f1_ci_upper": 139.93886850762618,
+          "f2_ci_lower": 136.7196962302963,
+          "f2_ci_upper": 140.63030376970377,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.8,
+          "param2_name": "memory_growth",
+          "param2_value": 1.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.8,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 139.36000000000007,
+          "f2_mean_fitness": 139.16500000000002,
+          "fitness_diff": 0.19500000000005002,
+          "f1_ci_lower": 137.64386805623155,
+          "f1_ci_upper": 141.0761319437686,
+          "f2_ci_lower": 137.06042595513765,
+          "f2_ci_upper": 141.2695740448624,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.8,
+          "param2_name": "memory_growth",
+          "param2_value": 2.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.8,
+            "memory_growth": 2.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 139.32000000000002,
+          "f2_mean_fitness": 138.905,
+          "fitness_diff": 0.41500000000002046,
+          "f1_ci_lower": 137.37020339283433,
+          "f1_ci_upper": 141.26979660716572,
+          "f2_ci_lower": 136.74462459246348,
+          "f2_ci_upper": 141.06537540753652,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.9,
+          "param2_name": "memory_growth",
+          "param2_value": 0.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.9,
+            "memory_growth": 0.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 138.53000000000003,
+          "f2_mean_fitness": 138.61000000000004,
+          "fitness_diff": -0.0800000000000125,
+          "f1_ci_lower": 136.8766364995585,
+          "f1_ci_upper": 140.18336350044157,
+          "f2_ci_lower": 136.4183971316855,
+          "f2_ci_upper": 140.80160286831457,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.9,
+          "param2_name": "memory_growth",
+          "param2_value": 1.0,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.9,
+            "memory_growth": 1.0,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 139.42500000000004,
+          "f2_mean_fitness": 138.335,
+          "fitness_diff": 1.0900000000000318,
+          "f1_ci_lower": 137.67024158886733,
+          "f1_ci_upper": 141.17975841113275,
+          "f2_ci_lower": 136.2124807304249,
+          "f2_ci_upper": 140.45751926957513,
+          "f1_win_rate": 0.7,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.9,
+          "param2_name": "memory_growth",
+          "param2_value": 1.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.9,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 139.97,
+          "f2_mean_fitness": 138.495,
+          "fitness_diff": 1.4749999999999943,
+          "f1_ci_lower": 137.8653807643492,
+          "f1_ci_upper": 142.0746192356508,
+          "f2_ci_lower": 136.27135602518183,
+          "f2_ci_upper": 140.71864397481818,
+          "f1_win_rate": 0.75,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.9,
+          "param2_name": "memory_growth",
+          "param2_value": 2.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.9,
+            "memory_growth": 2.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 140.08,
+          "f2_mean_fitness": 139.26,
+          "fitness_diff": 0.8200000000000216,
+          "f1_ci_lower": 137.88321144071003,
+          "f1_ci_upper": 142.27678855929,
+          "f2_ci_lower": 137.0958964412059,
+          "f2_ci_upper": 141.4241035587941,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.95,
+          "param2_name": "memory_growth",
+          "param2_value": 0.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 0.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 139.18000000000006,
+          "f2_mean_fitness": 138.235,
+          "fitness_diff": 0.94500000000005,
+          "f1_ci_lower": 137.40891131809462,
+          "f1_ci_upper": 140.9510886819055,
+          "f2_ci_lower": 136.33468830274907,
+          "f2_ci_upper": 140.13531169725096,
+          "f1_win_rate": 0.65,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.95,
+          "param2_name": "memory_growth",
+          "param2_value": 1.0,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.0,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 139.95999999999998,
+          "f2_mean_fitness": 138.83499999999998,
+          "fitness_diff": 1.125,
+          "f1_ci_lower": 137.8913863549168,
+          "f1_ci_upper": 142.02861364508317,
+          "f2_ci_lower": 136.83110456534203,
+          "f2_ci_upper": 140.83889543465793,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.95,
+          "param2_name": "memory_growth",
+          "param2_value": 1.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 140.36999999999998,
+          "f2_mean_fitness": 138.64499999999995,
+          "fitness_diff": 1.7250000000000227,
+          "f1_ci_lower": 138.0976568152682,
+          "f1_ci_upper": 142.64234318473174,
+          "f2_ci_lower": 136.96601022550124,
+          "f2_ci_upper": 140.32398977449867,
+          "f1_win_rate": 0.7,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.95,
+          "param2_name": "memory_growth",
+          "param2_value": 2.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 2.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 140.89000000000001,
+          "f2_mean_fitness": 139.45999999999998,
+          "fitness_diff": 1.4300000000000352,
+          "f1_ci_lower": 138.8840561277254,
+          "f1_ci_upper": 142.89594387227464,
+          "f2_ci_lower": 137.84870771321613,
+          "f2_ci_upper": 141.07129228678383,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.99,
+          "param2_name": "memory_growth",
+          "param2_value": 0.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.99,
+            "memory_growth": 0.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 141.40000000000003,
+          "f2_mean_fitness": 139.36499999999998,
+          "fitness_diff": 2.0350000000000534,
+          "f1_ci_lower": 139.64326357259804,
+          "f1_ci_upper": 143.15673642740202,
+          "f2_ci_lower": 137.3742644784565,
+          "f2_ci_upper": 141.35573552154347,
+          "f1_win_rate": 0.65,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.99,
+          "param2_name": "memory_growth",
+          "param2_value": 1.0,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.99,
+            "memory_growth": 1.0,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 141.205,
+          "f2_mean_fitness": 139.12499999999994,
+          "fitness_diff": 2.0800000000000693,
+          "f1_ci_lower": 139.25326060676343,
+          "f1_ci_upper": 143.1567393932366,
+          "f2_ci_lower": 137.43169343124276,
+          "f2_ci_upper": 140.81830656875712,
+          "f1_win_rate": 0.7,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.99,
+          "param2_name": "memory_growth",
+          "param2_value": 1.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.99,
+            "memory_growth": 1.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 140.845,
+          "f2_mean_fitness": 139.05499999999998,
+          "fitness_diff": 1.7900000000000205,
+          "f1_ci_lower": 138.8612141907212,
+          "f1_ci_upper": 142.8287858092788,
+          "f2_ci_lower": 137.22602275642978,
+          "f2_ci_upper": 140.88397724357017,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.99,
+          "param2_name": "memory_growth",
+          "param2_value": 2.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.99,
+            "memory_growth": 2.5,
+            "steepness": 0.6
+          },
+          "f1_mean_fitness": 140.695,
+          "f2_mean_fitness": 139.00499999999997,
+          "fitness_diff": 1.6900000000000261,
+          "f1_ci_lower": 138.7490577569388,
+          "f1_ci_upper": 142.64094224306118,
+          "f2_ci_lower": 137.21540001407848,
+          "f2_ci_upper": 140.79459998592145,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        }
+      ],
+      "f1_fitness_grid": [
+        [
+          138.62500000000009,
+          138.38000000000008,
+          139.36000000000007,
+          139.32000000000002
+        ],
+        [
+          138.53000000000003,
+          139.42500000000004,
+          139.97,
+          140.08
+        ],
+        [
+          139.18000000000006,
+          139.95999999999998,
+          140.36999999999998,
+          140.89000000000001
+        ],
+        [
+          141.40000000000003,
+          141.205,
+          140.845,
+          140.695
+        ]
+      ],
+      "f2_fitness_grid": [
+        [
+          138.94500000000005,
+          138.67500000000004,
+          139.16500000000002,
+          138.905
+        ],
+        [
+          138.61000000000004,
+          138.335,
+          138.495,
+          139.26
+        ],
+        [
+          138.235,
+          138.83499999999998,
+          138.64499999999995,
+          139.45999999999998
+        ],
+        [
+          139.36499999999998,
+          139.12499999999994,
+          139.05499999999998,
+          139.00499999999997
+        ]
+      ],
+      "fitness_diff_grid": [
+        [
+          -0.31999999999996476,
+          -0.2949999999999591,
+          0.19500000000005002,
+          0.41500000000002046
+        ],
+        [
+          -0.0800000000000125,
+          1.0900000000000318,
+          1.4749999999999943,
+          0.8200000000000216
+        ],
+        [
+          0.94500000000005,
+          1.125,
+          1.7250000000000227,
+          1.4300000000000352
+        ],
+        [
+          2.0350000000000534,
+          2.0800000000000693,
+          1.7900000000000205,
+          1.6900000000000261
+        ]
+      ],
+      "ci_overlap_grid": [
+        [
+          true,
+          true,
+          true,
+          true
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ]
+      ],
+      "f1_win_rate_grid": [
+        [
+          0.55,
+          0.6,
+          0.6,
+          0.6
+        ],
+        [
+          0.6,
+          0.7,
+          0.75,
+          0.6
+        ],
+        [
+          0.65,
+          0.6,
+          0.7,
+          0.6
+        ],
+        [
+          0.65,
+          0.7,
+          0.6,
+          0.6
+        ]
+      ],
+      "param1_name": "memory_decay",
+      "param2_name": "memory_growth",
+      "param1_values": [
+        0.8,
+        0.9,
+        0.95,
+        0.99
+      ],
+      "param2_values": [
+        0.5,
+        1.0,
+        1.5,
+        2.5
+      ]
+    },
+    "memory_decay_x_steepness": {
+      "grid_results": [
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.8,
+          "param2_name": "steepness",
+          "param2_value": 0.1,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.8,
+            "memory_growth": 1.5,
+            "steepness": 0.1
+          },
+          "f1_mean_fitness": 139.28000000000003,
+          "f2_mean_fitness": 138.945,
+          "fitness_diff": 0.3350000000000364,
+          "f1_ci_lower": 137.32424082453488,
+          "f1_ci_upper": 141.23575917546518,
+          "f2_ci_lower": 136.83155975274093,
+          "f2_ci_upper": 141.05844024725906,
+          "f1_win_rate": 0.55,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.8,
+          "param2_name": "steepness",
+          "param2_value": 0.4,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.8,
+            "memory_growth": 1.5,
+            "steepness": 0.4
+          },
+          "f1_mean_fitness": 139.39000000000004,
+          "f2_mean_fitness": 139.07000000000002,
+          "fitness_diff": 0.3200000000000216,
+          "f1_ci_lower": 137.52072173353181,
+          "f1_ci_upper": 141.25927826646827,
+          "f2_ci_lower": 136.81701785285588,
+          "f2_ci_upper": 141.32298214714416,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.8,
+          "param2_name": "steepness",
+          "param2_value": 0.8,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.8,
+            "memory_growth": 1.5,
+            "steepness": 0.8
+          },
+          "f1_mean_fitness": 139.33500000000004,
+          "f2_mean_fitness": 138.92000000000002,
+          "fitness_diff": 0.41500000000002046,
+          "f1_ci_lower": 137.57955846993326,
+          "f1_ci_upper": 141.0904415300668,
+          "f2_ci_lower": 136.8134918357031,
+          "f2_ci_upper": 141.02650816429693,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.8,
+          "param2_name": "steepness",
+          "param2_value": 1.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.8,
+            "memory_growth": 1.5,
+            "steepness": 1.5
+          },
+          "f1_mean_fitness": 138.87000000000006,
+          "f2_mean_fitness": 139.12000000000003,
+          "fitness_diff": -0.24999999999997158,
+          "f1_ci_lower": 137.32520913712193,
+          "f1_ci_upper": 140.4147908628782,
+          "f2_ci_lower": 137.07057948054978,
+          "f2_ci_upper": 141.16942051945028,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.9,
+          "param2_name": "steepness",
+          "param2_value": 0.1,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.9,
+            "memory_growth": 1.5,
+            "steepness": 0.1
+          },
+          "f1_mean_fitness": 139.70500000000007,
+          "f2_mean_fitness": 138.66,
+          "fitness_diff": 1.0450000000000728,
+          "f1_ci_lower": 137.7097988586531,
+          "f1_ci_upper": 141.70020114134704,
+          "f2_ci_lower": 136.6282738212662,
+          "f2_ci_upper": 140.6917261787338,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.9,
+          "param2_name": "steepness",
+          "param2_value": 0.4,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.9,
+            "memory_growth": 1.5,
+            "steepness": 0.4
+          },
+          "f1_mean_fitness": 140.01500000000004,
+          "f2_mean_fitness": 138.77999999999997,
+          "fitness_diff": 1.2350000000000705,
+          "f1_ci_lower": 138.01761596565356,
+          "f1_ci_upper": 142.01238403434652,
+          "f2_ci_lower": 136.52642948596167,
+          "f2_ci_upper": 141.03357051403827,
+          "f1_win_rate": 0.7,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.9,
+          "param2_name": "steepness",
+          "param2_value": 0.8,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.9,
+            "memory_growth": 1.5,
+            "steepness": 0.8
+          },
+          "f1_mean_fitness": 139.63500000000005,
+          "f2_mean_fitness": 138.33499999999998,
+          "fitness_diff": 1.3000000000000682,
+          "f1_ci_lower": 137.50862792070146,
+          "f1_ci_upper": 141.76137207929864,
+          "f2_ci_lower": 136.16632666153572,
+          "f2_ci_upper": 140.50367333846424,
+          "f1_win_rate": 0.75,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.9,
+          "param2_name": "steepness",
+          "param2_value": 1.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.9,
+            "memory_growth": 1.5,
+            "steepness": 1.5
+          },
+          "f1_mean_fitness": 139.445,
+          "f2_mean_fitness": 137.40499999999997,
+          "fitness_diff": 2.0400000000000205,
+          "f1_ci_lower": 137.50826214513387,
+          "f1_ci_upper": 141.38173785486612,
+          "f2_ci_lower": 135.55889539472886,
+          "f2_ci_upper": 139.25110460527108,
+          "f1_win_rate": 0.65,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.95,
+          "param2_name": "steepness",
+          "param2_value": 0.1,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.1
+          },
+          "f1_mean_fitness": 140.675,
+          "f2_mean_fitness": 139.71499999999997,
+          "fitness_diff": 0.9600000000000364,
+          "f1_ci_lower": 138.63554474693345,
+          "f1_ci_upper": 142.71445525306657,
+          "f2_ci_lower": 137.58256440045,
+          "f2_ci_upper": 141.84743559954995,
+          "f1_win_rate": 0.65,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.95,
+          "param2_name": "steepness",
+          "param2_value": 0.4,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.4
+          },
+          "f1_mean_fitness": 140.60500000000002,
+          "f2_mean_fitness": 139.16999999999996,
+          "fitness_diff": 1.4350000000000591,
+          "f1_ci_lower": 138.33476956040053,
+          "f1_ci_upper": 142.8752304395995,
+          "f2_ci_lower": 137.23542855172818,
+          "f2_ci_upper": 141.10457144827174,
+          "f1_win_rate": 0.7,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.95,
+          "param2_name": "steepness",
+          "param2_value": 0.8,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.8
+          },
+          "f1_mean_fitness": 140.98000000000005,
+          "f2_mean_fitness": 139.015,
+          "fitness_diff": 1.9650000000000603,
+          "f1_ci_lower": 138.78111332598553,
+          "f1_ci_upper": 143.17888667401456,
+          "f2_ci_lower": 137.31019943166658,
+          "f2_ci_upper": 140.7198005683334,
+          "f1_win_rate": 0.65,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.95,
+          "param2_name": "steepness",
+          "param2_value": 1.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 1.5
+          },
+          "f1_mean_fitness": 141.26500000000004,
+          "f2_mean_fitness": 139.275,
+          "fitness_diff": 1.9900000000000375,
+          "f1_ci_lower": 139.24963153053866,
+          "f1_ci_upper": 143.28036846946142,
+          "f2_ci_lower": 137.5061730659286,
+          "f2_ci_upper": 141.0438269340714,
+          "f1_win_rate": 0.65,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.99,
+          "param2_name": "steepness",
+          "param2_value": 0.1,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.99,
+            "memory_growth": 1.5,
+            "steepness": 0.1
+          },
+          "f1_mean_fitness": 141.04000000000002,
+          "f2_mean_fitness": 139.34999999999997,
+          "fitness_diff": 1.6900000000000546,
+          "f1_ci_lower": 139.18492954513243,
+          "f1_ci_upper": 142.8950704548676,
+          "f2_ci_lower": 137.64383231464353,
+          "f2_ci_upper": 141.0561676853564,
+          "f1_win_rate": 0.65,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.99,
+          "param2_name": "steepness",
+          "param2_value": 0.4,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.99,
+            "memory_growth": 1.5,
+            "steepness": 0.4
+          },
+          "f1_mean_fitness": 141.035,
+          "f2_mean_fitness": 139.265,
+          "fitness_diff": 1.7700000000000102,
+          "f1_ci_lower": 139.05087716645843,
+          "f1_ci_upper": 143.01912283354156,
+          "f2_ci_lower": 137.52625280019112,
+          "f2_ci_upper": 141.00374719980886,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.99,
+          "param2_name": "steepness",
+          "param2_value": 0.8,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.99,
+            "memory_growth": 1.5,
+            "steepness": 0.8
+          },
+          "f1_mean_fitness": 140.85499999999996,
+          "f2_mean_fitness": 139.20499999999993,
+          "fitness_diff": 1.650000000000034,
+          "f1_ci_lower": 138.76382330378738,
+          "f1_ci_upper": 142.94617669621255,
+          "f2_ci_lower": 137.36289631016234,
+          "f2_ci_upper": 141.0471036898375,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_decay",
+          "param1_value": 0.99,
+          "param2_name": "steepness",
+          "param2_value": 1.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.99,
+            "memory_growth": 1.5,
+            "steepness": 1.5
+          },
+          "f1_mean_fitness": 140.79500000000002,
+          "f2_mean_fitness": 139.31499999999997,
+          "fitness_diff": 1.4800000000000466,
+          "f1_ci_lower": 138.730454431695,
+          "f1_ci_upper": 142.85954556830504,
+          "f2_ci_lower": 137.5052347624515,
+          "f2_ci_upper": 141.12476523754844,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        }
+      ],
+      "f1_fitness_grid": [
+        [
+          139.28000000000003,
+          139.39000000000004,
+          139.33500000000004,
+          138.87000000000006
+        ],
+        [
+          139.70500000000007,
+          140.01500000000004,
+          139.63500000000005,
+          139.445
+        ],
+        [
+          140.675,
+          140.60500000000002,
+          140.98000000000005,
+          141.26500000000004
+        ],
+        [
+          141.04000000000002,
+          141.035,
+          140.85499999999996,
+          140.79500000000002
+        ]
+      ],
+      "f2_fitness_grid": [
+        [
+          138.945,
+          139.07000000000002,
+          138.92000000000002,
+          139.12000000000003
+        ],
+        [
+          138.66,
+          138.77999999999997,
+          138.33499999999998,
+          137.40499999999997
+        ],
+        [
+          139.71499999999997,
+          139.16999999999996,
+          139.015,
+          139.275
+        ],
+        [
+          139.34999999999997,
+          139.265,
+          139.20499999999993,
+          139.31499999999997
+        ]
+      ],
+      "fitness_diff_grid": [
+        [
+          0.3350000000000364,
+          0.3200000000000216,
+          0.41500000000002046,
+          -0.24999999999997158
+        ],
+        [
+          1.0450000000000728,
+          1.2350000000000705,
+          1.3000000000000682,
+          2.0400000000000205
+        ],
+        [
+          0.9600000000000364,
+          1.4350000000000591,
+          1.9650000000000603,
+          1.9900000000000375
+        ],
+        [
+          1.6900000000000546,
+          1.7700000000000102,
+          1.650000000000034,
+          1.4800000000000466
+        ]
+      ],
+      "ci_overlap_grid": [
+        [
+          true,
+          true,
+          true,
+          true
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ]
+      ],
+      "f1_win_rate_grid": [
+        [
+          0.55,
+          0.6,
+          0.6,
+          0.6
+        ],
+        [
+          0.6,
+          0.7,
+          0.75,
+          0.65
+        ],
+        [
+          0.65,
+          0.7,
+          0.65,
+          0.65
+        ],
+        [
+          0.65,
+          0.6,
+          0.6,
+          0.6
+        ]
+      ],
+      "param1_name": "memory_decay",
+      "param2_name": "steepness",
+      "param1_values": [
+        0.8,
+        0.9,
+        0.95,
+        0.99
+      ],
+      "param2_values": [
+        0.1,
+        0.4,
+        0.8,
+        1.5
+      ]
+    },
+    "memory_growth_x_steepness": {
+      "grid_results": [
+        {
+          "param1_name": "memory_growth",
+          "param1_value": 0.5,
+          "param2_name": "steepness",
+          "param2_value": 0.1,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 0.5,
+            "steepness": 0.1
+          },
+          "f1_mean_fitness": 139.49500000000006,
+          "f2_mean_fitness": 138.42000000000002,
+          "fitness_diff": 1.0750000000000455,
+          "f1_ci_lower": 137.68203981928525,
+          "f1_ci_upper": 141.30796018071487,
+          "f2_ci_lower": 136.3194106677565,
+          "f2_ci_upper": 140.52058933224353,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_growth",
+          "param1_value": 0.5,
+          "param2_name": "steepness",
+          "param2_value": 0.4,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 0.5,
+            "steepness": 0.4
+          },
+          "f1_mean_fitness": 139.24500000000006,
+          "f2_mean_fitness": 138.35500000000002,
+          "fitness_diff": 0.8900000000000432,
+          "f1_ci_lower": 137.4742449436511,
+          "f1_ci_upper": 141.01575505634904,
+          "f2_ci_lower": 136.45904907126078,
+          "f2_ci_upper": 140.25095092873926,
+          "f1_win_rate": 0.65,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_growth",
+          "param1_value": 0.5,
+          "param2_name": "steepness",
+          "param2_value": 0.8,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 0.5,
+            "steepness": 0.8
+          },
+          "f1_mean_fitness": 138.69500000000008,
+          "f2_mean_fitness": 137.81500000000003,
+          "fitness_diff": 0.8800000000000523,
+          "f1_ci_lower": 137.07307693582567,
+          "f1_ci_upper": 140.3169230641745,
+          "f2_ci_lower": 135.979428957916,
+          "f2_ci_upper": 139.65057104208404,
+          "f1_win_rate": 0.75,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_growth",
+          "param1_value": 0.5,
+          "param2_name": "steepness",
+          "param2_value": 1.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 0.5,
+            "steepness": 1.5
+          },
+          "f1_mean_fitness": 138.57500000000007,
+          "f2_mean_fitness": 137.98500000000004,
+          "fitness_diff": 0.5900000000000318,
+          "f1_ci_lower": 137.0267224008348,
+          "f1_ci_upper": 140.12327759916533,
+          "f2_ci_lower": 136.08620553972355,
+          "f2_ci_upper": 139.88379446027653,
+          "f1_win_rate": 0.65,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_growth",
+          "param1_value": 1.0,
+          "param2_name": "steepness",
+          "param2_value": 0.1,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.0,
+            "steepness": 0.1
+          },
+          "f1_mean_fitness": 140.16000000000003,
+          "f2_mean_fitness": 139.13999999999993,
+          "fitness_diff": 1.0200000000000955,
+          "f1_ci_lower": 138.3254890970307,
+          "f1_ci_upper": 141.99451090296935,
+          "f2_ci_lower": 136.93327361052704,
+          "f2_ci_upper": 141.34672638947282,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_growth",
+          "param1_value": 1.0,
+          "param2_name": "steepness",
+          "param2_value": 0.4,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.0,
+            "steepness": 0.4
+          },
+          "f1_mean_fitness": 139.65500000000003,
+          "f2_mean_fitness": 138.655,
+          "fitness_diff": 1.0000000000000284,
+          "f1_ci_lower": 137.55425289019993,
+          "f1_ci_upper": 141.75574710980013,
+          "f2_ci_lower": 136.46689401515502,
+          "f2_ci_upper": 140.84310598484498,
+          "f1_win_rate": 0.65,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_growth",
+          "param1_value": 1.0,
+          "param2_name": "steepness",
+          "param2_value": 0.8,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.0,
+            "steepness": 0.8
+          },
+          "f1_mean_fitness": 140.50000000000003,
+          "f2_mean_fitness": 138.95999999999998,
+          "fitness_diff": 1.5400000000000489,
+          "f1_ci_lower": 138.44550064213973,
+          "f1_ci_upper": 142.55449935786032,
+          "f2_ci_lower": 136.8760064463096,
+          "f2_ci_upper": 141.04399355369037,
+          "f1_win_rate": 0.55,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_growth",
+          "param1_value": 1.0,
+          "param2_name": "steepness",
+          "param2_value": 1.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.0,
+            "steepness": 1.5
+          },
+          "f1_mean_fitness": 141.01,
+          "f2_mean_fitness": 138.62999999999997,
+          "fitness_diff": 2.380000000000024,
+          "f1_ci_lower": 139.08751559457272,
+          "f1_ci_upper": 142.93248440542726,
+          "f2_ci_lower": 136.850566713518,
+          "f2_ci_upper": 140.40943328648194,
+          "f1_win_rate": 0.7,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_growth",
+          "param1_value": 1.5,
+          "param2_name": "steepness",
+          "param2_value": 0.1,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.1
+          },
+          "f1_mean_fitness": 140.675,
+          "f2_mean_fitness": 139.71499999999997,
+          "fitness_diff": 0.9600000000000364,
+          "f1_ci_lower": 138.63554474693345,
+          "f1_ci_upper": 142.71445525306657,
+          "f2_ci_lower": 137.58256440045,
+          "f2_ci_upper": 141.84743559954995,
+          "f1_win_rate": 0.65,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_growth",
+          "param1_value": 1.5,
+          "param2_name": "steepness",
+          "param2_value": 0.4,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.4
+          },
+          "f1_mean_fitness": 140.60500000000002,
+          "f2_mean_fitness": 139.16999999999996,
+          "fitness_diff": 1.4350000000000591,
+          "f1_ci_lower": 138.33476956040053,
+          "f1_ci_upper": 142.8752304395995,
+          "f2_ci_lower": 137.23542855172818,
+          "f2_ci_upper": 141.10457144827174,
+          "f1_win_rate": 0.7,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_growth",
+          "param1_value": 1.5,
+          "param2_name": "steepness",
+          "param2_value": 0.8,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 0.8
+          },
+          "f1_mean_fitness": 140.98000000000005,
+          "f2_mean_fitness": 139.015,
+          "fitness_diff": 1.9650000000000603,
+          "f1_ci_lower": 138.78111332598553,
+          "f1_ci_upper": 143.17888667401456,
+          "f2_ci_lower": 137.31019943166658,
+          "f2_ci_upper": 140.7198005683334,
+          "f1_win_rate": 0.65,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_growth",
+          "param1_value": 1.5,
+          "param2_name": "steepness",
+          "param2_value": 1.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 1.5,
+            "steepness": 1.5
+          },
+          "f1_mean_fitness": 141.26500000000004,
+          "f2_mean_fitness": 139.275,
+          "fitness_diff": 1.9900000000000375,
+          "f1_ci_lower": 139.24963153053866,
+          "f1_ci_upper": 143.28036846946142,
+          "f2_ci_lower": 137.5061730659286,
+          "f2_ci_upper": 141.0438269340714,
+          "f1_win_rate": 0.65,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_growth",
+          "param1_value": 2.5,
+          "param2_name": "steepness",
+          "param2_value": 0.1,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 2.5,
+            "steepness": 0.1
+          },
+          "f1_mean_fitness": 140.805,
+          "f2_mean_fitness": 139.54499999999996,
+          "fitness_diff": 1.2600000000000477,
+          "f1_ci_lower": 138.76342046387214,
+          "f1_ci_upper": 142.84657953612788,
+          "f2_ci_lower": 137.86566695032292,
+          "f2_ci_upper": 141.224333049677,
+          "f1_win_rate": 0.65,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_growth",
+          "param1_value": 2.5,
+          "param2_name": "steepness",
+          "param2_value": 0.4,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 2.5,
+            "steepness": 0.4
+          },
+          "f1_mean_fitness": 140.935,
+          "f2_mean_fitness": 139.525,
+          "fitness_diff": 1.4099999999999966,
+          "f1_ci_lower": 138.8128609637197,
+          "f1_ci_upper": 143.05713903628032,
+          "f2_ci_lower": 137.78979695350947,
+          "f2_ci_upper": 141.26020304649055,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_growth",
+          "param1_value": 2.5,
+          "param2_name": "steepness",
+          "param2_value": 0.8,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 2.5,
+            "steepness": 0.8
+          },
+          "f1_mean_fitness": 140.94000000000003,
+          "f2_mean_fitness": 139.46499999999997,
+          "fitness_diff": 1.4750000000000512,
+          "f1_ci_lower": 139.05594790253443,
+          "f1_ci_upper": 142.82405209746562,
+          "f2_ci_lower": 137.84316223154931,
+          "f2_ci_upper": 141.08683776845064,
+          "f1_win_rate": 0.55,
+          "ci_overlap": true
+        },
+        {
+          "param1_name": "memory_growth",
+          "param1_value": 2.5,
+          "param2_name": "steepness",
+          "param2_value": 1.5,
+          "params": {
+            "selection_strength": 1.0,
+            "memory_decay": 0.95,
+            "memory_growth": 2.5,
+            "steepness": 1.5
+          },
+          "f1_mean_fitness": 140.865,
+          "f2_mean_fitness": 139.12499999999997,
+          "fitness_diff": 1.7400000000000375,
+          "f1_ci_lower": 138.95193075795177,
+          "f1_ci_upper": 142.77806924204825,
+          "f2_ci_lower": 137.35018711582367,
+          "f2_ci_upper": 140.89981288417627,
+          "f1_win_rate": 0.6,
+          "ci_overlap": true
+        }
+      ],
+      "f1_fitness_grid": [
+        [
+          139.49500000000006,
+          139.24500000000006,
+          138.69500000000008,
+          138.57500000000007
+        ],
+        [
+          140.16000000000003,
+          139.65500000000003,
+          140.50000000000003,
+          141.01
+        ],
+        [
+          140.675,
+          140.60500000000002,
+          140.98000000000005,
+          141.26500000000004
+        ],
+        [
+          140.805,
+          140.935,
+          140.94000000000003,
+          140.865
+        ]
+      ],
+      "f2_fitness_grid": [
+        [
+          138.42000000000002,
+          138.35500000000002,
+          137.81500000000003,
+          137.98500000000004
+        ],
+        [
+          139.13999999999993,
+          138.655,
+          138.95999999999998,
+          138.62999999999997
+        ],
+        [
+          139.71499999999997,
+          139.16999999999996,
+          139.015,
+          139.275
+        ],
+        [
+          139.54499999999996,
+          139.525,
+          139.46499999999997,
+          139.12499999999997
+        ]
+      ],
+      "fitness_diff_grid": [
+        [
+          1.0750000000000455,
+          0.8900000000000432,
+          0.8800000000000523,
+          0.5900000000000318
+        ],
+        [
+          1.0200000000000955,
+          1.0000000000000284,
+          1.5400000000000489,
+          2.380000000000024
+        ],
+        [
+          0.9600000000000364,
+          1.4350000000000591,
+          1.9650000000000603,
+          1.9900000000000375
+        ],
+        [
+          1.2600000000000477,
+          1.4099999999999966,
+          1.4750000000000512,
+          1.7400000000000375
+        ]
+      ],
+      "ci_overlap_grid": [
+        [
+          true,
+          true,
+          true,
+          true
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ],
+        [
+          true,
+          true,
+          true,
+          true
+        ]
+      ],
+      "f1_win_rate_grid": [
+        [
+          0.6,
+          0.65,
+          0.75,
+          0.65
+        ],
+        [
+          0.6,
+          0.65,
+          0.55,
+          0.7
+        ],
+        [
+          0.65,
+          0.7,
+          0.65,
+          0.65
+        ],
+        [
+          0.65,
+          0.6,
+          0.55,
+          0.6
+        ]
+      ],
+      "param1_name": "memory_growth",
+      "param2_name": "steepness",
+      "param1_values": [
+        0.5,
+        1.0,
+        1.5,
+        2.5
+      ],
+      "param2_values": [
+        0.1,
+        0.4,
+        0.8,
+        1.5
+      ]
+    }
+  }
+}
