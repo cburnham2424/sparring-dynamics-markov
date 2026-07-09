@@ -1,0 +1,84 @@
+{
+  "experiment_id": "EXP_1FB13E9D_20260709_152833",
+  "total_files": 19,
+  "total_size_kb": 307.3212890625,
+  "runtime_s": 0.05762672424316406,
+  "files": [
+    {
+      "path": "metadata.json",
+      "size_kb": 0.341796875
+    },
+    {
+      "path": "parameters.csv",
+      "size_kb": 0.26171875
+    },
+    {
+      "path": "matrices/f1_base.csv",
+      "size_kb": 0.1640625
+    },
+    {
+      "path": "matrices/f2_base.csv",
+      "size_kb": 0.177734375
+    },
+    {
+      "path": "matrices/f1_adaptation.csv",
+      "size_kb": 0.166015625
+    },
+    {
+      "path": "matrices/f2_adaptation.csv",
+      "size_kb": 0.1650390625
+    },
+    {
+      "path": "matrices/f1_payoff.csv",
+      "size_kb": 0.1318359375
+    },
+    {
+      "path": "matrices/f2_payoff.csv",
+      "size_kb": 0.1318359375
+    },
+    {
+      "path": "results/cumulative_fitness.csv",
+      "size_kb": 38.13671875
+    },
+    {
+      "path": "results/per_step_fitness.csv",
+      "size_kb": 30.353515625
+    },
+    {
+      "path": "results/state_frequencies.csv",
+      "size_kb": 0.6923828125
+    },
+    {
+      "path": "results/transition_frequencies_f1.csv",
+      "size_kb": 0.4248046875
+    },
+    {
+      "path": "results/transition_frequencies_f2.csv",
+      "size_kb": 0.4296875
+    },
+    {
+      "path": "results/lambda_history.csv",
+      "size_kb": 30.4931640625
+    },
+    {
+      "path": "results/outcome_summary.csv",
+      "size_kb": 0.7705078125
+    },
+    {
+      "path": "raw/f1_cumulative_all_runs.csv",
+      "size_kb": 89.0478515625
+    },
+    {
+      "path": "raw/f2_cumulative_all_runs.csv",
+      "size_kb": 88.2744140625
+    },
+    {
+      "path": "raw/f1_states_all_runs.csv",
+      "size_kb": 13.5791015625
+    },
+    {
+      "path": "raw/f2_states_all_runs.csv",
+      "size_kb": 13.5791015625
+    }
+  ]
+}

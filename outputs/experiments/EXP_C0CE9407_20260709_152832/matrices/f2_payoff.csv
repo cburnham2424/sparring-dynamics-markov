@@ -1,0 +1,5 @@
+from_state,Attack,Defend,Disengage,Feint
+Attack,0.7,0.2,0.8,0.3
+Defend,0.8,0.1,0.2,0.6
+Disengage,0.2,0.5,0.3,0.4
+Feint,0.4,0.3,0.7,0.2

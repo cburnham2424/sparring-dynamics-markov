@@ -1,0 +1,13 @@
+{
+  "experiment_id": "EXP_1FB13E9D_20260709_152833",
+  "timestamp": "2026-07-09T15:28:33.835205",
+  "random_seed": 42,
+  "n_simulations": 30,
+  "n_steps": 200,
+  "notes": "Demo run selection_strength=1.0",
+  "git_commit": "695b2fa",
+  "python_version": "3.11.15",
+  "numpy_version": "2.4.6",
+  "pandas_version": "3.0.3",
+  "selection_strength": 1.0
+}

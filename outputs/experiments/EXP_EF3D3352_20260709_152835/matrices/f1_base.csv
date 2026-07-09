@@ -1,0 +1,5 @@
+from_state,Attack,Defend,Disengage,Feint,row_sum
+Attack,0.25,0.15,0.35,0.25,1.0
+Defend,0.45,0.1,0.25,0.2,1.0
+Disengage,0.3,0.1,0.2,0.4,1.0
+Feint,0.6,0.08,0.17,0.15,1.0

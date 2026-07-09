@@ -1,0 +1,2 @@
+experiment_id,timestamp,random_seed,n_simulations,n_steps,notes,git_commit,python_version,numpy_version,pandas_version,selection_strength
+EXP_C0CE9407_20260709_152832,2026-07-09T15:28:32.555402,42,30,200,Demo run selection_strength=0.5,695b2fa,3.11.15,2.4.6,3.0.3,0.5
