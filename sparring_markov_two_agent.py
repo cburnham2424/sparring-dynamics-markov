@@ -22,22 +22,30 @@ replicator dynamics: actions that pay off better against the opponent's
 scaled by `selection_strength`. At `selection_strength = 0.0` this reduces
 exactly to the unmodified base transition matrix.
 
-ADAPTATION MEMORY LAYER
-------------------------
+ADAPTIVE TRANSITION MATRIX LAYER
+---------------------------------
 On top of the per-step EGT adjustment, each fighter accumulates "exposure" to
 a specific opponent tell, decaying it when not reinforced:
   - f2_attack_exposure: how much F1 has been repeatedly exposed to F2 Attack.
-    As it grows, F1's Defend probability is boosted (reading the pattern) at
-    the cost of Feint (less time spent setting up).
   - f1_feint_exposure: how much F2 has been repeatedly exposed to F1 Feint.
-    As it grows, F2's Defend probability is boosted (reading CJ's setups) at
-    the cost of Disengage (less passive waiting).
-This models a fighter "learning" an opponent's tendency within a single
-sparring session, and is loosely analogous to adaptive-immune priming under
-repeated antigen exposure in mathematical oncology.
+
+Rather than nudging two states of the base matrix, exposure now drives a
+convex blend of the ENTIRE base transition matrix toward a fully-adapted
+target matrix (F1_ADAPTATION_MATRIX / F2_ADAPTATION_MATRIX) representing the
+fighter's fully pattern-read strategic profile:
+
+    P_new = (1 - lambda) * P_base + lambda * P_adaptation
+
+lambda climbs from 0 (no adaptation, pure base matrix) to 1 (fully adapted)
+along a smooth sigmoid of exposure, so the whole strategic profile shifts
+gradually rather than two probabilities being pushed and pulled. This models
+a fighter "learning" an opponent's tendency within a single sparring session,
+and is loosely analogous to adaptive-immune priming and gradual phenotypic
+switching under sustained selective pressure in mathematical oncology.
 """
 
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 
 STATES = ["Attack", "Defend", "Disengage", "Feint"]
@@ -86,8 +94,27 @@ F2_COLOR = "coral"
 MEMORY_DECAY = 0.95
 MEMORY_GROWTH = 1.5
 MAX_EXPOSURE = 10.0
-F1_MEMORY_BOOST_MAX = 0.25  # F1's Defend boost as f2_attack_exposure grows
-F2_MEMORY_BOOST_MAX = 0.20  # F2's Defend boost as f1_feint_exposure grows
+
+# What each fighter's transition matrix converges to under maximum exposure
+# to the tracked opponent tell (the fully pattern-read response).
+F1_ADAPTATION_MATRIX = np.array([
+    # Atk    Def    Dis    Fnt
+    [0.15,  0.35,  0.25,  0.25],  # From Attack — less aggressive, more defensive
+    [0.55,  0.08,  0.17,  0.20],  # From Defend — more counter-attacking
+    [0.25,  0.20,  0.15,  0.40],  # From Disengage — more feinting to probe
+    [0.65,  0.10,  0.10,  0.15],  # From Feint — feint converts to attack more
+])
+
+F2_ADAPTATION_MATRIX = np.array([
+    # Atk    Def    Dis    Fnt
+    [0.10,  0.45,  0.30,  0.15],  # From Attack — more conservative attacking
+    [0.60,  0.18,  0.12,  0.10],  # From Defend — faster counter when defending
+    [0.10,  0.45,  0.15,  0.30],  # From Disengage — more defensive waiting
+    [0.35,  0.35,  0.15,  0.15],  # From Feint — reads feints, defends more
+])
+
+LAMBDA_STEEPNESS = 0.6
+LAMBDA_MIDPOINT = 0.5
 
 ROLLING_WINDOW = 20
 MEMORY_STAT_STEPS = [100, 250, 500]
@@ -135,46 +162,99 @@ def apply_replicator_dynamics(base_probs, payoff_matrix, opponent_state, selecti
     return new_probs / new_probs.sum()
 
 
-def apply_memory_effect(base_probs, exposure, boost_state, cost_state, max_boost=0.25):
+def compute_lambda(exposure, max_exposure=MAX_EXPOSURE,
+                    steepness=LAMBDA_STEEPNESS, midpoint=LAMBDA_MIDPOINT):
     """
-    As exposure grows toward MAX_EXPOSURE, gradually boost one state's
-    probability and reduce another's, using proportional redistribution.
+    Smooth lambda schedule based on exposure ratio.
 
-    Blindly subtracting the boost from cost_state and clipping negatives to
-    0 silently destroys probability mass whenever cost_state can't cover the
-    full boost (e.g. cost_state=0.1, boost=0.25 loses 0.15 before
-    renormalizing, distorting every other state unintentionally). Instead,
-    cap the amount taken from cost_state at what it actually holds, and if
-    that falls short of the intended boost, drain the shortfall
-    proportionally from the remaining states.
+    exposure_ratio = exposure / max_exposure  (0.0 to 1.0)
+
+    Uses a smooth sigmoid centered at midpoint, then rescaled so
+    lambda(ratio=0) = 0 and lambda(ratio=1) = 1 exactly:
+    - No adaptation at zero exposure (lambda=0, pure base matrix)
+    - Full adaptation at max exposure (lambda=1, pure adaptation matrix)
+    - Smooth nonlinear ramp between (biologically realistic)
+
+    steepness controls how sharply adaptation kicks in (low = gradual
+    linear-like ramp, high = sudden jump around midpoint). midpoint is
+    where adaptation is 50% complete.
     """
-    exposure_ratio = exposure / MAX_EXPOSURE
-    intended_boost = max_boost * exposure_ratio
-    actual_boost = min(intended_boost, base_probs[cost_state])
+    k = steepness * 10  # scale steepness to reasonable sigmoid range
+    ratio = np.clip(exposure / max_exposure, 0.0, 1.0)
 
-    new_probs = base_probs.copy()
-    new_probs[boost_state] += actual_boost
-    new_probs[cost_state] -= actual_boost
+    sigmoid = lambda r: 1.0 / (1.0 + np.exp(-k * (r - midpoint)))
 
-    remaining = intended_boost - actual_boost
-    if remaining > 1e-8:
-        donor_mask = np.ones(len(new_probs), dtype=bool)
-        donor_mask[boost_state] = False
-        donor_mask[cost_state] = False
-        donor_probs = new_probs[donor_mask]
+    lambda_raw = sigmoid(ratio)
+    lambda_min = sigmoid(0.0)
+    lambda_max = sigmoid(1.0)
 
-        if donor_probs.sum() > 1e-8:
-            donor_fraction = donor_probs / donor_probs.sum()
-            drain = donor_fraction * min(remaining, donor_probs.sum())
-            new_probs[donor_mask] -= drain
-            new_probs[boost_state] += drain.sum()
+    lam = (lambda_raw - lambda_min) / (lambda_max - lambda_min)
+    return float(np.clip(lam, 0.0, 1.0))
 
-    total = new_probs.sum()
-    if total > 0:
-        new_probs = new_probs / total
 
-    assert np.all(new_probs >= -1e-10), f"Negative probability detected: {new_probs}"
-    return np.clip(new_probs, 0, None)
+def apply_adaptive_matrix(base_matrix, adaptation_matrix, exposure,
+                           max_exposure=MAX_EXPOSURE,
+                           steepness=LAMBDA_STEEPNESS, midpoint=LAMBDA_MIDPOINT):
+    """
+    Blend a fighter's entire base transition matrix toward its fully-adapted
+    target matrix based on current exposure level:
+
+        P_new = (1 - lambda) * P_base + lambda * P_adaptation
+
+    This shifts ALL transition probabilities simultaneously, not just two
+    states — as exposure grows, the fighter's entire strategic profile
+    shifts toward the fully-adapted response.
+    """
+    lam = compute_lambda(exposure, max_exposure, steepness, midpoint)
+
+    P_new = (1.0 - lam) * base_matrix + lam * adaptation_matrix
+
+    # Convex combination of two valid stochastic matrices already sums to 1
+    # per row; renormalize anyway as floating-point safety.
+    row_sums = P_new.sum(axis=1, keepdims=True)
+    row_sums = np.where(row_sums < 1e-10, 1.0, row_sums)
+    P_new = P_new / row_sums
+
+    P_new = np.clip(P_new, 0.0, None)
+    P_new = P_new / P_new.sum(axis=1, keepdims=True)
+
+    return P_new, lam
+
+
+def validate_adaptive_system():
+    """
+    Confirm key mathematical properties of the adaptive system:
+    1. At exposure=0: P_new should equal F1_BASE exactly (lambda=0)
+    2. At exposure=max: P_new should equal F1_ADAPTATION_MATRIX exactly (lambda=1)
+    3. At exposure=5 (midpoint): lambda should be close to 0.5
+    4. P_new rows sum to 1.0 at all tested exposure levels
+    5. No negative values at any exposure level
+    6. Lambda is monotonically increasing with exposure
+    """
+    print("Validating adaptive transition matrix system...")
+    test_exposures = [0.0, 1.0, 2.5, 5.0, 7.5, 9.0, 10.0]
+    lambdas = []
+
+    for exp in test_exposures:
+        P_new, lam = apply_adaptive_matrix(F1_BASE, F1_ADAPTATION_MATRIX, exp)
+        row_sums = P_new.sum(axis=1)
+        all_positive = np.all(P_new >= -1e-10)
+        rows_valid = np.allclose(row_sums, 1.0, atol=1e-8)
+        lambdas.append(lam)
+
+        status = "PASS" if (rows_valid and all_positive) else "FAIL"
+        print(f"  Exposure={exp:5.1f} | lambda={lam:.4f} | "
+              f"row_sums_valid={rows_valid} | "
+              f"all_positive={all_positive} | {status}")
+
+    _, lam_zero = apply_adaptive_matrix(F1_BASE, F1_ADAPTATION_MATRIX, 0.0)
+    _, lam_max = apply_adaptive_matrix(F1_BASE, F1_ADAPTATION_MATRIX, 10.0)
+    print(f"\n  Lambda at exposure=0:   {lam_zero:.6f} (should be 0.0)")
+    print(f"  Lambda at exposure=10:  {lam_max:.6f}  (should be 1.0)")
+
+    is_monotone = all(lambdas[i] <= lambdas[i + 1] for i in range(len(lambdas) - 1))
+    print(f"  Lambda monotonically increasing: {is_monotone}")
+    print("  Validation complete.\n")
 
 
 def simulate(selection_strength, seed=42):
@@ -190,6 +270,8 @@ def simulate(selection_strength, seed=42):
     f1_feint_exposure = 0.0    # how much F2 has been exposed to F1's Feint
     f2_exposure_history = [f2_attack_exposure]
     f1_exposure_history = [f1_feint_exposure]
+    f1_lambda_history = [compute_lambda(f2_attack_exposure)]
+    f2_lambda_history = [compute_lambda(f1_feint_exposure)]
     f1_defend_prob_history = []
     f2_defend_prob_history = []
 
@@ -201,13 +283,13 @@ def simulate(selection_strength, seed=42):
     for t in range(1, N_STEPS):
         f1_prev, f2_prev = f1_seq[t - 1], f2_seq[t - 1]
 
-        f1_row = apply_replicator_dynamics(F1_BASE[f1_prev], F1_PAYOFF, f2_prev, selection_strength)
-        f2_row = apply_replicator_dynamics(F2_BASE[f2_prev], F2_PAYOFF, f1_prev, selection_strength)
+        # Adapt each fighter's entire base matrix toward its fully-read
+        # response as exposure to the tracked opponent tell accumulates.
+        f1_adapted, f1_lambda = apply_adaptive_matrix(F1_BASE, F1_ADAPTATION_MATRIX, f2_attack_exposure)
+        f2_adapted, f2_lambda = apply_adaptive_matrix(F2_BASE, F2_ADAPTATION_MATRIX, f1_feint_exposure)
 
-        # F1 reads F2's repeated attacks: more Defend, less time feinting.
-        f1_row = apply_memory_effect(f1_row, f2_attack_exposure, DEFEND, FEINT, F1_MEMORY_BOOST_MAX)
-        # F2 reads CJ's repeated feints: more Defend, less passive disengaging.
-        f2_row = apply_memory_effect(f2_row, f1_feint_exposure, DEFEND, DISENGAGE, F2_MEMORY_BOOST_MAX)
+        f1_row = apply_replicator_dynamics(f1_adapted[f1_prev], F1_PAYOFF, f2_prev, selection_strength)
+        f2_row = apply_replicator_dynamics(f2_adapted[f2_prev], F2_PAYOFF, f1_prev, selection_strength)
 
         f1_defend_prob_history.append(f1_row[DEFEND])
         f2_defend_prob_history.append(f2_row[DEFEND])
@@ -227,6 +309,8 @@ def simulate(selection_strength, seed=42):
 
         f2_exposure_history.append(f2_attack_exposure)
         f1_exposure_history.append(f1_feint_exposure)
+        f1_lambda_history.append(f1_lambda)
+        f2_lambda_history.append(f2_lambda)
 
         f1_payoff_this_step = F1_PAYOFF[f1_seq[t], f2_seq[t]]
         f2_payoff_this_step = F2_PAYOFF[f2_seq[t], f1_seq[t]]
@@ -240,6 +324,8 @@ def simulate(selection_strength, seed=42):
         "f2_seq": f2_seq,
         "f2_exposure_history": np.array(f2_exposure_history),
         "f1_exposure_history": np.array(f1_exposure_history),
+        "f1_lambda_history": np.array(f1_lambda_history),
+        "f2_lambda_history": np.array(f2_lambda_history),
         "f1_defend_prob_history": np.array(f1_defend_prob_history),
         "f2_defend_prob_history": np.array(f2_defend_prob_history),
         "f1_fitness_history": np.array(f1_fitness_history),
@@ -356,42 +442,49 @@ def describe_exposure_level(ratio):
     return "high"
 
 
-def print_memory_stats(f1_exposure_history, f2_exposure_history):
+def print_memory_stats(f1_exposure_history, f2_exposure_history,
+                        f1_lambda_history, f2_lambda_history):
     print(f"Adaptation Memory Snapshots (selection_strength={MEMORY_REFERENCE_STRENGTH} reference run)")
     print("=" * 60)
     for step in MEMORY_STAT_STEPS:
         idx = step - 1
         f2_exp = f2_exposure_history[idx]
         f1_exp = f1_exposure_history[idx]
-        f2_ratio = f2_exp / MAX_EXPOSURE
-        f1_ratio = f1_exp / MAX_EXPOSURE
-        f1_boost = F1_MEMORY_BOOST_MAX * f2_ratio
-        f2_boost = F2_MEMORY_BOOST_MAX * f1_ratio
+        f1_lambda = f1_lambda_history[idx]
+        f2_lambda = f2_lambda_history[idx]
+
+        f1_matrix, _ = apply_adaptive_matrix(F1_BASE, F1_ADAPTATION_MATRIX, f2_exp)
+        f2_matrix, _ = apply_adaptive_matrix(F2_BASE, F2_ADAPTATION_MATRIX, f1_exp)
 
         print(f"--- Step {step} ---")
-        print(f"F2 attack exposure: {f2_exp:.3f} / {MAX_EXPOSURE:.1f}  ({f2_ratio:.1%})")
-        print(f"F1 feint exposure:  {f1_exp:.3f} / {MAX_EXPOSURE:.1f}  ({f1_ratio:.1%})")
-        print(f"F1 Defend boost currently applied: +{f1_boost:.3f} (Feint -{f1_boost:.3f})")
-        print(f"F2 Defend boost currently applied: +{f2_boost:.3f} (Disengage -{f2_boost:.3f})")
+        print(f"F2 attack exposure: {f2_exp:.3f} / {MAX_EXPOSURE:.1f}")
+        print(f"F1 feint exposure:  {f1_exp:.3f} / {MAX_EXPOSURE:.1f}")
+        print(f"f1_lambda: {f1_lambda:.4f}")
+        print(f"f2_lambda: {f2_lambda:.4f}")
+        print("\nF1 adapted matrix:")
+        print(pd.DataFrame(f1_matrix.round(3), index=STATES, columns=STATES).to_string())
+        print("\nF2 adapted matrix:")
+        print(pd.DataFrame(f2_matrix.round(3), index=STATES, columns=STATES).to_string())
         print(
-            f"Sparring read: CJ's read on Fighter 2's attacks is {describe_exposure_level(f2_ratio)} "
-            f"({f2_ratio:.0%}) - his Defend is sharpening at the cost of feint setups. Fighter 2's "
-            f"read on CJ's feints is {describe_exposure_level(f1_ratio)} ({f1_ratio:.0%}) - trading "
-            f"passive resets for active covers."
+            f"\nSparring read: CJ's overall gameplan is {describe_exposure_level(f1_lambda)} "
+            f"adapted ({f1_lambda:.0%} of the way to his fully-read counter-stance) to Fighter 2's "
+            f"repeated attacks; Fighter 2's gameplan is {describe_exposure_level(f2_lambda)} adapted "
+            f"({f2_lambda:.0%}) to CJ's feints."
         )
         print(
-            f"Tumor-immune parallel: repeated antigen exposure (F2's Attack) primes F1's adaptive "
-            f"response (Defend) at {f2_ratio:.0%} strength, while sustained pressure (F1's Feint) "
-            f"drives F2's immune remodeling (Defend) at {f1_ratio:.0%} strength - akin to "
-            f"immunoediting under chronic antigenic stimulation."
+            f"Tumor-immune parallel: F1's strategic profile has converged {f1_lambda:.0%} of the way "
+            f"toward its adapted phenotype, and F2's {f2_lambda:.0%} of the way toward its adapted "
+            f"phenotype - modeling gradual phenotypic switching under sustained selective pressure, "
+            f"as in immunoediting."
         )
         print()
 
 
 def plot_memory_grid(f2_exposure_history, f1_exposure_history,
+                      f1_lambda_history, f2_lambda_history,
                       f1_defend_prob_history, f2_defend_prob_history,
                       filename="sparring_memory.png"):
-    fig, axes = plt.subplots(2, 2, figsize=(13, 10))
+    fig, axes = plt.subplots(3, 2, figsize=(13, 15))
     steps = np.arange(len(f2_exposure_history))
 
     ax = axes[0, 0]
@@ -415,19 +508,39 @@ def plot_memory_grid(f2_exposure_history, f1_exposure_history,
     ax.grid(axis="y", linestyle=":", alpha=0.2)
 
     ax = axes[1, 0]
+    ax.plot(steps, f1_lambda_history, color=F1_COLOR)
+    for frac in (0.25, 0.5, 0.75):
+        ax.axhline(frac, color="gray", linestyle="--", alpha=0.5)
+    ax.set_xlabel("Exchange step")
+    ax.set_ylabel("Lambda")
+    ax.set_ylim(0, 1.05)
+    ax.set_title("F1 Adaptation Weight λ (Response to F2 Attack Exposure)")
+    ax.grid(axis="y", linestyle=":", alpha=0.2)
+
+    ax = axes[1, 1]
+    ax.plot(steps, f2_lambda_history, color=F2_COLOR)
+    for frac in (0.25, 0.5, 0.75):
+        ax.axhline(frac, color="gray", linestyle="--", alpha=0.5)
+    ax.set_xlabel("Exchange step")
+    ax.set_ylabel("Lambda")
+    ax.set_ylim(0, 1.05)
+    ax.set_title("F2 Adaptation Weight λ (Response to F1 Feint Exposure)")
+    ax.grid(axis="y", linestyle=":", alpha=0.2)
+
+    ax = axes[2, 0]
     x, avg = rolling_average(f1_defend_prob_history)
     ax.plot(x, avg, color=F1_COLOR)
     ax.set_xlabel("Exchange step")
     ax.set_ylabel("Probability")
-    ax.set_title(f"F1 Defend Probability (Rolling {ROLLING_WINDOW}-step avg)")
+    ax.set_title("F1 Defend Probability — Effect of Full Matrix Adaptation")
     ax.grid(axis="y", linestyle="--", alpha=0.4)
 
-    ax = axes[1, 1]
+    ax = axes[2, 1]
     x, avg = rolling_average(f2_defend_prob_history)
     ax.plot(x, avg, color=F2_COLOR)
     ax.set_xlabel("Exchange step")
     ax.set_ylabel("Probability")
-    ax.set_title(f"F2 Defend Probability (Rolling {ROLLING_WINDOW}-step avg)")
+    ax.set_title("F2 Defend Probability — Effect of Full Matrix Adaptation")
     ax.grid(axis="y", linestyle="--", alpha=0.4)
 
     fig.tight_layout()
@@ -592,9 +705,13 @@ def plot_joint_heatmaps_grid(results, filename="sparring_egt_heatmaps.png"):
 
 
 def main():
-    for name, matrix in [("Fighter 1", F1_BASE), ("Fighter 2", F2_BASE)]:
+    for name, matrix in [("Fighter 1", F1_BASE), ("Fighter 2", F2_BASE),
+                         ("Fighter 1 adaptation", F1_ADAPTATION_MATRIX),
+                         ("Fighter 2 adaptation", F2_ADAPTATION_MATRIX)]:
         row_sums = matrix.sum(axis=1)
-        assert np.allclose(row_sums, 1.0), f"{name} base rows must sum to 1.0, got {row_sums}"
+        assert np.allclose(row_sums, 1.0), f"{name} rows must sum to 1.0, got {row_sums}"
+
+    validate_adaptive_system()
 
     results = run_all_simulations()
     print_analysis(results)
@@ -606,8 +723,10 @@ def main():
     print()
 
     reference = results[MEMORY_REFERENCE_STRENGTH]
-    print_memory_stats(reference["f1_exposure_history"], reference["f2_exposure_history"])
+    print_memory_stats(reference["f1_exposure_history"], reference["f2_exposure_history"],
+                        reference["f1_lambda_history"], reference["f2_lambda_history"])
     plot_memory_grid(reference["f2_exposure_history"], reference["f1_exposure_history"],
+                      reference["f1_lambda_history"], reference["f2_lambda_history"],
                       reference["f1_defend_prob_history"], reference["f2_defend_prob_history"])
     print("Saved plot to sparring_memory.png")
     print()
