@@ -138,16 +138,43 @@ def apply_replicator_dynamics(base_probs, payoff_matrix, opponent_state, selecti
 def apply_memory_effect(base_probs, exposure, boost_state, cost_state, max_boost=0.25):
     """
     As exposure grows toward MAX_EXPOSURE, gradually boost one state's
-    probability and reduce another's.
+    probability and reduce another's, using proportional redistribution.
+
+    Blindly subtracting the boost from cost_state and clipping negatives to
+    0 silently destroys probability mass whenever cost_state can't cover the
+    full boost (e.g. cost_state=0.1, boost=0.25 loses 0.15 before
+    renormalizing, distorting every other state unintentionally). Instead,
+    cap the amount taken from cost_state at what it actually holds, and if
+    that falls short of the intended boost, drain the shortfall
+    proportionally from the remaining states.
     """
     exposure_ratio = exposure / MAX_EXPOSURE
-    boost = max_boost * exposure_ratio
+    intended_boost = max_boost * exposure_ratio
+    actual_boost = min(intended_boost, base_probs[cost_state])
 
     new_probs = base_probs.copy()
-    new_probs[boost_state] += boost
-    new_probs[cost_state] -= boost
-    new_probs = np.clip(new_probs, 0, None)
-    return new_probs / new_probs.sum()
+    new_probs[boost_state] += actual_boost
+    new_probs[cost_state] -= actual_boost
+
+    remaining = intended_boost - actual_boost
+    if remaining > 1e-8:
+        donor_mask = np.ones(len(new_probs), dtype=bool)
+        donor_mask[boost_state] = False
+        donor_mask[cost_state] = False
+        donor_probs = new_probs[donor_mask]
+
+        if donor_probs.sum() > 1e-8:
+            donor_fraction = donor_probs / donor_probs.sum()
+            drain = donor_fraction * min(remaining, donor_probs.sum())
+            new_probs[donor_mask] -= drain
+            new_probs[boost_state] += drain.sum()
+
+    total = new_probs.sum()
+    if total > 0:
+        new_probs = new_probs / total
+
+    assert np.all(new_probs >= -1e-10), f"Negative probability detected: {new_probs}"
+    return np.clip(new_probs, 0, None)
 
 
 def simulate(selection_strength, seed=42):
