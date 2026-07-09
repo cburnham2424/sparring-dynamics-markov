@@ -257,82 +257,380 @@ def validate_adaptive_system():
     print("  Validation complete.\n")
 
 
-def simulate(selection_strength, seed=42):
-    rng = np.random.default_rng(seed)
-    start_idx = STATES.index(START_STATE)
+class Fighter:
+    """
+    Represents a single fighter in the sparring simulation.
 
-    f1_seq = np.empty(N_STEPS, dtype=int)
-    f2_seq = np.empty(N_STEPS, dtype=int)
-    f1_seq[0] = start_idx
-    f2_seq[0] = start_idx
+    Encapsulates all per-fighter state: transition matrices, payoff
+    matrix, adaptation matrix, exposure tracking, memory parameters,
+    and fitness history. Pure state container plus per-step math — the
+    two-fighter interaction loop itself lives in SparringMatch.
+    """
 
-    f2_attack_exposure = 0.0   # how much F1 has been exposed to F2's Attack
-    f1_feint_exposure = 0.0    # how much F2 has been exposed to F1's Feint
-    f2_exposure_history = [f2_attack_exposure]
-    f1_exposure_history = [f1_feint_exposure]
-    f1_lambda_history = [compute_lambda(f2_attack_exposure)]
-    f2_lambda_history = [compute_lambda(f1_feint_exposure)]
-    f1_defend_prob_history = []
-    f2_defend_prob_history = []
+    def __init__(self, name, base_matrix, adaptation_matrix,
+                 payoff_matrix, memory_growth=MEMORY_GROWTH, memory_decay=MEMORY_DECAY,
+                 max_exposure=MAX_EXPOSURE, steepness=LAMBDA_STEEPNESS, midpoint=LAMBDA_MIDPOINT,
+                 color='steelblue'):
 
-    f1_fitness_history = [F1_PAYOFF[f1_seq[0], f2_seq[0]]]
-    f2_fitness_history = [F2_PAYOFF[f2_seq[0], f1_seq[0]]]
-    f1_cumulative_fitness = [f1_fitness_history[0]]
-    f2_cumulative_fitness = [f2_fitness_history[0]]
+        self.name               = name
+        self.base_matrix        = base_matrix.copy()
+        self.adaptation_matrix  = adaptation_matrix.copy()
+        self.payoff_matrix      = payoff_matrix.copy()
+        self.memory_growth      = memory_growth
+        self.memory_decay       = memory_decay
+        self.max_exposure       = max_exposure
+        self.steepness          = steepness
+        self.midpoint            = midpoint
+        self.color              = color
 
-    for t in range(1, N_STEPS):
-        f1_prev, f2_prev = f1_seq[t - 1], f2_seq[t - 1]
+        # Runtime state — reset at start of each simulation
+        self.current_state          = None
+        self.exposure                = 0.0
+        self.current_lambda          = 0.0
+        self.current_adapted_matrix = base_matrix.copy()
 
-        # Adapt each fighter's entire base matrix toward its fully-read
-        # response as exposure to the tracked opponent tell accumulates.
-        f1_adapted, f1_lambda = apply_adaptive_matrix(F1_BASE, F1_ADAPTATION_MATRIX, f2_attack_exposure)
-        f2_adapted, f2_lambda = apply_adaptive_matrix(F2_BASE, F2_ADAPTATION_MATRIX, f1_feint_exposure)
+        # History — populated during simulation
+        self.state_history      = []
+        self.fitness_history    = []
+        self.cumulative_fitness = []
+        self.lambda_history     = []
+        self.exposure_history   = []
+        self._cumulative_sum    = 0.0
 
-        f1_row = apply_replicator_dynamics(f1_adapted[f1_prev], F1_PAYOFF, f2_prev, selection_strength)
-        f2_row = apply_replicator_dynamics(f2_adapted[f2_prev], F2_PAYOFF, f1_prev, selection_strength)
+    def reset(self, start_state):
+        """Reset all runtime state for a fresh simulation run."""
+        self.current_state          = start_state
+        self.exposure                = 0.0
+        self.current_lambda          = 0.0
+        self.current_adapted_matrix = self.base_matrix.copy()
+        self.state_history      = []
+        self.fitness_history    = []
+        self.cumulative_fitness = []
+        self.lambda_history     = []
+        self.exposure_history   = []
+        self._cumulative_sum    = 0.0
 
-        f1_defend_prob_history.append(f1_row[DEFEND])
-        f2_defend_prob_history.append(f2_row[DEFEND])
-
-        f1_seq[t] = rng.choice(N_STATES, p=f1_row)
-        f2_seq[t] = rng.choice(N_STATES, p=f2_row)
-
-        if f2_seq[t] == ATTACK:
-            f2_attack_exposure = min(f2_attack_exposure + MEMORY_GROWTH, MAX_EXPOSURE)
+    def update_exposure(self, opponent_state, tracked_state):
+        """
+        Update exposure counter based on opponent's state: grows by
+        memory_growth if opponent is in tracked_state, else decays by
+        memory_decay. Clamped to [0, max_exposure].
+        """
+        if opponent_state == tracked_state:
+            self.exposure = min(self.exposure + self.memory_growth, self.max_exposure)
         else:
-            f2_attack_exposure *= MEMORY_DECAY
+            self.exposure *= self.memory_decay
 
-        if f1_seq[t] == FEINT:
-            f1_feint_exposure = min(f1_feint_exposure + MEMORY_GROWTH, MAX_EXPOSURE)
+    def compute_lambda(self):
+        """
+        Compute current adaptation weight lambda from exposure via the
+        same sigmoid schedule as the module-level compute_lambda().
+        Stores and returns the result.
+        """
+        self.current_lambda = compute_lambda(
+            self.exposure, self.max_exposure, self.steepness, self.midpoint)
+        return self.current_lambda
+
+    def update_adapted_matrix(self):
+        """
+        Recompute adapted transition matrix using current lambda:
+        P_new = (1 - lambda) * base_matrix + lambda * adaptation_matrix
+        """
+        self.current_adapted_matrix, _ = apply_adaptive_matrix(
+            self.base_matrix, self.adaptation_matrix, self.exposure,
+            self.max_exposure, self.steepness, self.midpoint)
+
+    def get_transition_row(self, opponent_state, selection_strength):
+        """
+        Transition probability row for the current state: adapted-matrix
+        row run through EGT replicator dynamics against the opponent's
+        current state. Returns a normalized probability array of length
+        N_STATES.
+        """
+        base_row = self.current_adapted_matrix[self.current_state]
+        return apply_replicator_dynamics(base_row, self.payoff_matrix, opponent_state, selection_strength)
+
+    def step(self, transition_probs, rng=None):
+        """
+        Sample next state from transition probabilities. Accepts an
+        optional numpy Generator (or the np.random module) so a match
+        can share one seeded stream across both fighters for
+        reproducibility; falls back to the global numpy RNG otherwise.
+        Updates and returns self.current_state.
+        """
+        source = rng if rng is not None else np.random
+        self.current_state = source.choice(N_STATES, p=transition_probs)
+        return self.current_state
+
+    def record_step(self, payoff):
+        """Record all per-step tracking variables after each exchange."""
+        self._cumulative_sum += payoff
+
+        self.state_history.append(self.current_state)
+        self.fitness_history.append(payoff)
+        self.cumulative_fitness.append(self._cumulative_sum)
+        self.lambda_history.append(self.current_lambda)
+        self.exposure_history.append(self.exposure)
+
+    def record_initial(self, opponent_state):
+        """
+        Record the pre-simulation starting state (index 0): its
+        self-payoff, lambda at zero exposure, and zero exposure. Mirrors
+        the original procedural simulate(), where index 0 held the start
+        state before any transition had occurred.
+        """
+        self.compute_lambda()
+        payoff = self.get_payoff(opponent_state)
+        self._cumulative_sum = payoff
+        self.state_history.append(self.current_state)
+        self.fitness_history.append(payoff)
+        self.cumulative_fitness.append(payoff)
+        self.lambda_history.append(self.current_lambda)
+        self.exposure_history.append(self.exposure)
+
+    def get_payoff(self, opponent_state):
+        """Payoff for this fighter's current state vs opponent's current state."""
+        return float(self.payoff_matrix[self.current_state, opponent_state])
+
+    def get_history_arrays(self):
+        """Return all history as numpy arrays — convenience for analysis/plotting."""
+        return {
+            'states':     np.array(self.state_history),
+            'fitness':    np.array(self.fitness_history),
+            'cumulative': np.array(self.cumulative_fitness),
+            'lambda':     np.array(self.lambda_history),
+            'exposure':   np.array(self.exposure_history),
+        }
+
+    def print_distribution(self, label=""):
+        """Print empirical state distribution for this fighter."""
+        if not self.state_history:
+            print(f"{self.name}: No history to display.")
+            return
+
+        counts = np.bincount(self.state_history, minlength=N_STATES)
+        total = len(self.state_history)
+
+        header = f"{self.name}"
+        if label:
+            header += f" — {label}"
+        print(f"\n{header}")
+        print(f"{'State':<14} {'Empirical':>10}")
+        for i, state in enumerate(STATES):
+            print(f"  {state:<12} {counts[i]/total:>10.4f}")
+
+    def __repr__(self):
+        state_name = STATES[self.current_state] if self.current_state is not None else None
+        return (f"Fighter(name='{self.name}', "
+                f"state={state_name}, "
+                f"exposure={self.exposure:.3f}, "
+                f"lambda={self.current_lambda:.3f})")
+
+
+class SparringMatch:
+    """
+    Manages a two-agent sparring simulation between two Fighter objects.
+
+    Handles the simulation loop, inter-fighter interaction, and result
+    collection, keeping Fighter objects as clean per-agent state
+    containers separate from match orchestration.
+    """
+
+    def __init__(self, fighter1, fighter2,
+                 f1_tracked_state=ATTACK,
+                 f2_tracked_state=FEINT,
+                 selection_strength=1.0):
+
+        self.f1                 = fighter1
+        self.f2                 = fighter2
+        self.f1_tracked_state   = f1_tracked_state
+        self.f2_tracked_state   = f2_tracked_state
+        self.selection_strength = selection_strength
+        self.result              = None
+
+    def simulate(self, n_steps, start_state=DISENGAGE, seed=42):
+        """
+        Run one complete simulation of n_steps total recorded exchanges
+        (including the starting state at index 0, matching the original
+        procedural simulate()'s array-length convention).
+
+        Per transition (n_steps - 1 of them):
+        1. Both fighters recompute lambda and their adapted matrix from
+           their CURRENT (not-yet-updated-this-step) exposure.
+        2. Both fighters compute a transition row (adapted matrix + EGT)
+           using the opponent's current (pre-sample) state.
+        3. Both fighters sample their next state, drawing from one
+           shared seeded RNG stream (F1 first, then F2) for
+           reproducibility.
+        4. Both fighters update exposure from the opponent's NEW state.
+        5. Both fighters compute payoff from the NEW states and record.
+
+        Returns a result dict compatible with the rest of this module
+        (run_all_simulations, main, monte_carlo_sparring.py, ...): same
+        keys as the original procedural simulate(), plus f1_history /
+        f2_history aliases for the state sequences.
+        """
+        self.f1.reset(start_state)
+        self.f2.reset(start_state)
+
+        self.f1.record_initial(self.f2.current_state)
+        self.f2.record_initial(self.f1.current_state)
+
+        rng = np.random.default_rng(seed)
+        f1_defend_prob_history = []
+        f2_defend_prob_history = []
+
+        for _ in range(n_steps - 1):
+            self.f1.compute_lambda()
+            self.f2.compute_lambda()
+            self.f1.update_adapted_matrix()
+            self.f2.update_adapted_matrix()
+
+            f1_probs = self.f1.get_transition_row(self.f2.current_state, self.selection_strength)
+            f2_probs = self.f2.get_transition_row(self.f1.current_state, self.selection_strength)
+
+            f1_defend_prob_history.append(f1_probs[DEFEND])
+            f2_defend_prob_history.append(f2_probs[DEFEND])
+
+            self.f1.step(f1_probs, rng)
+            self.f2.step(f2_probs, rng)
+
+            self.f1.update_exposure(self.f2.current_state, self.f1_tracked_state)
+            self.f2.update_exposure(self.f1.current_state, self.f2_tracked_state)
+
+            f1_payoff = self.f1.get_payoff(self.f2.current_state)
+            f2_payoff = self.f2.get_payoff(self.f1.current_state)
+
+            self.f1.record_step(f1_payoff)
+            self.f2.record_step(f2_payoff)
+
+        f1_states = np.array(self.f1.state_history)
+        f2_states = np.array(self.f2.state_history)
+
+        self.result = {
+            "f1_seq": f1_states,
+            "f2_seq": f2_states,
+            # NOTE: preserves the original (tracked-subject-based) naming —
+            # "f2_exposure_history" is F1's own exposure counter (it tracks
+            # F2's Attack), and "f1_exposure_history" is F2's own exposure
+            # counter (it tracks F1's Feint).
+            "f2_exposure_history": np.array(self.f1.exposure_history),
+            "f1_exposure_history": np.array(self.f2.exposure_history),
+            "f1_lambda_history": np.array(self.f1.lambda_history),
+            "f2_lambda_history": np.array(self.f2.lambda_history),
+            "f1_defend_prob_history": np.array(f1_defend_prob_history),
+            "f2_defend_prob_history": np.array(f2_defend_prob_history),
+            "f1_fitness_history": np.array(self.f1.fitness_history),
+            "f2_fitness_history": np.array(self.f2.fitness_history),
+            "f1_cumulative_fitness": np.array(self.f1.cumulative_fitness),
+            "f2_cumulative_fitness": np.array(self.f2.cumulative_fitness),
+            # OOP-native aliases
+            "f1_history": f1_states,
+            "f2_history": f2_states,
+        }
+        return self.result
+
+    def print_result_summary(self):
+        """
+        Print match result summary: final cumulative fitness for each
+        fighter, who won and by what margin, final lambda/exposure
+        values, and empirical state distributions.
+        """
+        if self.result is None:
+            print("No simulation has been run yet.")
+            return
+
+        f1_final = self.f1.cumulative_fitness[-1]
+        f2_final = self.f2.cumulative_fitness[-1]
+        margin = abs(f1_final - f2_final)
+
+        print(f"\n{'='*60}")
+        print("MATCH RESULT")
+        print(f"{'='*60}")
+        print(f"  {self.f1.name:<25} Final fitness: {f1_final:.4f}")
+        print(f"  {self.f2.name:<25} Final fitness: {f2_final:.4f}")
+
+        if margin < 1e-6:
+            print("  Result: Dead even (margin < 1e-6)")
+        elif f1_final > f2_final:
+            print(f"  Result: {self.f1.name} wins by {margin:.4f}")
         else:
-            f1_feint_exposure *= MEMORY_DECAY
+            print(f"  Result: {self.f2.name} wins by {margin:.4f}")
 
-        f2_exposure_history.append(f2_attack_exposure)
-        f1_exposure_history.append(f1_feint_exposure)
-        f1_lambda_history.append(f1_lambda)
-        f2_lambda_history.append(f2_lambda)
+        print(f"\n  Final lambda — {self.f1.name}: {self.f1.lambda_history[-1]:.4f}")
+        print(f"  Final lambda — {self.f2.name}: {self.f2.lambda_history[-1]:.4f}")
+        print(f"  Final exposure — {self.f1.name}: {self.f1.exposure_history[-1]:.4f}")
+        print(f"  Final exposure — {self.f2.name}: {self.f2.exposure_history[-1]:.4f}")
 
-        f1_payoff_this_step = F1_PAYOFF[f1_seq[t], f2_seq[t]]
-        f2_payoff_this_step = F2_PAYOFF[f2_seq[t], f1_seq[t]]
-        f1_fitness_history.append(f1_payoff_this_step)
-        f2_fitness_history.append(f2_payoff_this_step)
-        f1_cumulative_fitness.append(f1_cumulative_fitness[-1] + f1_payoff_this_step)
-        f2_cumulative_fitness.append(f2_cumulative_fitness[-1] + f2_payoff_this_step)
+        self.f1.print_distribution("Empirical State Distribution")
+        self.f2.print_distribution("Empirical State Distribution")
 
-    return {
-        "f1_seq": f1_seq,
-        "f2_seq": f2_seq,
-        "f2_exposure_history": np.array(f2_exposure_history),
-        "f1_exposure_history": np.array(f1_exposure_history),
-        "f1_lambda_history": np.array(f1_lambda_history),
-        "f2_lambda_history": np.array(f2_lambda_history),
-        "f1_defend_prob_history": np.array(f1_defend_prob_history),
-        "f2_defend_prob_history": np.array(f2_defend_prob_history),
-        "f1_fitness_history": np.array(f1_fitness_history),
-        "f2_fitness_history": np.array(f2_fitness_history),
-        "f1_cumulative_fitness": np.array(f1_cumulative_fitness),
-        "f2_cumulative_fitness": np.array(f2_cumulative_fitness),
-    }
+    def __repr__(self):
+        return (f"SparringMatch({self.f1.name} vs {self.f2.name}, "
+                f"selection_strength={self.selection_strength})")
+
+
+def create_cj():
+    """Instantiate Fighter 1 (CJ) with all established parameters."""
+    return Fighter(
+        name              = "CJ",
+        base_matrix       = F1_BASE,
+        adaptation_matrix = F1_ADAPTATION_MATRIX,
+        payoff_matrix     = F1_PAYOFF,
+        memory_growth     = MEMORY_GROWTH,
+        memory_decay      = MEMORY_DECAY,
+        max_exposure      = MAX_EXPOSURE,
+        steepness         = LAMBDA_STEEPNESS,
+        midpoint          = LAMBDA_MIDPOINT,
+        color             = F1_COLOR,
+    )
+
+
+def create_counter_puncher():
+    """Instantiate Fighter 2 (Counter-Puncher) with all parameters."""
+    return Fighter(
+        name              = "Counter-Puncher",
+        base_matrix       = F2_BASE,
+        adaptation_matrix = F2_ADAPTATION_MATRIX,
+        payoff_matrix     = F2_PAYOFF,
+        memory_growth     = MEMORY_GROWTH,
+        memory_decay      = MEMORY_DECAY,
+        max_exposure      = MAX_EXPOSURE,
+        steepness         = LAMBDA_STEEPNESS,
+        midpoint          = LAMBDA_MIDPOINT,
+        color             = F2_COLOR,
+    )
+
+
+def create_match(selection_strength=1.0):
+    """Instantiate a complete, ready-to-run SparringMatch: CJ vs Counter-Puncher."""
+    cj = create_cj()
+    cp = create_counter_puncher()
+    return SparringMatch(
+        fighter1            = cj,
+        fighter2            = cp,
+        f1_tracked_state    = ATTACK,  # F1 tracks F2's Attack
+        f2_tracked_state    = FEINT,   # F2 tracks F1's Feint
+        selection_strength  = selection_strength,
+    )
+
+
+def simulate(selection_strength=1.0, seed=42, n_steps=None, start_state=None):
+    """
+    Backward-compatible wrapper around SparringMatch.simulate().
+
+    Same signature, default seed, and result-dict keys as the original
+    procedural implementation, so existing callers (run_all_simulations
+    in this module, monte_carlo_sparring.py, etc.) keep working
+    unchanged. n_steps/start_state default to this module's own
+    N_STEPS/START_STATE, exactly as the original always did.
+    """
+    if n_steps is None:
+        n_steps = N_STEPS
+    if start_state is None:
+        start_state = STATES.index(START_STATE)
+    match = create_match(selection_strength)
+    return match.simulate(n_steps, start_state, seed=seed)
 
 
 def empirical_distribution(sequence):
