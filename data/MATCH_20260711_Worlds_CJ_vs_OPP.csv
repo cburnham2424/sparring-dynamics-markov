@@ -1,0 +1,143 @@
+# TAEKWONDO SPARRING ANNOTATION TEMPLATE
+# Version: 1.0 | sparring_dynamics project
+# 
+# FIELD DEFINITIONS:
+# match_id (REQUIRED): Unique identifier for the match. Format: MATCH_{date}_{locat
+# round (REQUIRED): Round number within the match. Standard WTF point sparring: 
+#   Valid values: 1, 2, 3
+# timestamp_s (REQUIRED): Time in seconds from the start of the round when this exchan
+# exchange_id (REQUIRED): Sequential integer identifying this exchange within the matc
+# fighter_id (REQUIRED): Unique identifier for Fighter 1 in this exchange. Use a shor
+# opponent_id (REQUIRED): Unique identifier for Fighter 2 in this exchange. Same namin
+# fighter_state (REQUIRED): Tactical state of the primary fighter during this exchange.
+#   Valid values: Attack, Defend, Disengage, Feint
+# opponent_state (REQUIRED): Tactical state of the opponent during this exchange. Same de
+#   Valid values: Attack, Defend, Disengage, Feint
+# winner (REQUIRED): Outcome of this exchange.
+#   Valid values: F1, F2, Double, None
+# f1_points (REQUIRED): Points scored by Fighter 1 in this exchange.
+#   Valid values: 0, 1, 2, 3, 4
+# f2_points (REQUIRED): Points scored by Fighter 2 in this exchange. Same point valu
+#   Valid values: 0, 1, 2, 3, 4
+# technique (optional): Primary scoring technique used by the winning fighter. Leave
+#   Valid values: roundhouse, back_kick, spinning_heel, axe_kick, cut_kick, push_kick, punch, turning_roundhouse, hook_kick, other
+# body_target (optional): Target area of the scoring technique. head: above the collar
+#   Valid values: head, trunk
+# penalty (optional): Whether a penalty (gam-jeom) was assessed during this exchan
+#   Valid values: gam_jeom_f1, gam_jeom_f2, none
+# notes (optional): Free-text annotation field for anything not captured by stru
+# 
+# ANNOTATION WORKFLOW:
+# 1. Open match video in a video player
+# 2. Watch exchange by exchange
+# 3. For each exchange, identify:
+#    - Which state was each fighter in? (fighter_state, opponent_state)
+#    - Who scored? (winner, f1_points, f2_points)
+#    - What technique? (technique, body_target)
+# 4. Fill one row per exchange
+# 5. Delete all comment lines before loading into pipeline
+# 
+# STATE CODING GUIDE:
+# Attack:    Fighter throws a committed scoring technique
+# Defend:    Fighter blocks or absorbs opponent technique
+# Disengage: Fighter resets distance without attacking/defending
+# Feint:     Fighter performs deceptive movement (pump kick,
+#            level switch, shoulder fake) without committing
+# 
+# POINT VALUES (WT rules):
+# 1 = valid punch to trunk
+# 2 = valid kick to trunk
+# 3 = valid kick to head
+# 4 = valid turning kick to head
+# 
+match_id,round,timestamp_s,exchange_id,fighter_id,opponent_id,fighter_state,opponent_state,winner,f1_points,f2_points,technique,body_target,penalty,notes
+# --- EXAMPLE ROWS (delete before loading) ---
+MATCH_20260711_Worlds_CJ_vs_OPP,1,3.5,1,CJ,OPP,Feint,Defend,F1,3,0,roundhouse,head,none,"Cut kick feint opened guard, head kick scored"
+MATCH_20260711_Worlds_CJ_vs_OPP,1,8.2,2,CJ,OPP,Attack,Defend,F2,0,1,punch,trunk,none,Opponent counter-punched during blitz
+MATCH_20260711_Worlds_CJ_vs_OPP,1,12.0,3,CJ,OPP,Disengage,Feint,None,0,0,,,none,"Pump kick probe, CJ disengaged, no contact"
+MATCH_20260711_Worlds_CJ_vs_OPP,1,18.7,4,CJ,OPP,Attack,Attack,Double,2,2,roundhouse,trunk,none,Simultaneous trunk kicks both fighters
+MATCH_20260711_Worlds_CJ_vs_OPP,1,25.1,5,CJ,OPP,Feint,Defend,F1,2,0,roundhouse,trunk,none,Level switch body after head feint
+MATCH_20260711_Worlds_CJ_vs_OPP,2,5.3,6,CJ,OPP,Disengage,Attack,F2,0,3,roundhouse,head,none,"Caught during reset, opponent head kick"
+MATCH_20260711_Worlds_CJ_vs_OPP,2,11.8,7,CJ,OPP,Defend,Attack,F1,1,0,punch,trunk,none,Counter punch off Philly shell block
+MATCH_20260711_Worlds_CJ_vs_OPP,2,19.4,8,CJ,OPP,Attack,Defend,None,0,0,,,gam_jeom_f2,"Opponent grabbed, penalty awarded to F1 as point"
+# --- YOUR ANNOTATIONS BELOW ---
+MATCH_20260711_Worlds_CJ_vs_OPP,,,1,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,2,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,3,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,4,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,5,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,6,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,7,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,8,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,9,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,10,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,11,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,12,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,13,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,14,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,15,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,16,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,17,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,18,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,19,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,20,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,21,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,22,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,23,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,24,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,25,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,26,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,27,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,28,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,29,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,30,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,31,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,32,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,33,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,34,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,35,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,36,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,37,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,38,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,39,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,40,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,41,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,42,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,43,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,44,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,45,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,46,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,47,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,48,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,49,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,50,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,51,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,52,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,53,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,54,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,55,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,56,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,57,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,58,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,59,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,60,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,61,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,62,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,63,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,64,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,65,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,66,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,67,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,68,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,69,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,70,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,71,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,72,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,73,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,74,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,75,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,76,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,77,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,78,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,79,CJ,OPP,,,,,,,,,
+MATCH_20260711_Worlds_CJ_vs_OPP,,,80,CJ,OPP,,,,,,,,,
