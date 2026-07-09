@@ -1,0 +1,28 @@
+f1_state,f2_state,winner,f1_points,f2_points
+# Instructions:
+# f1_state/f2_state: Attack, Defend, Disengage, or Feint
+# winner: F1, F2, Double, or None
+# f1_points: 0-4 (head kick=4, body kick=3, punch=1 in WT rules)
+# f2_points: 0-4
+# Double: both fighters score on same exchange
+# None: no points scored (reset, out of bounds, no contact)
+Attack,Defend,F1,2,0
+# row 2: add your annotated exchange here
+# row 3: add your annotated exchange here
+# row 4: add your annotated exchange here
+# row 5: add your annotated exchange here
+# row 6: add your annotated exchange here
+# row 7: add your annotated exchange here
+# row 8: add your annotated exchange here
+# row 9: add your annotated exchange here
+# row 10: add your annotated exchange here
+# row 11: add your annotated exchange here
+# row 12: add your annotated exchange here
+# row 13: add your annotated exchange here
+# row 14: add your annotated exchange here
+# row 15: add your annotated exchange here
+# row 16: add your annotated exchange here
+# row 17: add your annotated exchange here
+# row 18: add your annotated exchange here
+# row 19: add your annotated exchange here
+# row 20: add your annotated exchange here
