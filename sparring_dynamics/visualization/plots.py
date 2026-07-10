@@ -32,7 +32,7 @@ def plot_monte_carlo_summary(results, analysis, filepath=None):
     # Top row — cumulative fitness with CI bands
     for col, (key, label, color) in enumerate([
         ('f1_cumulative', 'Fighter 1 (CJ)', F1_COLOR),
-        ('f2_cumulative', 'Fighter 2 (Counter-Puncher)', F2_COLOR)
+        ('f2_cumulative', 'Fighter 2 (Counter-Fighter)', F2_COLOR)
     ]):
         ax = axes[0, col]
         s  = analysis[key]
@@ -53,7 +53,7 @@ def plot_monte_carlo_summary(results, analysis, filepath=None):
     window = 20
     for col, (key, label, color) in enumerate([
         ('f1_fitness', 'Fighter 1 (CJ)', F1_COLOR),
-        ('f2_fitness', 'Fighter 2 (Counter-Puncher)', F2_COLOR)
+        ('f2_fitness', 'Fighter 2 (Counter-Fighter)', F2_COLOR)
     ]):
         ax = axes[1, col]
         s  = analysis[key]

@@ -217,7 +217,7 @@ def print_diagnostics(f1_final, f2_final, totals, exchanges, min_obs=5):
     f1_points = [ex['f1_points'] for ex in exchanges]
     f2_points = [ex['f2_points'] for ex in exchanges]
     print(f"   Fighter 1 (CJ):              {np.mean(f1_points):.3f}")
-    print(f"   Fighter 2 (Counter-Puncher): {np.mean(f2_points):.3f}")
+    print(f"   Fighter 2 (Counter-Fighter): {np.mean(f2_points):.3f}")
 
     print("\n4. Observation count matrix (totals):")
     print(pd.DataFrame(totals, index=states, columns=states).to_string())
@@ -246,7 +246,7 @@ def print_diagnostics(f1_final, f2_final, totals, exchanges, min_obs=5):
     f2_max_idx = np.unravel_index(f2_final.argmax(), f2_final.shape)
     print(f"   Fighter 1 (CJ): {states[f1_max_idx[0]]} vs {states[f1_max_idx[1]]} "
           f"= {f1_final[f1_max_idx]:.4f} — CJ's most rewarding state pairing observed.")
-    print(f"   Fighter 2 (Counter-Puncher): {states[f2_max_idx[0]]} vs {states[f2_max_idx[1]]} "
+    print(f"   Fighter 2 (Counter-Fighter): {states[f2_max_idx[0]]} vs {states[f2_max_idx[1]]} "
           f"= {f2_final[f2_max_idx]:.4f} — Fighter 2's most rewarding state pairing observed.")
 
     print("\n9. Lowest payoff state pair:")
@@ -254,7 +254,7 @@ def print_diagnostics(f1_final, f2_final, totals, exchanges, min_obs=5):
     f2_min_idx = np.unravel_index(f2_final.argmin(), f2_final.shape)
     print(f"   Fighter 1 (CJ): {states[f1_min_idx[0]]} vs {states[f1_min_idx[1]]} "
           f"= {f1_final[f1_min_idx]:.4f} — CJ's least rewarding state pairing observed.")
-    print(f"   Fighter 2 (Counter-Puncher): {states[f2_min_idx[0]]} vs {states[f2_min_idx[1]]} "
+    print(f"   Fighter 2 (Counter-Fighter): {states[f2_min_idx[0]]} vs {states[f2_min_idx[1]]} "
           f"= {f2_final[f2_min_idx]:.4f} — Fighter 2's least rewarding state pairing observed.")
 
 
@@ -291,7 +291,7 @@ def compare_with_handcrafted(f1_learned, f2_learned, f1_handcrafted, f2_handcraf
     print(f"\n{'='*60}")
     for name, learned, handcrafted in [
         ("Fighter 1 (CJ)", f1_learned, f1_handcrafted),
-        ("Fighter 2 (Counter-Puncher)", f2_learned, f2_handcrafted),
+        ("Fighter 2 (Counter-Fighter)", f2_learned, f2_handcrafted),
     ]:
         diff = np.abs(learned - handcrafted)
         print(f"\n{name} — Absolute Difference (Learned vs Hand-Crafted):")
@@ -318,7 +318,7 @@ def generate_placeholder_csv(filepath, n_exchanges=60):
     Generate a realistic placeholder CSV of annotated exchanges,
     consistent with the fighting styles already modeled in the
     simulator (CJ: aggressive feint-heavy blitzer; Fighter 2: patient
-    counter-puncher). Structured, not randomly sampled, so the stated
+    counter-fighter). Structured, not randomly sampled, so the stated
     win counts and point averages are hit exactly/closely.
     """
     rows = [

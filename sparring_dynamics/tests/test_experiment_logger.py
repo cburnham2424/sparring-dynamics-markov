@@ -28,7 +28,7 @@ def _make_match(selection_strength=1.0):
         color='crimson',
     )
     f2 = Fighter.from_matrices(
-        "Counter-Puncher", F2_BASE_DEFAULT, F2_ADAPTATION_DEFAULT, F2_PAYOFF_DEFAULT,
+        "Counter-Fighter", F2_BASE_DEFAULT, F2_ADAPTATION_DEFAULT, F2_PAYOFF_DEFAULT,
         color='steelblue',
     )
     match = SparringMatch(f1, f2, selection_strength=selection_strength)

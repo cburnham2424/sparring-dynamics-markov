@@ -85,7 +85,7 @@ PARAM_TUMOR_PARALLEL = {
 
 
 def _build_match(params):
-    """Construct a fresh CJ-vs-Counter-Puncher SparringMatch from a params dict."""
+    """Construct a fresh CJ-vs-Counter-Fighter SparringMatch from a params dict."""
     cj = Fighter.from_matrices(
         name              = "CJ",
         base_matrix       = F1_BASE_DEFAULT,
@@ -97,7 +97,7 @@ def _build_match(params):
         color             = F1_COLOR
     )
     cp = Fighter.from_matrices(
-        name              = "Counter-Puncher",
+        name              = "Counter-Fighter",
         base_matrix       = F2_BASE_DEFAULT,
         adaptation_matrix = F2_ADAPTATION_DEFAULT,
         payoff_matrix     = F2_PAYOFF_DEFAULT,
@@ -564,7 +564,7 @@ def _plot_1d_sweeps_overview(single_sweeps, filepath):
         ax.plot(xs, f1_mean, 'o-', color=F1_COLOR,
                  linewidth=2, markersize=5, label='CJ')
         ax.plot(xs, f2_mean, 's-', color=F2_COLOR,
-                 linewidth=2, markersize=5, label='Counter-Puncher')
+                 linewidth=2, markersize=5, label='Counter-Fighter')
 
         baseline = BASELINE_PARAMS[param]
         ax.axvline(baseline, color='gray', linestyle='--',
@@ -607,7 +607,7 @@ def _plot_1d_sweep_detail(results, param, filepath):
     ax.plot(xs, f1_mean, 'o-', color=F1_COLOR, linewidth=2,
              markersize=5, label='CJ (Fighter 1)')
     ax.plot(xs, f2_mean, 's-', color=F2_COLOR, linewidth=2,
-             markersize=5, label='Counter-Puncher (Fighter 2)')
+             markersize=5, label='Counter-Fighter (Fighter 2)')
     ax.axvline(BASELINE_PARAMS[param], color='gray',
                 linestyle='--', linewidth=1, label='Baseline')
     ax.set_ylabel('Mean Final Fitness', fontsize=9)
@@ -858,7 +858,7 @@ def _plot_robustness_summary(single_sweeps, filepath):
     ax.bar(x - w/2, cv_f1, w, color=F1_COLOR,
             alpha=0.8, label='CJ (F1)', edgecolor='white')
     ax.bar(x + w/2, cv_f2, w, color=F2_COLOR,
-            alpha=0.8, label='Counter-Puncher (F2)', edgecolor='white')
+            alpha=0.8, label='Counter-Fighter (F2)', edgecolor='white')
 
     for i, (v1, v2) in enumerate(zip(cv_f1, cv_f2)):
         ax.text(i - w/2, v1 + 0.001, f"{v1:.4f}",

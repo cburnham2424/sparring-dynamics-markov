@@ -198,7 +198,7 @@ def generate_placeholder_csv(filepath, n_exchanges=60):
     Generate a realistic placeholder exchange CSV for testing the
     pipeline before real annotated match data exists, consistent with
     the fighting styles modeled elsewhere in this project (CJ:
-    aggressive feint-heavy blitzer; Fighter 2: patient counter-puncher).
+    aggressive feint-heavy blitzer; Fighter 2: patient counter-fighter).
     Deterministic, not randomly sampled, so distributional targets are
     hit exactly/closely.
     """

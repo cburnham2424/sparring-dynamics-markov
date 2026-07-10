@@ -14,7 +14,7 @@ from sparring_dynamics.config import (
 def _make_match(selection_strength=1.0):
     cj = Fighter.from_matrices("CJ", F1_BASE_DEFAULT, F1_ADAPTATION_DEFAULT,
                                 F1_PAYOFF_DEFAULT, color=F1_COLOR)
-    cp = Fighter.from_matrices("Counter-Puncher", F2_BASE_DEFAULT, F2_ADAPTATION_DEFAULT,
+    cp = Fighter.from_matrices("Counter-Fighter", F2_BASE_DEFAULT, F2_ADAPTATION_DEFAULT,
                                 F2_PAYOFF_DEFAULT, color=F2_COLOR)
     return SparringMatch(cj, cp, f1_tracked_state=ATTACK, f2_tracked_state=FEINT,
                           selection_strength=selection_strength)

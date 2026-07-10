@@ -13,7 +13,7 @@ n = len(states)  # 4
 
 # EXAMPLE OBSERVED SEQUENCES (placeholder — replace with real data later)
 # f1_observed reflects CJ's aggressive feint-heavy style.
-# f2_observed reflects the counter-puncher's defend-heavy reactive style.
+# f2_observed reflects the counter-fighter's defend-heavy reactive style.
 # These are placeholder sequences — structured to be consistent with the
 # hand-crafted matrices but replaceable with real observed data later.
 f1_observed = [
@@ -184,11 +184,11 @@ if __name__ == "__main__":
     f1_learned = estimate_transition_matrix(f1_observed, alpha=1.0,
                                              name="Fighter 1 (CJ)")
     f2_learned = estimate_transition_matrix(f2_observed, alpha=1.0,
-                                             name="Fighter 2 (Counter-Puncher)")
+                                             name="Fighter 2 (Counter-Fighter)")
 
     # Compare learned vs hand-crafted
     compare_matrices(f1_learned, F1_HANDCRAFTED, "Fighter 1 (CJ)")
-    compare_matrices(f2_learned, F2_HANDCRAFTED, "Fighter 2 (Counter-Puncher)")
+    compare_matrices(f2_learned, F2_HANDCRAFTED, "Fighter 2 (Counter-Fighter)")
 
     print("\n" + "="*50)
     print("DROP-IN REPLACEMENT FOR sparring_markov_two_agent.py:")

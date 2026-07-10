@@ -208,7 +208,7 @@ def run_pipeline(args):
         color             = F1_COLOR
     )
     cp = Fighter.from_matrices(
-        name              = "Counter-Puncher",
+        name              = "Counter-Fighter",
         base_matrix       = f2_base,
         adaptation_matrix = F2_ADAPTATION_DEFAULT,
         payoff_matrix     = f2_payoff,

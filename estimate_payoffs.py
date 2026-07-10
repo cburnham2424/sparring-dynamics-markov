@@ -14,42 +14,42 @@ n = len(states)
 
 # EXAMPLE OBSERVED EXCHANGES (placeholder — replace with real data later)
 exchanges = [
-    # CJ attacks into counter-puncher's defense — common exchange
+    # CJ attacks into counter-fighter's defense — common exchange
     {'f1_state': 'Attack',    'f2_state': 'Defend',    'winner': 'F1'},
     {'f1_state': 'Attack',    'f2_state': 'Defend',    'winner': 'F2'},
     {'f1_state': 'Attack',    'f2_state': 'Defend',    'winner': 'F1'},
     {'f1_state': 'Attack',    'f2_state': 'Defend',    'winner': 'F1'},
     {'f1_state': 'Attack',    'f2_state': 'Defend',    'winner': 'F2'},
 
-    # CJ feints into counter-puncher's defense — high CJ payoff
+    # CJ feints into counter-fighter's defense — high CJ payoff
     {'f1_state': 'Feint',     'f2_state': 'Defend',    'winner': 'F1'},
     {'f1_state': 'Feint',     'f2_state': 'Defend',    'winner': 'F1'},
     {'f1_state': 'Feint',     'f2_state': 'Defend',    'winner': 'F1'},
     {'f1_state': 'Feint',     'f2_state': 'Defend',    'winner': 'F2'},
     {'f1_state': 'Feint',     'f2_state': 'Defend',    'winner': 'F1'},
 
-    # Counter-puncher attacks into CJ's feint — dangerous for CJ
+    # Counter-fighter attacks into CJ's feint — dangerous for CJ
     {'f1_state': 'Feint',     'f2_state': 'Attack',    'winner': 'F2'},
     {'f1_state': 'Feint',     'f2_state': 'Attack',    'winner': 'F1'},
     {'f1_state': 'Feint',     'f2_state': 'Attack',    'winner': 'F2'},
     {'f1_state': 'Feint',     'f2_state': 'Attack',    'winner': 'F2'},
     {'f1_state': 'Feint',     'f2_state': 'Attack',    'winner': 'F1'},
 
-    # CJ attacks into counter-puncher's feint (pump kick) — CJ reads it
+    # CJ attacks into counter-fighter's feint (pump kick) — CJ reads it
     {'f1_state': 'Attack',    'f2_state': 'Feint',     'winner': 'F1'},
     {'f1_state': 'Attack',    'f2_state': 'Feint',     'winner': 'F1'},
     {'f1_state': 'Attack',    'f2_state': 'Feint',     'winner': 'F2'},
     {'f1_state': 'Attack',    'f2_state': 'Feint',     'winner': 'F1'},
     {'f1_state': 'Attack',    'f2_state': 'Feint',     'winner': 'F1'},
 
-    # CJ disengages while counter-puncher attacks — counter-puncher wins
+    # CJ disengages while counter-fighter attacks — counter-fighter wins
     {'f1_state': 'Disengage', 'f2_state': 'Attack',    'winner': 'F2'},
     {'f1_state': 'Disengage', 'f2_state': 'Attack',    'winner': 'F2'},
     {'f1_state': 'Disengage', 'f2_state': 'Attack',    'winner': 'F1'},
     {'f1_state': 'Disengage', 'f2_state': 'Attack',    'winner': 'F2'},
     {'f1_state': 'Disengage', 'f2_state': 'Attack',    'winner': 'F2'},
 
-    # CJ defends into counter-puncher's attack — CJ counters well
+    # CJ defends into counter-fighter's attack — CJ counters well
     {'f1_state': 'Defend',    'f2_state': 'Attack',    'winner': 'F1'},
     {'f1_state': 'Defend',    'f2_state': 'Attack',    'winner': 'F1'},
     {'f1_state': 'Defend',    'f2_state': 'Attack',    'winner': 'F2'},
@@ -63,14 +63,14 @@ exchanges = [
     {'f1_state': 'Disengage', 'f2_state': 'Disengage', 'winner': 'Draw'},
     {'f1_state': 'Disengage', 'f2_state': 'Disengage', 'winner': 'F2'},
 
-    # CJ feints into counter-puncher's feint — unpredictable
+    # CJ feints into counter-fighter's feint — unpredictable
     {'f1_state': 'Feint',     'f2_state': 'Feint',     'winner': 'F1'},
     {'f1_state': 'Feint',     'f2_state': 'Feint',     'winner': 'F2'},
     {'f1_state': 'Feint',     'f2_state': 'Feint',     'winner': 'Draw'},
     {'f1_state': 'Feint',     'f2_state': 'Feint',     'winner': 'F1'},
     {'f1_state': 'Feint',     'f2_state': 'Feint',     'winner': 'F2'},
 
-    # Counter-puncher defends CJ's disengage — low payoff both sides
+    # Counter-fighter defends CJ's disengage — low payoff both sides
     {'f1_state': 'Disengage', 'f2_state': 'Defend',    'winner': 'Draw'},
     {'f1_state': 'Disengage', 'f2_state': 'Defend',    'winner': 'F1'},
     {'f1_state': 'Disengage', 'f2_state': 'Defend',    'winner': 'Draw'},
@@ -286,7 +286,7 @@ if __name__ == "__main__":
 
     compare_payoffs(f1_final, F1_HANDCRAFTED_PAYOFF, "Fighter 1 (CJ)")
     compare_payoffs(f2_final, F2_HANDCRAFTED_PAYOFF,
-                    "Fighter 2 (Counter-Puncher)")
+                    "Fighter 2 (Counter-Fighter)")
 
     print("\n" + "="*60)
     print("DROP-IN REPLACEMENT FOR sparring_markov_two_agent.py:")

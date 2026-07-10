@@ -900,7 +900,7 @@ def _estimate_matrix_from_history(state_history_array):
 
 def validate_pipeline(mc_results, mc_analysis,
                        observed_f1=None, observed_f2=None,
-                       opponent_name="Counter-Puncher"):
+                       opponent_name="Counter-Fighter"):
     """
     Run validation comparing Monte Carlo simulation results against
     observed data. If observed_f1/observed_f2 are None, generates
@@ -917,7 +917,7 @@ def validate_pipeline(mc_results, mc_analysis,
 
     if observed_f2 is None:
         observed_f2 = generate_placeholder_observed_data(
-            fighter_name  = "Counter-Puncher",
+            fighter_name  = "Counter-Fighter",
             opponent_name = "CJ",
             n_sequences   = 8,
             style         = 'counter',
@@ -938,7 +938,7 @@ def validate_pipeline(mc_results, mc_analysis,
     )
 
     f2_report = ValidationReport(
-        fighter_name         = "Counter-Puncher",
+        fighter_name         = "Counter-Fighter",
         opponent_name        = "CJ",
         simulated_matrix     = f2_sim_T,
         simulated_occupancy  = mc_analysis['f2_occupancy']['mean'],

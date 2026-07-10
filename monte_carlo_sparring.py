@@ -232,7 +232,7 @@ def print_summary(results, analysis):
     print(f"{'='*60}")
 
     for fighter, key in [("Fighter 1 (CJ)", "f1_cumulative"),
-                          ("Fighter 2 (Counter-Puncher)", "f2_cumulative")]:
+                          ("Fighter 2 (Counter-Fighter)", "f2_cumulative")]:
         stats_dict = analysis[key]
         final_mean = stats_dict['mean'][-1]
         final_std  = stats_dict['std'][-1]
@@ -258,7 +258,7 @@ def print_summary(results, analysis):
               f"95% CI [{f1_occ['ci_lower'][i]:.4f}, "
               f"{f1_occ['ci_upper'][i]:.4f}]")
 
-    print("\nFIGHTER 2 (Counter-Puncher) — Average State Occupancy:")
+    print("\nFIGHTER 2 (Counter-Fighter) — Average State Occupancy:")
     f2_occ = analysis['f2_occupancy']
     for i, state in enumerate(states):
         print(f"  {state:12s}: {f2_occ['mean'][i]:.4f} ± "
@@ -321,7 +321,7 @@ def plot_monte_carlo_summary(results, analysis, filename="monte_carlo_sparring.p
     # Top row: cumulative fitness with confidence bands
     for col, (fighter, key, color) in enumerate([
         ("Fighter 1 (CJ)", "f1_cumulative", F1_COLOR),
-        ("Fighter 2 (Counter-Puncher)", "f2_cumulative", F2_COLOR),
+        ("Fighter 2 (Counter-Fighter)", "f2_cumulative", F2_COLOR),
     ]):
         ax = axes[0, col]
         for i in range(min(n_traces, N)):

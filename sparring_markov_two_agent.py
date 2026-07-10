@@ -9,7 +9,7 @@ as a guard-breaker before a round kick combo), level-switches to confuse
 defensive reads, and disengages strategically to reset timing rather than to
 hide. He rarely sits in pure defend, always looking to counter or reset.
 
-Fighter 2 is a patient counter-puncher working a Philly-shell-style stance: a
+Fighter 2 is a patient counter-fighter working a Philly-shell-style stance: a
 pump kick maps to Feint (a range finder, not a scoring tool), attacks
 primarily off a defensive read, and rarely self-initiates from Disengage.
 
@@ -587,9 +587,9 @@ def create_cj():
 
 
 def create_counter_puncher():
-    """Instantiate Fighter 2 (Counter-Puncher) with all parameters."""
+    """Instantiate Fighter 2 (Counter-Fighter) with all parameters."""
     return Fighter(
-        name              = "Counter-Puncher",
+        name              = "Counter-Fighter",
         base_matrix       = F2_BASE,
         adaptation_matrix = F2_ADAPTATION_MATRIX,
         payoff_matrix     = F2_PAYOFF,
@@ -603,7 +603,7 @@ def create_counter_puncher():
 
 
 def create_match(selection_strength=1.0):
-    """Instantiate a complete, ready-to-run SparringMatch: CJ vs Counter-Puncher."""
+    """Instantiate a complete, ready-to-run SparringMatch: CJ vs Counter-Fighter."""
     cj = create_cj()
     cp = create_counter_puncher()
     return SparringMatch(
@@ -866,17 +866,17 @@ def print_fitness_summary(f1_fitness_history, f2_fitness_history,
     margin = f1_total - f2_total
 
     print(f"Total cumulative fitness — Fighter 1 (CJ): {f1_total:.3f}")
-    print(f"Total cumulative fitness — Fighter 2 (Counter-Puncher): {f2_total:.3f}")
+    print(f"Total cumulative fitness — Fighter 2 (Counter-Fighter): {f2_total:.3f}")
     if margin > 1e-6:
         print(f"Winner on total fitness: Fighter 1 (CJ), by {margin:.3f}")
     elif margin < -1e-6:
-        print(f"Winner on total fitness: Fighter 2 (Counter-Puncher), by {-margin:.3f}")
+        print(f"Winner on total fitness: Fighter 2 (Counter-Fighter), by {-margin:.3f}")
     else:
         print("Result: dead even on total fitness")
 
     lead_change_step = find_last_lead_change(f1_cumulative_fitness, f2_cumulative_fitness)
     if lead_change_step is None:
-        leader = "Fighter 1 (CJ)" if margin > -1e-6 else "Fighter 2 (Counter-Puncher)"
+        leader = "Fighter 1 (CJ)" if margin > -1e-6 else "Fighter 2 (Counter-Fighter)"
         print(f"Lead never changed hands — {leader} led throughout")
     else:
         print(f"Lead last changed hands at step {lead_change_step}")
@@ -884,7 +884,7 @@ def print_fitness_summary(f1_fitness_history, f2_fitness_history,
     f1_avg = f1_fitness_history.mean()
     f2_avg = f2_fitness_history.mean()
     print(f"Average per-step payoff — Fighter 1 (CJ): {f1_avg:.4f}")
-    print(f"Average per-step payoff — Fighter 2 (Counter-Puncher): {f2_avg:.4f}")
+    print(f"Average per-step payoff — Fighter 2 (Counter-Fighter): {f2_avg:.4f}")
     print()
 
     if margin > 1e-6:
@@ -892,7 +892,7 @@ def print_fitness_summary(f1_fitness_history, f2_fitness_history,
         tumor_note = ("the aggressor phenotype (CJ) is accumulating a fitness edge, analogous to a "
                        "tumor clone outcompeting immune surveillance")
     elif margin < -1e-6:
-        sparring_note = "the counter-puncher's patient reads are outscoring the blitz"
+        sparring_note = "the counter-fighter's patient reads are outscoring the blitz"
         tumor_note = ("the adaptive/defensive phenotype (Fighter 2) is accumulating a fitness edge, "
                        "analogous to immune surveillance suppressing a tumor clone")
     else:
@@ -917,7 +917,7 @@ def plot_fitness(f1_fitness_history, f2_fitness_history,
     x1, avg1 = rolling_average(f1_fitness_history)
     x2, avg2 = rolling_average(f2_fitness_history)
     ax.plot(x1, avg1, color=F1_COLOR, label="Fighter 1 (CJ)")
-    ax.plot(x2, avg2, color=F2_COLOR, label="Fighter 2 (Counter-Puncher)")
+    ax.plot(x2, avg2, color=F2_COLOR, label="Fighter 2 (Counter-Fighter)")
     ax.axhline(0.5, color="gray", linestyle="--", alpha=0.6)
     ax.set_ylim(0, 1)
     ax.set_xlabel("Exchange step")
@@ -928,7 +928,7 @@ def plot_fitness(f1_fitness_history, f2_fitness_history,
 
     ax = axes[1]
     ax.plot(steps, f1_cumulative_fitness, color=F1_COLOR, label="Fighter 1 (CJ)")
-    ax.plot(steps, f2_cumulative_fitness, color=F2_COLOR, label="Fighter 2 (Counter-Puncher)")
+    ax.plot(steps, f2_cumulative_fitness, color=F2_COLOR, label="Fighter 2 (Counter-Fighter)")
     ax.fill_between(steps, f1_cumulative_fitness, f2_cumulative_fitness,
                      where=f1_cumulative_fitness >= f2_cumulative_fitness,
                      color="green", alpha=0.2, interpolate=True)
@@ -966,7 +966,7 @@ def plot_marginals_grid(results, filename="sparring_egt.png"):
         ax_f2.set_xticks(x)
         ax_f2.set_xticklabels(STATES)
         ax_f2.set_ylabel("Probability")
-        ax_f2.set_title(f"Fighter 2 (Counter-Puncher) — selection_strength={strength}")
+        ax_f2.set_title(f"Fighter 2 (Counter-Fighter) — selection_strength={strength}")
         ax_f2.grid(axis="y", linestyle="--", alpha=0.4)
 
     fig.tight_layout()

@@ -169,7 +169,7 @@ def test_factory_functions():
     passed &= cj_ok
 
     cp = create_counter_puncher()
-    cp_ok = (cp.name == "Counter-Puncher"
+    cp_ok = (cp.name == "Counter-Fighter"
               and np.array_equal(cp.base_matrix, F2_BASE)
               and np.array_equal(cp.adaptation_matrix, F2_ADAPTATION_MATRIX)
               and np.array_equal(cp.payoff_matrix, F2_PAYOFF))
@@ -179,7 +179,7 @@ def test_factory_functions():
     match = create_match(selection_strength=1.5)
     match_ok = (isinstance(match, SparringMatch)
                  and match.f1.name == "CJ"
-                 and match.f2.name == "Counter-Puncher"
+                 and match.f2.name == "Counter-Fighter"
                  and match.selection_strength == 1.5
                  and match.f1_tracked_state == ATTACK
                  and match.f2_tracked_state == FEINT)
