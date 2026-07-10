@@ -23,6 +23,35 @@ from sparring_markov_two_agent import (
     N_STEPS as SIM_N_STEPS,
 )
 
+# ── Dark mode theme ──────────────────────────────────────────
+BG_COLOR = '#1a1a19'
+GRID_COLOR = '#2c2c2a'
+TICK_COLOR = '#c3c2b7'
+TITLE_COLOR = '#ffffff'
+
+plt.style.use('dark_background')
+plt.rcParams.update({
+    'figure.facecolor': BG_COLOR,
+    'axes.facecolor': BG_COLOR,
+    'savefig.facecolor': BG_COLOR,
+    'axes.edgecolor': GRID_COLOR,
+    'axes.labelcolor': TICK_COLOR,
+    'axes.titlecolor': TITLE_COLOR,
+    'xtick.color': TICK_COLOR,
+    'ytick.color': TICK_COLOR,
+    'text.color': TITLE_COLOR,
+    'axes.grid': True,
+    'grid.color': GRID_COLOR,
+    'grid.alpha': 0.5,
+})
+
+
+def _darken_figure(fig, axes):
+    fig.patch.set_facecolor(BG_COLOR)
+    for ax in np.atleast_1d(axes).flat:
+        ax.set_facecolor(BG_COLOR)
+
+
 # MONTE CARLO CONFIGURATION
 N_SIMULATIONS = 500      # number of independent runs
 N_STEPS = 500             # steps per simulation — must match the simulator's
@@ -38,8 +67,8 @@ ALPHA = 1 - CONFIDENCE_LEVEL  # 0.05
 
 ROLLING_WINDOW = 20
 
-F1_COLOR = "steelblue"
-F2_COLOR = "coral"
+F1_COLOR = "#7F77DD"
+F2_COLOR = "#E8593C"
 
 assert N_STEPS == SIM_N_STEPS, (
     f"N_STEPS ({N_STEPS}) must match sparring_markov_two_agent.N_STEPS ({SIM_N_STEPS})")
@@ -307,7 +336,7 @@ def print_summary(results, analysis):
 def _plot_band(ax, x, stats_dict, color, label_prefix):
     ax.plot(x, stats_dict['mean'], color=color, linewidth=2, label=f"{label_prefix} mean")
     ax.fill_between(x, stats_dict['ci_lower'], stats_dict['ci_upper'],
-                     color=color, alpha=0.2, label="95% CI")
+                     color=color, alpha=0.15, label="95% CI")
     ax.fill_between(x, stats_dict['q25'], stats_dict['q75'],
                      color=color, alpha=0.15, label="IQR")
 
@@ -317,6 +346,7 @@ def plot_monte_carlo_summary(results, analysis, filename="monte_carlo_sparring.p
     N, T = results['n_simulations'], results['n_steps']
     x = np.arange(T)
     fig, axes = plt.subplots(3, 2, figsize=(15, 16))
+    _darken_figure(fig, axes)
 
     # Top row: cumulative fitness with confidence bands
     for col, (fighter, key, color) in enumerate([
@@ -344,7 +374,7 @@ def plot_monte_carlo_summary(results, analysis, filename="monte_carlo_sparring.p
         x_roll = np.arange(ROLLING_WINDOW - 1, T)
         ax.plot(x_roll, rolled_stats['mean'], color=color, linewidth=2, label="Mean")
         ax.fill_between(x_roll, rolled_stats['ci_lower'], rolled_stats['ci_upper'],
-                         color=color, alpha=0.2, label="95% CI")
+                         color=color, alpha=0.15, label="95% CI")
         ax.set_xlabel("Exchange step")
         ax.set_ylabel("Payoff")
         ax.set_title(f"{fighter} — Per-Step Payoff (Rolling {ROLLING_WINDOW}-step avg)")
@@ -376,10 +406,10 @@ def plot_monte_carlo_summary(results, analysis, filename="monte_carlo_sparring.p
         ax.axhline(frac, color="gray", linestyle="--", alpha=0.5)
     ax.plot(x, analysis['f1_lambda']['mean'], color=F1_COLOR, linewidth=2, label="F1 mean λ")
     ax.fill_between(x, analysis['f1_lambda']['ci_lower'], analysis['f1_lambda']['ci_upper'],
-                     color=F1_COLOR, alpha=0.2)
+                     color=F1_COLOR, alpha=0.15)
     ax.plot(x, analysis['f2_lambda']['mean'], color=F2_COLOR, linewidth=2, label="F2 mean λ")
     ax.fill_between(x, analysis['f2_lambda']['ci_lower'], analysis['f2_lambda']['ci_upper'],
-                     color=F2_COLOR, alpha=0.2)
+                     color=F2_COLOR, alpha=0.15)
     ax.set_ylim(0, 1.05)
     ax.set_xlabel("Exchange step")
     ax.set_ylabel("λ")
@@ -394,6 +424,7 @@ def plot_monte_carlo_summary(results, analysis, filename="monte_carlo_sparring.p
 
 def plot_monte_carlo_distributions(results, analysis, filename="monte_carlo_distributions.png"):
     fig, axes = plt.subplots(2, 2, figsize=(13, 11))
+    _darken_figure(fig, axes)
 
     f1_final = results['f1_cumulative'][:, -1]
     f2_final = results['f2_cumulative'][:, -1]
@@ -404,8 +435,8 @@ def plot_monte_carlo_distributions(results, analysis, filename="monte_carlo_dist
     mean1 = analysis['f1_cumulative']['mean'][-1]
     ci_l1 = analysis['f1_cumulative']['ci_lower'][-1]
     ci_u1 = analysis['f1_cumulative']['ci_upper'][-1]
-    ax.axvline(mean1, color="black", linestyle="--", linewidth=1.5, label="Mean")
-    ax.axvspan(ci_l1, ci_u1, color=F1_COLOR, alpha=0.2, label="95% CI")
+    ax.axvline(mean1, color=TITLE_COLOR, linestyle="--", linewidth=1.5, label="Mean")
+    ax.axvspan(ci_l1, ci_u1, color=F1_COLOR, alpha=0.15, label="95% CI")
     ax.set_xlabel("Final cumulative fitness")
     ax.set_ylabel("Count")
     ax.set_title(f"Distribution of F1 Final Fitness\n(N={results['n_simulations']})")
@@ -417,8 +448,8 @@ def plot_monte_carlo_distributions(results, analysis, filename="monte_carlo_dist
     mean2 = analysis['f2_cumulative']['mean'][-1]
     ci_l2 = analysis['f2_cumulative']['ci_lower'][-1]
     ci_u2 = analysis['f2_cumulative']['ci_upper'][-1]
-    ax.axvline(mean2, color="black", linestyle="--", linewidth=1.5, label="Mean")
-    ax.axvspan(ci_l2, ci_u2, color=F2_COLOR, alpha=0.2, label="95% CI")
+    ax.axvline(mean2, color=TITLE_COLOR, linestyle="--", linewidth=1.5, label="Mean")
+    ax.axvspan(ci_l2, ci_u2, color=F2_COLOR, alpha=0.15, label="95% CI")
     ax.set_xlabel("Final cumulative fitness")
     ax.set_ylabel("Count")
     ax.set_title(f"Distribution of F2 Final Fitness\n(N={results['n_simulations']})")
@@ -436,7 +467,7 @@ def plot_monte_carlo_distributions(results, analysis, filename="monte_carlo_dist
     ax.scatter(f1_final[tie_mask], f2_final[tie_mask], color="gray",
                alpha=0.6, s=15, label="Tie")
     lims = [min(f1_final.min(), f2_final.min()), max(f1_final.max(), f2_final.max())]
-    ax.plot(lims, lims, color="black", linestyle="--", linewidth=1, alpha=0.5)
+    ax.plot(lims, lims, color=TICK_COLOR, linestyle="--", linewidth=1, alpha=0.5)
     ax.set_xlabel("F1 final fitness")
     ax.set_ylabel("F2 final fitness")
     ax.set_title(f"F1 vs F2 Final Fitness\n(N={results['n_simulations']} simulations)")

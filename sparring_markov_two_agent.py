@@ -48,6 +48,35 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+# ── Dark mode theme ──────────────────────────────────────────
+BG_COLOR = '#1a1a19'
+GRID_COLOR = '#2c2c2a'
+TICK_COLOR = '#c3c2b7'
+TITLE_COLOR = '#ffffff'
+
+plt.style.use('dark_background')
+plt.rcParams.update({
+    'figure.facecolor': BG_COLOR,
+    'axes.facecolor': BG_COLOR,
+    'savefig.facecolor': BG_COLOR,
+    'axes.edgecolor': GRID_COLOR,
+    'axes.labelcolor': TICK_COLOR,
+    'axes.titlecolor': TITLE_COLOR,
+    'xtick.color': TICK_COLOR,
+    'ytick.color': TICK_COLOR,
+    'text.color': TITLE_COLOR,
+    'axes.grid': True,
+    'grid.color': GRID_COLOR,
+    'grid.alpha': 0.5,
+})
+
+
+def _darken_figure(fig, axes):
+    fig.patch.set_facecolor(BG_COLOR)
+    for ax in np.atleast_1d(axes).flat:
+        ax.set_facecolor(BG_COLOR)
+
+
 STATES = ["Attack", "Defend", "Disengage", "Feint"]
 N_STATES = len(STATES)
 ATTACK, DEFEND, DISENGAGE, FEINT = range(N_STATES)
@@ -86,8 +115,8 @@ N_STEPS = 500
 START_STATE = "Disengage"
 SELECTION_STRENGTHS = [0.0, 1.0, 2.0]
 
-F1_COLOR = "steelblue"
-F2_COLOR = "coral"
+F1_COLOR = "#7F77DD"
+F2_COLOR = "#E8593C"
 
 # Adaptation memory: how much each fighter has been repeatedly exposed to a
 # specific opponent tell, decaying each step it isn't reinforced.
@@ -783,6 +812,7 @@ def plot_memory_grid(f2_exposure_history, f1_exposure_history,
                       f1_defend_prob_history, f2_defend_prob_history,
                       filename="sparring_memory.png"):
     fig, axes = plt.subplots(3, 2, figsize=(13, 15))
+    _darken_figure(fig, axes)
     steps = np.arange(len(f2_exposure_history))
 
     ax = axes[0, 0]
@@ -911,6 +941,7 @@ def plot_fitness(f1_fitness_history, f2_fitness_history,
                   f1_cumulative_fitness, f2_cumulative_fitness,
                   filename="sparring_fitness.png"):
     fig, axes = plt.subplots(2, 1, figsize=(11, 11))
+    _darken_figure(fig, axes)
     steps = np.arange(len(f1_fitness_history))
 
     ax = axes[0]
@@ -948,6 +979,7 @@ def plot_fitness(f1_fitness_history, f2_fitness_history,
 
 def plot_marginals_grid(results, filename="sparring_egt.png"):
     fig, axes = plt.subplots(3, 2, figsize=(11, 13))
+    _darken_figure(fig, axes)
     x = np.arange(N_STATES)
 
     for row, strength in enumerate(SELECTION_STRENGTHS):
@@ -976,6 +1008,7 @@ def plot_marginals_grid(results, filename="sparring_egt.png"):
 
 def plot_joint_heatmaps_grid(results, filename="sparring_egt_heatmaps.png"):
     fig, axes = plt.subplots(1, 3, figsize=(17, 5.5))
+    _darken_figure(fig, axes)
     vmax = max(results[s]["joint"].max() for s in SELECTION_STRENGTHS)
 
     for ax, strength in zip(axes, SELECTION_STRENGTHS):

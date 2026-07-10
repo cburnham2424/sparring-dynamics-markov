@@ -79,7 +79,7 @@ F2_PAYOFF_DEFAULT = np.array([
 ])
 
 # ── Visualization ────────────────────────────────────────────
-F1_COLOR = 'steelblue'
-F2_COLOR = 'coral'
+F1_COLOR = '#7F77DD'
+F2_COLOR = '#E8593C'
 FIGURE_DPI = 150
 OUTPUT_DIR = 'outputs'

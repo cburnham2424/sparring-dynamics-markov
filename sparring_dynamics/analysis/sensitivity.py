@@ -32,6 +32,34 @@ from sparring_dynamics.analysis.monte_carlo import (
     run_monte_carlo, analyze_monte_carlo
 )
 
+# ── Dark mode theme ──────────────────────────────────────────
+BG_COLOR = '#1a1a19'
+GRID_COLOR = '#2c2c2a'
+TICK_COLOR = '#c3c2b7'
+TITLE_COLOR = '#ffffff'
+
+plt.style.use('dark_background')
+plt.rcParams.update({
+    'figure.facecolor': BG_COLOR,
+    'axes.facecolor': BG_COLOR,
+    'savefig.facecolor': BG_COLOR,
+    'axes.edgecolor': GRID_COLOR,
+    'axes.labelcolor': TICK_COLOR,
+    'axes.titlecolor': TITLE_COLOR,
+    'xtick.color': TICK_COLOR,
+    'ytick.color': TICK_COLOR,
+    'text.color': TITLE_COLOR,
+    'axes.grid': True,
+    'grid.color': GRID_COLOR,
+    'grid.alpha': 0.5,
+})
+
+
+def _darken_figure(fig, axes):
+    fig.patch.set_facecolor(BG_COLOR)
+    for ax in np.atleast_1d(axes).flat:
+        ax.set_facecolor(BG_COLOR)
+
 
 # ---------------------------------------------------------------------------
 # SECTION 1 — Parameter grid definition
@@ -542,6 +570,7 @@ def _plot_1d_sweeps_overview(single_sweeps, filepath):
     """2x2 grid: mean fitness vs parameter value for all 4 params, with CI bands."""
     fig, axes = plt.subplots(2, 2, figsize=(14, 10),
                                constrained_layout=True)
+    _darken_figure(fig, axes)
     fig.suptitle('Sensitivity Analysis — Mean Final Fitness vs Parameter Value',
                   fontsize=13, fontweight='bold')
 
@@ -567,7 +596,7 @@ def _plot_1d_sweeps_overview(single_sweeps, filepath):
                  linewidth=2, markersize=5, label='Counter-Fighter')
 
         baseline = BASELINE_PARAMS[param]
-        ax.axvline(baseline, color='gray', linestyle='--',
+        ax.axvline(baseline, color=TICK_COLOR, linestyle='--',
                     linewidth=1, alpha=0.7, label=f'Baseline={baseline}')
 
         ax.set_xlabel(PARAM_LABELS[param], fontsize=9)
@@ -584,6 +613,7 @@ def _plot_1d_sweep_detail(results, param, filepath):
     """3-panel detail figure: mean fitness+CI, fitness difference+CI, win-rate stack."""
     fig, axes = plt.subplots(3, 1, figsize=(10, 12),
                                constrained_layout=True)
+    _darken_figure(fig, axes)
     fig.suptitle(
         f"Detailed Sensitivity — {PARAM_LABELS[param]}\n"
         f"{PARAM_TUMOR_PARALLEL[param]}",
@@ -608,7 +638,7 @@ def _plot_1d_sweep_detail(results, param, filepath):
              markersize=5, label='CJ (Fighter 1)')
     ax.plot(xs, f2_mean, 's-', color=F2_COLOR, linewidth=2,
              markersize=5, label='Counter-Fighter (Fighter 2)')
-    ax.axvline(BASELINE_PARAMS[param], color='gray',
+    ax.axvline(BASELINE_PARAMS[param], color=TICK_COLOR,
                 linestyle='--', linewidth=1, label='Baseline')
     ax.set_ylabel('Mean Final Fitness', fontsize=9)
     ax.set_title('Mean Final Cumulative Fitness ± 95% CI', fontsize=9)
@@ -621,8 +651,8 @@ def _plot_1d_sweep_detail(results, param, filepath):
 
     ax.fill_between(xs, diff_ci_l, diff_ci_u, alpha=0.2, color='purple')
     ax.plot(xs, diff, 'o-', color='purple', linewidth=2, markersize=5)
-    ax.axhline(0, color='black', linewidth=0.8, linestyle='--')
-    ax.axvline(BASELINE_PARAMS[param], color='gray',
+    ax.axhline(0, color=TICK_COLOR, linewidth=0.8, linestyle='--')
+    ax.axvline(BASELINE_PARAMS[param], color=TICK_COLOR,
                 linestyle='--', linewidth=1)
     ax.fill_between(xs, diff, 0,
                      where=(diff > 0), alpha=0.15, color=F1_COLOR,
@@ -639,7 +669,7 @@ def _plot_1d_sweep_detail(results, param, filepath):
                   labels=['F1 wins', 'Ties', 'F2 wins'],
                   colors=[F1_COLOR, 'lightgray', F2_COLOR],
                   alpha=0.8)
-    ax.axvline(BASELINE_PARAMS[param], color='gray',
+    ax.axvline(BASELINE_PARAMS[param], color=TICK_COLOR,
                 linestyle='--', linewidth=1)
     ax.set_ylabel('Fraction of simulations', fontsize=9)
     ax.set_xlabel(PARAM_LABELS[param], fontsize=9)
@@ -654,6 +684,7 @@ def _plot_1d_sweep_detail(results, param, filepath):
 def _plot_win_rate_curves(single_sweeps, filepath):
     """F1 win rate vs normalized parameter value, all 4 params on one axes."""
     fig, ax = plt.subplots(figsize=(10, 6), constrained_layout=True)
+    _darken_figure(fig, ax)
 
     colors_params = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728']
 
@@ -668,7 +699,7 @@ def _plot_win_rate_curves(single_sweeps, filepath):
         ax.plot(xs_norm, f1_win, 'o-', color=color,
                  linewidth=2, markersize=5, label=PARAM_LABELS[param])
 
-    ax.axhline(0.5, color='black', linestyle='--',
+    ax.axhline(0.5, color=TICK_COLOR, linestyle='--',
                 linewidth=0.8, alpha=0.5, label='50% (equal odds)')
     ax.set_xlabel('Normalized parameter value (0=min, 1=max)', fontsize=10)
     ax.set_ylabel('F1 (CJ) Win Rate', fontsize=10)
@@ -691,6 +722,7 @@ def _plot_ci_overlap_summary(single_sweeps, filepath):
     """
     fig, axes = plt.subplots(2, 2, figsize=(12, 8),
                                constrained_layout=True)
+    _darken_figure(fig, axes)
     fig.suptitle(
         'CI Overlap Map — Green: Co-existence | Red: Dominance\n'
         'Evolutionary stable co-existence vs dominant strategy regions',
@@ -709,14 +741,14 @@ def _plot_ci_overlap_summary(single_sweeps, filepath):
                     zorder=3, label='F1 mean fitness', marker='o')
         ax.scatter(xs, f2_mean, c=colors, s=80,
                     zorder=3, label='F2 mean fitness', marker='s',
-                    edgecolors='black', linewidth=0.5)
+                    edgecolors=TITLE_COLOR, linewidth=0.5)
 
         ax.plot(xs, f1_mean, '-', color=F1_COLOR,
                  linewidth=1, alpha=0.4)
         ax.plot(xs, f2_mean, '-', color=F2_COLOR,
                  linewidth=1, alpha=0.4)
 
-        ax.axvline(BASELINE_PARAMS[param], color='gray',
+        ax.axvline(BASELINE_PARAMS[param], color=TICK_COLOR,
                     linestyle='--', linewidth=1)
 
         green_patch = mpatches.Patch(
@@ -748,6 +780,7 @@ def _plot_2d_heatmaps(grid, filepath):
 
     fig, axes = plt.subplots(2, 2, figsize=(14, 11),
                                constrained_layout=True)
+    _darken_figure(fig, axes)
     fig.suptitle(
         f"Two-Parameter Sensitivity Heatmap\n"
         f"{PARAM_LABELS[p1_name]} × {PARAM_LABELS[p2_name]}",
@@ -811,6 +844,7 @@ def _plot_robustness_summary(single_sweeps, filepath):
     """
     fig, axes = plt.subplots(1, 2, figsize=(14, 6),
                                constrained_layout=True)
+    _darken_figure(fig, axes)
     fig.suptitle('Parameter Robustness Analysis',
                   fontsize=12, fontweight='bold')
 
@@ -824,7 +858,11 @@ def _plot_robustness_summary(single_sweeps, filepath):
         for p in params
     ]
     bp = ax.boxplot(f1_data, vert=False, patch_artist=True,
-                     notch=True, tick_labels=labels)
+                     notch=True, tick_labels=labels,
+                     boxprops=dict(color=TICK_COLOR),
+                     whiskerprops=dict(color=TICK_COLOR),
+                     capprops=dict(color=TICK_COLOR),
+                     medianprops=dict(color=TITLE_COLOR, linewidth=2))
     for patch in bp['boxes']:
         patch.set_facecolor(F1_COLOR)
         patch.set_alpha(0.7)
@@ -832,7 +870,7 @@ def _plot_robustness_summary(single_sweeps, filepath):
         np.mean([r['f1_mean_fitness']
                  for results in single_sweeps.values()
                  for r in results]),
-        color='navy', linestyle='--', linewidth=1,
+        color=TICK_COLOR, linestyle='--', linewidth=1,
         label='Grand mean F1 fitness'
     )
     ax.set_xlabel('F1 Mean Final Fitness', fontsize=10)

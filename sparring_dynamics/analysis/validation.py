@@ -17,6 +17,34 @@ from sparring_dynamics.config import (
     F1_COLOR, F2_COLOR, FIGURE_DPI, OUTPUT_DIR
 )
 
+# ── Dark mode theme ──────────────────────────────────────────
+BG_COLOR = '#1a1a19'
+GRID_COLOR = '#2c2c2a'
+TICK_COLOR = '#c3c2b7'
+TITLE_COLOR = '#ffffff'
+
+plt.style.use('dark_background')
+plt.rcParams.update({
+    'figure.facecolor': BG_COLOR,
+    'axes.facecolor': BG_COLOR,
+    'savefig.facecolor': BG_COLOR,
+    'axes.edgecolor': GRID_COLOR,
+    'axes.labelcolor': TICK_COLOR,
+    'axes.titlecolor': TITLE_COLOR,
+    'xtick.color': TICK_COLOR,
+    'ytick.color': TICK_COLOR,
+    'text.color': TITLE_COLOR,
+    'axes.grid': True,
+    'grid.color': GRID_COLOR,
+    'grid.alpha': 0.5,
+})
+
+
+def _darken_figure(fig, axes):
+    fig.patch.set_facecolor(BG_COLOR)
+    for ax in np.atleast_1d(axes).flat:
+        ax.set_facecolor(BG_COLOR)
+
 
 # ---------------------------------------------------------------------------
 # SECTION 1 — Observed data structures
@@ -562,6 +590,7 @@ def plot_validation_report(report, filepath=None):
         figsize=(16, 14),
         constrained_layout=True
     )
+    fig.patch.set_facecolor(BG_COLOR)
     fig.suptitle(
         f"Validation: {report.fighter_name} vs {report.opponent_name} "
         f"— {quality} (score={score:.2f})",
@@ -731,6 +760,7 @@ def plot_multi_opponent_comparison(multi_validation, filepath=None):
 
     fig, axes = plt.subplots(2, 3, figsize=(16, 10),
                                constrained_layout=True)
+    _darken_figure(fig, axes)
     fig.suptitle(
         f"Multi-Opponent Validation — "
         f"{reports[0].fighter_name}",

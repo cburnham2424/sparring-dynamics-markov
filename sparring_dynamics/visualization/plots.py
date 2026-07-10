@@ -11,6 +11,36 @@ from sparring_dynamics.config import (
     STATES, OUTPUT_DIR, FIGURE_DPI, F1_COLOR, F2_COLOR
 )
 
+# ── Dark mode theme ──────────────────────────────────────────
+BG_COLOR = '#1a1a19'
+GRID_COLOR = '#2c2c2a'
+TICK_COLOR = '#c3c2b7'
+TITLE_COLOR = '#ffffff'
+
+plt.style.use('dark_background')
+plt.rcParams.update({
+    'figure.facecolor': BG_COLOR,
+    'axes.facecolor': BG_COLOR,
+    'savefig.facecolor': BG_COLOR,
+    'axes.edgecolor': GRID_COLOR,
+    'axes.labelcolor': TICK_COLOR,
+    'axes.titlecolor': TITLE_COLOR,
+    'xtick.color': TICK_COLOR,
+    'ytick.color': TICK_COLOR,
+    'text.color': TITLE_COLOR,
+    'axes.grid': True,
+    'grid.color': GRID_COLOR,
+    'grid.alpha': 0.5,
+})
+
+
+def _darken_figure(fig, axes):
+    """Explicitly set fig/axes facecolors (belt-and-suspenders on top
+    of the rcParams above, in case a caller overrides them later)."""
+    fig.patch.set_facecolor(BG_COLOR)
+    for ax in np.atleast_1d(axes).flat:
+        ax.set_facecolor(BG_COLOR)
+
 
 def ensure_output_dir():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -27,6 +57,7 @@ def plot_monte_carlo_summary(results, analysis, filepath=None):
         filepath = os.path.join(OUTPUT_DIR, 'monte_carlo_summary.png')
 
     fig, axes = plt.subplots(3, 2, figsize=(14, 16))
+    _darken_figure(fig, axes)
     steps = np.arange(results['n_steps'])
 
     # Top row — cumulative fitness with CI bands
@@ -37,7 +68,7 @@ def plot_monte_carlo_summary(results, analysis, filepath=None):
         ax = axes[0, col]
         s  = analysis[key]
         ax.fill_between(steps, s['ci_lower'], s['ci_upper'],
-                         alpha=0.2, color=color, label='95% CI')
+                         alpha=0.15, color=color, label='95% CI')
         ax.fill_between(steps, s['q25'], s['q75'],
                          alpha=0.15, color=color, label='IQR')
         for i in range(min(5, results['n_simulations'])):
@@ -58,9 +89,9 @@ def plot_monte_carlo_summary(results, analysis, filepath=None):
         ax = axes[1, col]
         s  = analysis[key]
         ax.fill_between(steps, s['ci_lower'], s['ci_upper'],
-                         alpha=0.2, color=color)
-        ax.plot(steps, s['mean'], color=color, linewidth=1.5)
-        ax.axhline(0.5, color='gray', linestyle='--',
+                         alpha=0.15, color=color)
+        ax.plot(steps, s['mean'], color=color, linewidth=2)
+        ax.axhline(0.5, color=TICK_COLOR, linestyle='--',
                     linewidth=0.8, alpha=0.6)
         ax.set_title(f"{label}\nPer-Step Payoff (Rolling {window}-step avg)")
         ax.set_xlabel('Exchange step')
@@ -97,11 +128,11 @@ def plot_monte_carlo_summary(results, analysis, filepath=None):
     ]:
         s = analysis[key]
         ax.fill_between(steps, s['ci_lower'], s['ci_upper'],
-                         alpha=0.2, color=color)
+                         alpha=0.15, color=color)
         ax.plot(steps, s['mean'], color=color,
-                linewidth=1.5, label=label)
+                linewidth=2, label=label)
     for y in [0.25, 0.5, 0.75]:
-        ax.axhline(y, color='gray', linestyle='--',
+        ax.axhline(y, color=TICK_COLOR, linestyle='--',
                     linewidth=0.6, alpha=0.5)
     ax.set_title('Adaptation Weight λ (Mean ± 95% CI)')
     ax.set_xlabel('Exchange step')
@@ -127,6 +158,7 @@ def plot_distributions(results, analysis, filepath=None):
         filepath = os.path.join(OUTPUT_DIR, 'monte_carlo_distributions.png')
 
     fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+    _darken_figure(fig, axes)
 
     f1_finals = results['f1_cumulative'][:, -1]
     f2_finals = results['f2_cumulative'][:, -1]
@@ -136,7 +168,7 @@ def plot_distributions(results, analysis, filepath=None):
     # F1 histogram
     ax = axes[0, 0]
     ax.hist(f1_finals, bins=30, color=F1_COLOR, alpha=0.7, edgecolor='white')
-    ax.axvline(f1_finals.mean(), color='navy', linestyle='--', linewidth=1.5)
+    ax.axvline(f1_finals.mean(), color=TITLE_COLOR, linestyle='--', linewidth=1.5)
     ci = analysis['f1_cumulative']
     ax.axvspan(ci['ci_lower'][-1], ci['ci_upper'][-1],
                 alpha=0.15, color=F1_COLOR)
@@ -146,7 +178,7 @@ def plot_distributions(results, analysis, filepath=None):
     # F2 histogram
     ax = axes[0, 1]
     ax.hist(f2_finals, bins=30, color=F2_COLOR, alpha=0.7, edgecolor='white')
-    ax.axvline(f2_finals.mean(), color='darkred', linestyle='--', linewidth=1.5)
+    ax.axvline(f2_finals.mean(), color=TITLE_COLOR, linestyle='--', linewidth=1.5)
     ci = analysis['f2_cumulative']
     ax.axvspan(ci['ci_lower'][-1], ci['ci_upper'][-1],
                 alpha=0.15, color=F2_COLOR)
@@ -168,7 +200,7 @@ def plot_distributions(results, analysis, filepath=None):
 
     lim = [min(f1_finals.min(), f2_finals.min()) * 0.98,
             max(f1_finals.max(), f2_finals.max()) * 1.02]
-    ax.plot(lim, lim, 'k--', linewidth=0.8, alpha=0.5)
+    ax.plot(lim, lim, '--', color=TICK_COLOR, linewidth=0.8, alpha=0.5)
     ax.set_xlim(lim); ax.set_ylim(lim)
     ax.set_xlabel('F1 final fitness')
     ax.set_ylabel('F2 final fitness')
