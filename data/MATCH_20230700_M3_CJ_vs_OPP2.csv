@@ -1,0 +1,14 @@
+match_id,round,timestamp_s,exchange_id,fighter_id,opponent_id,fighter_state,opponent_state,winner,f1_points,f2_points,technique,body_target,penalty,notes
+MATCH_20230700_M3,1,0.0,1,CJ,OPP2,Attack,Defend,None,0,0,,,,Opening engagement opponent stumbles no score confirmed [boundary confidence: Low]
+MATCH_20230700_M3,1,23.0,2,CJ,OPP2,Feint,Defend,None,0,0,,,,"Extended probing window knee chambers and pump kicks consolidated as one Feint row due to 3s frame rate limitation [boundary confidence: Low] [CONSOLIDATED multi-event Feint window, frame-rate limited]"
+MATCH_20230700_M3,1,58.0,3,CJ,OPP2,Defend,Attack,F2,0,1,,,,I go down to knee opponent technique lands [boundary confidence: Medium]
+MATCH_20230700_M3,1,67.0,4,CJ,OPP2,Disengage,Disengage,None,0,0,,,,Brief recovery reset [boundary confidence: Medium]
+MATCH_20230700_M3,1,70.0,5,CJ,OPP2,Defend,Attack,F2,0,1,,,,Second kneel opponent scores directly [boundary confidence: Medium]
+MATCH_20230700_M3,1,78.0,6,CJ,OPP2,Disengage,Disengage,None,0,0,,,,Extended recovery multiple stand kneel cycles reading as recovery not tactical reset [boundary confidence: Low]
+MATCH_20230700_M3,1,93.0,7,CJ,OPP2,Feint,Disengage,None,0,0,,,,"Heavy pumping and evading consolidated as one Feint row driving leaping motion possibly pump kick or aborted attack [boundary confidence: Low] [CONSOLIDATED multi-event Feint window, frame-rate limited]"
+MATCH_20230700_M3,1,116.0,8,CJ,OPP2,Attack,Defend,F1,2,0,,,,Fast direct head kick off the line no feint prefix clean Attack [boundary confidence: Medium]
+MATCH_20230700_M3,1,122.0,9,CJ,OPP2,Disengage,Disengage,None,0,0,,,,Reset after 2 point score [boundary confidence: Medium]
+MATCH_20230700_M3,1,136.0,10,CJ,OPP2,Feint,Defend,None,0,0,,,,"Pump kick sequence leading into scoring backfist consolidated as one row frame rate too coarse to count individual pumps [boundary confidence: Low] [CONSOLIDATED multi-event Feint window, frame-rate limited]"
+MATCH_20230700_M3,1,151.0,11,CJ,OPP2,Attack,Defend,F1,1,0,,,,Scoring backfist hand strike confirmed [boundary confidence: Medium]
+MATCH_20230700_M3,1,154.0,12,CJ,OPP2,Disengage,Defend,None,0,0,,,,Clear repositioning before final exchange [boundary confidence: Medium]
+MATCH_20230700_M3,1,160.0,13,CJ,OPP2,Attack,Defend,F1,2,0,,,,Final head kick referee confirms victory pose follows match ends 5-2 [boundary confidence: High]

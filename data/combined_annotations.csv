@@ -50,3 +50,16 @@ MATCH_20230700_M2,4,143.0,48,CJ,SAME_OPP,Disengage,Disengage,None,0,0,,,,Reset [
 MATCH_20230700_M2,4,150.0,49,CJ,SAME_OPP,Attack,Defend,None,0,0,,,,Contested unscored exchange long window [boundary confidence: Low] [opponent identity confirmed by fighter as same person as MATCH_20260613_M1's opponent; not confirmable from footage alone] (source exchange_id: 17)
 MATCH_20230700_M2,4,167.0,50,CJ,SAME_OPP,Disengage,Disengage,None,0,0,,,,Reset before final exchange [boundary confidence: Medium] [opponent identity confirmed by fighter as same person as MATCH_20260613_M1's opponent; not confirmable from footage alone] (source exchange_id: 18)
 MATCH_20230700_M2,4,172.0,51,CJ,SAME_OPP,Attack,Defend,F1,1,0,,,,Final scoring exchange match ends fighters bow and shake hands after [boundary confidence: Medium] [opponent identity confirmed by fighter as same person as MATCH_20260613_M1's opponent; not confirmable from footage alone] (source exchange_id: 19)
+MATCH_20230700_M3,5,0.0,52,CJ,OPP2,Attack,Defend,None,0,0,,,,Opening engagement opponent stumbles no score confirmed [boundary confidence: Low]
+MATCH_20230700_M3,5,23.0,53,CJ,OPP2,Feint,Defend,None,0,0,,,,"Extended probing window knee chambers and pump kicks consolidated as one Feint row due to 3s frame rate limitation [boundary confidence: Low] [CONSOLIDATED multi-event Feint window, frame-rate limited]"
+MATCH_20230700_M3,5,58.0,54,CJ,OPP2,Defend,Attack,F2,0,1,,,,I go down to knee opponent technique lands [boundary confidence: Medium]
+MATCH_20230700_M3,5,67.0,55,CJ,OPP2,Disengage,Disengage,None,0,0,,,,Brief recovery reset [boundary confidence: Medium]
+MATCH_20230700_M3,5,70.0,56,CJ,OPP2,Defend,Attack,F2,0,1,,,,Second kneel opponent scores directly [boundary confidence: Medium]
+MATCH_20230700_M3,5,78.0,57,CJ,OPP2,Disengage,Disengage,None,0,0,,,,Extended recovery multiple stand kneel cycles reading as recovery not tactical reset [boundary confidence: Low]
+MATCH_20230700_M3,5,93.0,58,CJ,OPP2,Feint,Disengage,None,0,0,,,,"Heavy pumping and evading consolidated as one Feint row driving leaping motion possibly pump kick or aborted attack [boundary confidence: Low] [CONSOLIDATED multi-event Feint window, frame-rate limited]"
+MATCH_20230700_M3,5,116.0,59,CJ,OPP2,Attack,Defend,F1,2,0,,,,Fast direct head kick off the line no feint prefix clean Attack [boundary confidence: Medium]
+MATCH_20230700_M3,5,122.0,60,CJ,OPP2,Disengage,Disengage,None,0,0,,,,Reset after 2 point score [boundary confidence: Medium]
+MATCH_20230700_M3,5,136.0,61,CJ,OPP2,Feint,Defend,None,0,0,,,,"Pump kick sequence leading into scoring backfist consolidated as one row frame rate too coarse to count individual pumps [boundary confidence: Low] [CONSOLIDATED multi-event Feint window, frame-rate limited]"
+MATCH_20230700_M3,5,151.0,62,CJ,OPP2,Attack,Defend,F1,1,0,,,,Scoring backfist hand strike confirmed [boundary confidence: Medium]
+MATCH_20230700_M3,5,154.0,63,CJ,OPP2,Disengage,Defend,None,0,0,,,,Clear repositioning before final exchange [boundary confidence: Medium]
+MATCH_20230700_M3,5,160.0,64,CJ,OPP2,Attack,Defend,F1,2,0,,,,Final head kick referee confirms victory pose follows match ends 5-2 [boundary confidence: High]
