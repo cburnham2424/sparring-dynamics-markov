@@ -5,8 +5,8 @@ Uses maximum likelihood estimation with Laplace smoothing.
 import numpy as np
 
 from sparring_dynamics.config import (
-    STATE_INDEX, N_STATES,
-    DEFAULT_TRANSITION_ALPHA,
+    STATE_INDEX, STATES, N_STATES,
+    DEFAULT_TRANSITION_ALPHA, DEFAULT_MIN_OBS,
     F1_BASE_DEFAULT, F2_BASE_DEFAULT
 )
 from sparring_dynamics.data.validator import validate_stochastic_matrix
@@ -79,3 +79,48 @@ def estimate_both_transition_matrices(f1_sequences, f2_sequences,
         'f2_estimated': f2_estimated,
         'alpha':        alpha
     }
+
+
+def create_hybrid_transition_matrix(learned_matrix, counts, default_matrix,
+                                     min_obs=DEFAULT_MIN_OBS):
+    """
+    Row-level hybrid between a learned transition matrix and a
+    hand-crafted default: for each FROM-state (row), use the learned
+    row if that state was left at least min_obs times in the observed
+    data, otherwise fall back to the default row.
+
+    Rows, not individual cells, are the right unit here. A transition
+    matrix row is one probability distribution — its cells are jointly
+    normalized, not independently estimated — so the only meaningful
+    "enough data" question is "how many times did we ever leave this
+    state," i.e. counts[row].sum(). Splicing individual cells within a
+    row from two different sources would still happen to sum to 1 (each
+    source row already does), but the result would silently blend two
+    unrelated processes cell-by-cell inside what is supposed to be a
+    single coherent conditional distribution — not statistically
+    meaningful. Substituting whole rows keeps every row a genuine,
+    single-source probability distribution.
+
+    Parameters:
+    learned_matrix: row-stochastic matrix from estimate_transition_matrix
+    counts:         raw (pre-smoothing) count matrix from the same call
+                    (None if no sequences were observed at all)
+    default_matrix: hand-crafted fallback matrix
+    min_obs:        minimum number of observed departures from a state
+                    required to trust its learned row
+
+    Returns (hybrid_matrix, row_sources) where row_sources is a list of
+    'learned'/'default' per row, indicating which source was used.
+    """
+    hybrid = default_matrix.copy()
+    row_sources = ['default'] * N_STATES
+
+    if counts is not None:
+        row_totals = counts.sum(axis=1)
+        for i in range(N_STATES):
+            if row_totals[i] >= min_obs:
+                hybrid[i] = learned_matrix[i]
+                row_sources[i] = 'learned'
+
+    validate_stochastic_matrix(hybrid, "Hybrid transition matrix")
+    return hybrid, row_sources

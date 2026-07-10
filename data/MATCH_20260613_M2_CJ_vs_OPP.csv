@@ -1,0 +1,10 @@
+match_id,round,timestamp_s,exchange_id,fighter_id,opponent_id,fighter_state,opponent_state,winner,f1_points,f2_points,technique,body_target,penalty,notes
+MATCH_20260613_M2,1,7.0,1,CJ,OPP,Attack,Defend,F1,1,0,,,,"Press forward through window, opponent displaced"
+MATCH_20260613_M2,1,25.0,2,CJ,OPP,Defend,Attack,F2,0,2,,,,Opponent scoring technique around 0:36
+MATCH_20260613_M2,1,54.0,3,CJ,OPP,Attack,Defend,F1,1,0,,,,"Close range clash, advancing fighter"
+MATCH_20260613_M2,1,60.0,4,CJ,OPP,Attack,Defend,F1,1,0,,,,"Forward action at 1:03, referee gestures at 1:07"
+MATCH_20260613_M2,1,72.0,5,CJ,OPP,Attack,Defend,F1,1,0,,,,"Brief engagement, state follows official outcome"
+MATCH_20260613_M2,1,76.0,6,CJ,OPP,Attack,Defend,F1,1,0,,,,Advance and land contact at 1:23
+MATCH_20260613_M2,1,89.0,7,CJ,OPP,Attack,Defend,None,0,0,,,,"Technique blocked, unsuccessful attack"
+MATCH_20260613_M2,1,98.0,8,CJ,OPP,Attack,Defend,F1,1,0,,,,"Close range, referee enters quickly"
+MATCH_20260613_M2,1,112.0,9,CJ,OPP,Attack,Defend,F1,1,0,,,,"Final exchange, arm raised in victory"

@@ -98,3 +98,40 @@ def estimate_payoff_matrices(exchanges,
         'alpha':        alpha,
         'min_obs':      min_obs
     }
+
+
+def create_hybrid_payoff_matrix(learned_matrix, totals, default_matrix,
+                                 min_obs=DEFAULT_MIN_OBS):
+    """
+    Cell-level hybrid between a learned payoff matrix and a
+    hand-crafted default: for each (fighter_state, opponent_state)
+    cell, use the learned value if that state pair was observed at
+    least min_obs times, otherwise fall back to the default cell.
+
+    Unlike a transition matrix row, a payoff cell is not part of a
+    normalized distribution — there is no row-sum-to-1 constraint
+    tying cells together — so each cell is an independent point
+    estimate and can be substituted on its own without breaking any
+    invariant of its neighbors.
+
+    Parameters:
+    learned_matrix: payoff matrix from estimate_payoff_matrices
+                     (values in [0, 1])
+    totals:          observation-count matrix for the same exchanges
+                     (None if no exchanges were observed at all)
+    default_matrix:  hand-crafted fallback matrix
+    min_obs:         minimum observations of a state pair required to
+                     trust its learned cell
+
+    Returns (hybrid_matrix, mask) where mask is a boolean (N_STATES,
+    N_STATES) array, True where the learned cell was used.
+    """
+    hybrid = default_matrix.copy()
+    mask = np.zeros((N_STATES, N_STATES), dtype=bool)
+
+    if totals is not None:
+        mask = totals >= min_obs
+        hybrid = np.where(mask, learned_matrix, default_matrix)
+
+    validate_payoff_matrix(hybrid, "Hybrid payoff matrix")
+    return hybrid, mask
