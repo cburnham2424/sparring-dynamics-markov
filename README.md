@@ -15,7 +15,7 @@ The model combines learned transition matrices, payoff estimation, adaptive memo
 ```bash
 git clone https://github.com/cburnham2424/sparring-dynamics-markov.git
 cd sparring-dynamics-markov
-pip install numpy pandas matplotlib scipy pytest
+pip install -r requirements.txt
 ```
 
 ### Run the full pipeline (uses hand-crafted defaults)
