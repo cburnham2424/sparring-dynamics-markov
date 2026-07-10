@@ -1,0 +1,24 @@
+match_id,round,timestamp_s,exchange_id,fighter_id,opponent_id,fighter_state,opponent_state,winner,f1_points,f2_points,technique,body_target,penalty,notes
+MATCH_20260613_M1,1,10.0,1,CJ,OPP,Defend,Attack,None,0,0,,,,Opponent drives forward with kicking technique [boundary confidence: Medium]
+MATCH_20260613_M1,1,20.0,2,CJ,OPP,Attack,Defend,F1,1,0,,,,Brief engagement pressing forward [boundary confidence: Medium]
+MATCH_20260613_M1,1,26.0,3,CJ,OPP,Attack,Defend,F1,1,0,,,,"Fighters reset then clash, referee re-enters [boundary confidence: Medium]"
+MATCH_20260613_M1,1,36.0,4,CJ,OPP,Disengage,Disengage,None,0,0,,,,Probing reset exchange no scoring attempt [boundary confidence: Low]
+MATCH_20260613_M1,1,41.0,5,CJ,OPP,Attack,Attack,None,0,0,,,,Mutual exchange both land kicks in succession [boundary confidence: Medium]
+MATCH_20260613_M1,1,54.0,6,CJ,OPP,Attack,Defend,F1,1,0,,,,Clash opponent absorbing contact [boundary confidence: Medium]
+MATCH_20260613_M1,1,64.0,7,CJ,OPP,Disengage,Disengage,None,0,0,,,,Low action window referee gesture at 1:09 [boundary confidence: Low]
+MATCH_20260613_M1,1,69.0,8,CJ,OPP,Attack,Defend,F1,1,0,,,,Extended buildup then clear contact at 1:22 [boundary confidence: Medium]
+MATCH_20260613_M1,1,84.0,9,CJ,OPP,Attack,Defend,None,0,0,,,,Technique blocked absorbed not cleanly landed [boundary confidence: Medium]
+MATCH_20260613_M1,1,94.0,10,CJ,OPP,Defend,Attack,F2,0,1,,,,Visible contact opponent technique landing [boundary confidence: Medium]
+MATCH_20260613_M1,1,107.0,11,CJ,OPP,Defend,Attack,F2,0,1,,,,Adjusting gear after absorbing contact [boundary confidence: Low]
+MATCH_20260613_M1,1,115.0,12,CJ,OPP,Attack,Defend,None,0,0,,,,Technique not cleanly scored extended reset [boundary confidence: Medium]
+MATCH_20260613_M1,1,128.0,13,CJ,OPP,Defend,Attack,F2,0,1,,,,Roles inferred from official outcome [boundary confidence: Low]
+MATCH_20260613_M1,1,133.0,14,CJ,OPP,Attack,Defend,F1,2,0,,,,Clear contact two point technique higher value [boundary confidence: Medium]
+MATCH_20260613_M2,2,7.0,15,CJ,OPP,Attack,Defend,F1,1,0,,,,"Press forward through window, opponent displaced"
+MATCH_20260613_M2,2,25.0,16,CJ,OPP,Defend,Attack,F2,0,2,,,,Opponent scoring technique around 0:36
+MATCH_20260613_M2,2,54.0,17,CJ,OPP,Attack,Defend,F1,1,0,,,,"Close range clash, advancing fighter"
+MATCH_20260613_M2,2,60.0,18,CJ,OPP,Attack,Defend,F1,1,0,,,,"Forward action at 1:03, referee gestures at 1:07"
+MATCH_20260613_M2,2,72.0,19,CJ,OPP,Attack,Defend,F1,1,0,,,,"Brief engagement, state follows official outcome"
+MATCH_20260613_M2,2,76.0,20,CJ,OPP,Attack,Defend,F1,1,0,,,,Advance and land contact at 1:23
+MATCH_20260613_M2,2,89.0,21,CJ,OPP,Attack,Defend,None,0,0,,,,"Technique blocked, unsuccessful attack"
+MATCH_20260613_M2,2,98.0,22,CJ,OPP,Attack,Defend,F1,1,0,,,,"Close range, referee enters quickly"
+MATCH_20260613_M2,2,112.0,23,CJ,OPP,Attack,Defend,F1,1,0,,,,"Final exchange, arm raised in victory"
