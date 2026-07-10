@@ -29,11 +29,13 @@ ANNOTATION_SCHEMA = {
     'round': {
         'type': int,
         'required': True,
-        'valid_values': [1, 2, 3],
         'description': (
             'Round number within the match. '
             'Standard WTF point sparring: 3 rounds of 2 minutes. '
-            'Golden point overtime rounds should be labeled 4, 5, etc.'
+            'Golden point overtime rounds should be labeled 4, 5, etc. '
+            '(open-ended — enforced by a numeric range check in '
+            'AnnotationValidator.validate_row, not a fixed enum, since '
+            'round is not a closed set of values).'
         ),
         'example': 1
     },
