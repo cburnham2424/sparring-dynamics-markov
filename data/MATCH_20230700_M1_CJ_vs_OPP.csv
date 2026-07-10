@@ -1,0 +1,9 @@
+match_id,round,timestamp_s,exchange_id,fighter_id,opponent_id,fighter_state,opponent_state,winner,f1_points,f2_points,technique,body_target,penalty,notes
+MATCH_20230700_M1,1,0.0,1,CJ,OPP,Attack,Defend,F1,2,0,,,,Fast opening jumping or spinning kick consistent with 2 point score [boundary confidence: Medium] (source exchange_id: 1)
+MATCH_20230700_M1,1,8.0,2,CJ,OPP,Disengage,Disengage,None,0,0,,,,Brief mutual reset to center after point confirmation no engagement [boundary confidence: Medium] (source exchange_id: 1b)
+MATCH_20230700_M1,1,13.0,3,CJ,OPP,Feint,Defend,F1,1,0,,,,"Short leg chamber probe visible before committed technique -- coded as Feint per pump kick definition, first empirical Feint observation in dataset [boundary confidence: Medium] (source exchange_id: 2)"
+MATCH_20230700_M1,1,45.0,4,CJ,OPP,Attack,Defend,None,0,0,,,,Resume after timeout brief re-engagement inconclusive blocked attempt [boundary confidence: Low] (source exchange_id: 3)
+MATCH_20230700_M1,1,53.0,5,CJ,OPP,Defend,Attack,F2,0,1,,,,Opponent kick lands with visible contact [boundary confidence: Medium] (source exchange_id: 4)
+MATCH_20230700_M1,1,63.0,6,CJ,OPP,Defend,Attack,F2,0,2,,,,Two finger gesture from referee consistent with head height or turning technique from opponent [boundary confidence: Medium] (source exchange_id: 5)
+MATCH_20230700_M1,1,78.0,7,CJ,OPP,Attack,Defend,F1,1,0,,,,I re-engage and clash confirmed point [boundary confidence: Medium] (source exchange_id: 6)
+MATCH_20230700_M1,1,89.0,8,CJ,OPP,Attack,Defend,F1,2,0,,,,Sustained forward pressure into clash referee raises hand decisively final exchange post match tail 1:40 to 1:54 is courtesy not tactical [boundary confidence: Low] (source exchange_id: 7)

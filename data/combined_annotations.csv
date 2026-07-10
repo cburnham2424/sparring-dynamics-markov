@@ -22,3 +22,11 @@ MATCH_20260613_M2,2,76.0,20,CJ,OPP,Attack,Defend,F1,1,0,,,,Advance and land cont
 MATCH_20260613_M2,2,89.0,21,CJ,OPP,Attack,Defend,None,0,0,,,,"Technique blocked, unsuccessful attack"
 MATCH_20260613_M2,2,98.0,22,CJ,OPP,Attack,Defend,F1,1,0,,,,"Close range, referee enters quickly"
 MATCH_20260613_M2,2,112.0,23,CJ,OPP,Attack,Defend,F1,1,0,,,,"Final exchange, arm raised in victory"
+MATCH_20230700_M1,3,0.0,24,CJ,OPP,Attack,Defend,F1,2,0,,,,Fast opening jumping or spinning kick consistent with 2 point score [boundary confidence: Medium] (source exchange_id: 1)
+MATCH_20230700_M1,3,8.0,25,CJ,OPP,Disengage,Disengage,None,0,0,,,,Brief mutual reset to center after point confirmation no engagement [boundary confidence: Medium] (source exchange_id: 1b)
+MATCH_20230700_M1,3,13.0,26,CJ,OPP,Feint,Defend,F1,1,0,,,,"Short leg chamber probe visible before committed technique -- coded as Feint per pump kick definition, first empirical Feint observation in dataset [boundary confidence: Medium] (source exchange_id: 2)"
+MATCH_20230700_M1,3,45.0,27,CJ,OPP,Attack,Defend,None,0,0,,,,Resume after timeout brief re-engagement inconclusive blocked attempt [boundary confidence: Low] (source exchange_id: 3)
+MATCH_20230700_M1,3,53.0,28,CJ,OPP,Defend,Attack,F2,0,1,,,,Opponent kick lands with visible contact [boundary confidence: Medium] (source exchange_id: 4)
+MATCH_20230700_M1,3,63.0,29,CJ,OPP,Defend,Attack,F2,0,2,,,,Two finger gesture from referee consistent with head height or turning technique from opponent [boundary confidence: Medium] (source exchange_id: 5)
+MATCH_20230700_M1,3,78.0,30,CJ,OPP,Attack,Defend,F1,1,0,,,,I re-engage and clash confirmed point [boundary confidence: Medium] (source exchange_id: 6)
+MATCH_20230700_M1,3,89.0,31,CJ,OPP,Attack,Defend,F1,2,0,,,,Sustained forward pressure into clash referee raises hand decisively final exchange post match tail 1:40 to 1:54 is courtesy not tactical [boundary confidence: Low] (source exchange_id: 7)
