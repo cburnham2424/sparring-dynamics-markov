@@ -19,13 +19,13 @@ End-to-end pipeline:
          ↓
     Print summary
 
-Usage:
-    python pipeline.py                          # uses annotation.csv
-    python pipeline.py --csv my_data.csv        # custom CSV path
-    python pipeline.py --template               # generate blank template
-    python pipeline.py --no-estimate             # skip estimation, use defaults
-    python pipeline.py --n-sims 100              # faster run for testing
-    python pipeline.py --seed 123                # set random seed
+Usage (via the thin CLI wrapper in scripts/):
+    python scripts/run_pipeline.py                      # uses annotation.csv
+    python scripts/run_pipeline.py --csv my_data.csv    # custom CSV path
+    python scripts/run_pipeline.py --template           # generate blank template
+    python scripts/run_pipeline.py --no-estimate         # skip estimation, use defaults
+    python scripts/run_pipeline.py --n-sims 100          # faster run for testing
+    python scripts/run_pipeline.py --seed 123            # set random seed
 
 Note on data formats: --csv points at an exchange-format annotation file
 (f1_state, f2_state, winner, f1_points, f2_points), which feeds payoff

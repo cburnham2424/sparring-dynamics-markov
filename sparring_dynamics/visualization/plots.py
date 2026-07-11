@@ -42,19 +42,22 @@ def _darken_figure(fig, axes):
         ax.set_facecolor(BG_COLOR)
 
 
+FIGURES_DIR = os.path.join(OUTPUT_DIR, 'figures')
+
+
 def ensure_output_dir():
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    os.makedirs(FIGURES_DIR, exist_ok=True)
 
 
 def plot_monte_carlo_summary(results, analysis, filepath=None):
     """
     3x2 grid: cumulative fitness bands, per-step payoff bands,
     state occupancy with error bars, lambda curves.
-    Saves to outputs/monte_carlo_summary.png by default.
+    Saves to outputs/figures/monte_carlo_summary.png by default.
     """
     ensure_output_dir()
     if filepath is None:
-        filepath = os.path.join(OUTPUT_DIR, 'monte_carlo_summary.png')
+        filepath = os.path.join(FIGURES_DIR, 'monte_carlo_summary.png')
 
     fig, axes = plt.subplots(3, 2, figsize=(14, 16))
     _darken_figure(fig, axes)
@@ -151,11 +154,11 @@ def plot_distributions(results, analysis, filepath=None):
     """
     2x2 distribution plots: F1 histogram, F2 histogram,
     F1 vs F2 scatter, final lambda distribution.
-    Saves to outputs/monte_carlo_distributions.png
+    Saves to outputs/figures/monte_carlo_distributions.png
     """
     ensure_output_dir()
     if filepath is None:
-        filepath = os.path.join(OUTPUT_DIR, 'monte_carlo_distributions.png')
+        filepath = os.path.join(FIGURES_DIR, 'monte_carlo_distributions.png')
 
     fig, axes = plt.subplots(2, 2, figsize=(12, 10))
     _darken_figure(fig, axes)

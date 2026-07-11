@@ -1,5 +1,6 @@
 """
-Monte Carlo experiment wrapper around sparring_markov_two_agent.simulate().
+Monte Carlo experiment wrapper around
+sparring_dynamics.models.markov_two_agent.simulate().
 
 This module adds a statistical layer on top of the existing single-run
 simulator without modifying its logic: run N independent realizations,
@@ -12,7 +13,7 @@ import matplotlib.pyplot as plt
 from scipy import stats
 import pandas as pd
 
-from sparring_markov_two_agent import (
+from sparring_dynamics.models.markov_two_agent import (
     simulate,
     F1_BASE, F2_BASE,
     F1_ADAPTATION_MATRIX, F2_ADAPTATION_MATRIX,

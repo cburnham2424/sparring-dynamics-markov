@@ -351,15 +351,25 @@ def run_full_sensitivity_analysis(n_simulations_1d=100,
                                    n_steps=DEFAULT_N_STEPS,
                                    random_seed=DEFAULT_RANDOM_SEED,
                                    output_dir=None,
+                                   figures_dir=None,
                                    verbose=True):
     """
     Run the complete sensitivity analysis: 1D sweeps for all 4
     parameters, 2D sweeps for all 6 parameter pairs, save results to
     JSON/CSV, generate all plots, print summary tables.
+
+    output_dir holds the JSON/CSV data files (default
+    outputs/simulations/sensitivity/); figures_dir holds the generated
+    PNG plots (default outputs/figures/), matching the project's
+    convention of keeping all images under one figures directory.
     """
     if output_dir is None:
-        output_dir = os.path.join(OUTPUT_DIR, 'sensitivity')
+        output_dir = os.path.join(OUTPUT_DIR, 'simulations', 'sensitivity')
     os.makedirs(output_dir, exist_ok=True)
+
+    if figures_dir is None:
+        figures_dir = os.path.join(OUTPUT_DIR, 'figures')
+    os.makedirs(figures_dir, exist_ok=True)
 
     start_time = time.time()
     all_results = {
@@ -424,7 +434,7 @@ def run_full_sensitivity_analysis(n_simulations_1d=100,
 
     # ── Generate all plots ────────────────────────────────────
     print(f"\nGenerating plots...")
-    plot_sensitivity_results(all_results, output_dir)
+    plot_sensitivity_results(all_results, figures_dir)
 
     # ── Print summary tables ──────────────────────────────────
     print_sensitivity_summary(all_results)
@@ -432,6 +442,7 @@ def run_full_sensitivity_analysis(n_simulations_1d=100,
     elapsed = time.time() - start_time
     print(f"\nFull sensitivity analysis complete in {elapsed:.1f}s")
     print(f"Results saved to: {output_dir}/")
+    print(f"Plots saved to: {figures_dir}/")
 
     return all_results
 

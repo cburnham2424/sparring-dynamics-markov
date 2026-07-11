@@ -575,12 +575,13 @@ def plot_validation_report(report, filepath=None):
     of transition-matrix heatmaps, occupancy/error bar charts, and a
     composite-score gauge.
     """
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    figures_dir = os.path.join(OUTPUT_DIR, 'figures')
+    os.makedirs(figures_dir, exist_ok=True)
     if filepath is None:
         safe_name = (f"{report.fighter_name}_vs_"
                      f"{report.opponent_name}").replace(' ', '_')
         filepath = os.path.join(
-            OUTPUT_DIR, f"validation_{safe_name}.png"
+            figures_dir, f"validation_{safe_name}.png"
         )
 
     score   = report.overall_score()
@@ -746,10 +747,11 @@ def plot_multi_opponent_comparison(multi_validation, filepath=None):
     multiple opponent matchups: 2x3 grid of per-metric bar charts plus
     a radar/spider chart of the error profile per opponent.
     """
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    figures_dir = os.path.join(OUTPUT_DIR, 'figures')
+    os.makedirs(figures_dir, exist_ok=True)
     if filepath is None:
         filepath = os.path.join(
-            OUTPUT_DIR, 'validation_multi_opponent.png'
+            figures_dir, 'validation_multi_opponent.png'
         )
 
     reports  = multi_validation.reports

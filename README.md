@@ -21,7 +21,7 @@ pip install -r requirements.txt
 ### Run the full pipeline (uses hand-crafted defaults)
 
 ```bash
-python pipeline.py --no-estimate --n-sims 50 --n-steps 200
+python scripts/run_pipeline.py --no-estimate --n-sims 50 --n-steps 200
 ```
 
 ### Run with real match annotation data
@@ -29,9 +29,9 @@ python pipeline.py --no-estimate --n-sims 50 --n-steps 200
 The `--csv` flag currently supports only the legacy
 `f1_state,f2_state,winner,f1_points,f2_points` schema; it does not yet
 parse the richer schema defined in `annotation_format.py` and used by
-`data/combined_annotations.csv` (see Data Status below). Until this
-integration is implemented, load the annotated dataset directly
-through the estimation API:
+`data/processed/combined_annotations.csv` (see Data Status below).
+Until this integration is implemented, load the annotated dataset
+directly through the estimation API:
 
 ```bash
 python3 <<'EOF'
@@ -52,7 +52,7 @@ from sparring_dynamics.config import (
     F1_PAYOFF_DEFAULT, F2_PAYOFF_DEFAULT,
 )
 
-annotations, _ = load_annotation_csv('data/combined_annotations.csv', strict=False)
+annotations, _ = load_annotation_csv('data/processed/combined_annotations.csv', strict=False)
 exchanges = annotations_to_exchanges(annotations)
 f1_seqs, f2_seqs = annotations_to_sequences(annotations)
 
@@ -77,19 +77,25 @@ EOF
 ### Generate a blank annotation template for new match footage
 
 ```bash
-python pipeline.py --template
+python scripts/run_pipeline.py --template
 ```
 
 ### Run the test suite
 
 ```bash
-python -m pytest sparring_dynamics/tests/ -v
+python -m pytest tests/ -v
 ```
 
 ### Run sensitivity analysis (parameter sweep)
 
 ```bash
-python -c "from sparring_dynamics.analysis.sensitivity import run_full_sensitivity_analysis; run_full_sensitivity_analysis(n_simulations_1d=50, n_simulations_2d=20)"
+python scripts/run_sensitivity.py --n-sims-1d 50 --n-sims-2d 20
+```
+
+### Run a standalone Monte Carlo simulation (hand-crafted defaults only)
+
+```bash
+python scripts/run_monte_carlo.py --n-sims 100 --n-steps 300
 ```
 
 ### What This Toolchain Produces
@@ -107,7 +113,8 @@ generates the following:
   data using Jensen-Shannon divergence, KL divergence, and RMSE
 - Experiment logs saved to `outputs/experiments/` for full
   reproducibility
-- Publication-quality plots saved to `outputs/`
+- Publication-quality plots saved to `outputs/figures/`
+- Sensitivity sweep data (CSV/JSON) saved to `outputs/simulations/sensitivity/`
 
 ## Data Status — Current
 

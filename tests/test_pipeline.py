@@ -1,17 +1,11 @@
-"""End-to-end tests for pipeline.py."""
+"""End-to-end tests for sparring_dynamics.pipeline."""
 import importlib
 import os
-import sys
 import tempfile
 from argparse import Namespace
 from contextlib import contextmanager
 
-# pipeline.py lives at the repo root, one level above the sparring_dynamics package.
-_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-if _REPO_ROOT not in sys.path:
-    sys.path.insert(0, _REPO_ROOT)
-
-import pipeline
+from sparring_dynamics import pipeline
 from sparring_dynamics.data.loader import generate_placeholder_csv
 from sparring_dynamics.config import OUTPUT_DIR
 
@@ -39,8 +33,8 @@ def test_pipeline_with_defaults():
                           n_sims=10, n_steps=50, selection=1.0, seed=42)
         result = pipeline.run_pipeline(args)  # raises on failure
 
-        assert os.path.exists(os.path.join(OUTPUT_DIR, 'monte_carlo_summary.png'))
-        assert os.path.exists(os.path.join(OUTPUT_DIR, 'monte_carlo_distributions.png'))
+        assert os.path.exists(os.path.join(OUTPUT_DIR, 'figures', 'monte_carlo_summary.png'))
+        assert os.path.exists(os.path.join(OUTPUT_DIR, 'figures', 'monte_carlo_distributions.png'))
         assert result['transition_result']['f1_estimated'] is False
         assert result['payoff_result']['estimated'] is False
 
@@ -82,8 +76,8 @@ def test_pipeline_with_placeholder_csv():
         result = pipeline.run_pipeline(args)
 
         assert result['payoff_result']['estimated'] is True
-        assert os.path.exists(os.path.join(OUTPUT_DIR, 'monte_carlo_summary.png'))
-        assert os.path.exists(os.path.join(OUTPUT_DIR, 'monte_carlo_distributions.png'))
+        assert os.path.exists(os.path.join(OUTPUT_DIR, 'figures', 'monte_carlo_summary.png'))
+        assert os.path.exists(os.path.join(OUTPUT_DIR, 'figures', 'monte_carlo_distributions.png'))
 
     print("  test_pipeline_with_placeholder_csv: PASS")
 
@@ -105,8 +99,11 @@ def test_module_imports():
         'sparring_dynamics.analysis',
         'sparring_dynamics.analysis.statistics',
         'sparring_dynamics.analysis.monte_carlo',
+        'sparring_dynamics.analysis.monte_carlo_legacy',
         'sparring_dynamics.visualization',
         'sparring_dynamics.visualization.plots',
+        'sparring_dynamics.models.markov_two_agent',
+        'sparring_dynamics.pipeline',
     ]
     for name in modules:
         importlib.import_module(name)

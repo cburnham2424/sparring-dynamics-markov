@@ -2,7 +2,14 @@
 Central configuration for the sparring dynamics simulation.
 All tunable parameters live here — no magic numbers elsewhere.
 """
+from pathlib import Path
+
 import numpy as np
+
+# Repo root = two levels up from this file (sparring_dynamics/config.py
+# -> sparring_dynamics/ -> repo root), so OUTPUT_DIR resolves the same
+# way regardless of the caller's current working directory.
+_REPO_ROOT = Path(__file__).resolve().parent.parent
 
 # ── States ──────────────────────────────────────────────────
 STATES = ['Attack', 'Defend', 'Disengage', 'Feint']
@@ -82,4 +89,4 @@ F2_PAYOFF_DEFAULT = np.array([
 F1_COLOR = '#7F77DD'
 F2_COLOR = '#E8593C'
 FIGURE_DPI = 150
-OUTPUT_DIR = 'outputs'
+OUTPUT_DIR = str(_REPO_ROOT / 'outputs')
