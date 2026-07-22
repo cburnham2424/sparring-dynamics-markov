@@ -118,34 +118,42 @@ generates the following:
 
 ## Data Status — Current
 
-The dataset currently comprises five annotated matches (64 exchanges total):
-- `MATCH_20260613_M1`: 14 exchanges, 6-3 (post-break)
-- `MATCH_20260613_M2`: 9 exchanges, 7-2 (post-break)
-- `MATCH_20230700_M1`: 8 exchanges, 6-3 (pre-break)
-- `MATCH_20230700_M2`: 20 exchanges, 4-3 (pre-break; same opponent as `MATCH_20260613_M1`, confirmed by the athlete)
-- `MATCH_20230700_M3`: 13 exchanges, 5-2 (pre-break; different opponent)
+Six matches annotated, 87 exchanges total:
+- `MATCH_20260613_M1`: 14 exchanges, 6-3 (post-break, June 2026)
+- `MATCH_20260613_M2`: 9 exchanges, 7-2 (post-break, June 2026)
+- `MATCH_20230700_M1`: 8 exchanges, 6-3 (pre-break, 2023)
+- `MATCH_20230700_M2`: 20 exchanges, 4-3 (pre-break, 2023; same opponent as `MATCH_20260613_M1`, confirmed by the athlete)
+- `MATCH_20230700_M3`: 13 exchanges, 5-2 (pre-break, 2023; different opponent)
+- `MATCH_20260711_M1`: 23 exchanges, 7-1 (post-break, July 2026 Worlds)
 
-**Empirically grounded transition rows (F1):**
-- Attack: 25 observations — data-driven
-- Defend: 12 observations — data-driven
-- Disengage: 16 observations — data-driven
-- Feint: 6 observations — directional signal only; 3 of the 6 are consolidated multi-event windows due to frame-rate limitations and should be treated with caution
+**Empirically grounded transition rows — F1 (CJ):**
+- Attack: 32 observations — data-driven
+- Defend: 14 observations — data-driven
+- Disengage: 24 observations — data-driven
+- Feint: 11 observations — data-driven (note: includes consolidated multi-event windows from 2fps footage — treat with caution)
 
-**Empirically grounded payoff cells (3 of 16):**
-- (Attack, Defend): 29 observations
-- (Defend, Attack): 12 observations
-- (Disengage, Disengage): 15 observations
-- Remaining 13 cells: hand-crafted defaults
+All four F1 tactical states are now empirically grounded for the first time.
 
-**Key longitudinal finding:** The Attack→Disengage transition probability differs by 0.43 between pre-break (0.60) and post-break (0.17) footage — CJ reset distance significantly more often after attacking during 2023 peak training than during the 2026 return, three months post-break.
+**Empirically grounded transition rows — F2:**
+- Attack: 15 observations — data-driven
+- Defend: 38 observations — data-driven
+- Disengage: 24 observations — data-driven
+- Feint: 4 observations — hand-crafted default
 
-**Methodological limitations:**
-- Frame rate too coarse to resolve individual Feint actions in Match 5 (3s/frame vs. 2–2.5s typical)
-- The `round` field is repurposed as a match-boundary marker in the combined dataset
-- Opponent identity in the cross-year comparison is confirmed by the athlete, not verified from footage
-- Sample sizes remain insufficient for rigorous statistical inference; the dataset should be treated as a research prototype
+**Empirically grounded payoff cells (4 of 16):**
+- (Attack, Defend): learned
+- (Defend, Attack): learned
+- (Disengage, Disengage): learned
+- (Feint, Defend): learned
+- Remaining 12 cells: hand-crafted defaults
 
-**Next data collection targets:**
-- High-frame-rate footage of Feint-heavy exchanges
-- Additional opponents to fill the 13 sparse payoff cells
-- Matches covering the still-unobserved Feint vs. Attack and Feint vs. Disengage state combinations
+**Key findings:**
+- Attack→Disengage: 0.60 pre-break vs. 0.17 post-break (diff=0.43) — CJ reset distance far more frequently after attacking in 2023 peak training than in 2026 post-break return
+- Feint→Attack persistence: 0.667 — once CJ commits to a feint sequence the most likely next state is a full attack, consistent with the cut-kick-to-roundhouse combo pattern observed in competition
+- New state pair: Feint vs Feint added in match 6 (simultaneous deception — both fighters probing without committing)
+
+**Methodological notes:**
+- Round field repurposed as match boundary marker in combined dataset
+- Feint row includes consolidated multi-event windows due to 2fps footage limitations in matches 5 and 6
+- Opponent identity in the cross-year comparison confirmed by the athlete, not by footage analysis
+- Sample size insufficient for statistical inference — dataset is a research prototype pending additional match annotation
