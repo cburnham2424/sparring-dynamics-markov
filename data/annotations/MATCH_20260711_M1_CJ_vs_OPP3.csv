@@ -1,0 +1,24 @@
+match_id,round,timestamp_s,exchange_id,fighter_id,opponent_id,fighter_state,opponent_state,winner,f1_points,f2_points,technique,body_target,penalty,notes
+MATCH_20260711_M1,1,6.0,1,CJ,OPP3,Feint,Feint,None,0,0,,,,"Opening feeling-out exchange, both circling with no committed technique visible; coded Feint rather than defaulting to Attack. Feint vs Feint state pair. [boundary confidence: Low]"
+MATCH_20260711_M1,1,10.0,2,CJ,OPP3,Attack,Defend,F1,1,0,,,,"Kick contact visible ~00:12-00:14, opponent recoils; referee point call at 00:17. [boundary confidence: Medium]"
+MATCH_20260711_M1,1,17.0,3,CJ,OPP3,Disengage,Disengage,None,0,0,,,,"Reset after point call, referee repositions fighters. [boundary confidence: Medium]"
+MATCH_20260711_M1,1,21.0,4,CJ,OPP3,Feint,Feint,None,0,0,,,,"Long (~12s) window with repeated closing/clinching before any clean strike; coded as mutual feint, individual pumps not resolvable at 2fps. Feint vs Feint state pair. [boundary confidence: Low]"
+MATCH_20260711_M1,1,33.0,5,CJ,OPP3,Attack,Defend,F1,1,0,,,,"Engagement intensifies, referee arm raised at close range by 00:39 (point call). [boundary confidence: Medium]"
+MATCH_20260711_M1,1,39.0,6,CJ,OPP3,Disengage,Disengage,None,0,0,,,,Reset after point call. [boundary confidence: Medium]
+MATCH_20260711_M1,1,43.0,7,CJ,OPP3,Attack,Defend,None,0,0,,,,Brief kick/clinch flurry with no clean landing; referee gesture reads as a stop call rather than score. Low-confidence Attack -- could be Feint. [boundary confidence: Low]
+MATCH_20260711_M1,1,47.0,8,CJ,OPP3,Disengage,Disengage,None,0,0,,,,Reset/reposition after stop call. [boundary confidence: Medium]
+MATCH_20260711_M1,1,50.0,9,CJ,OPP3,Feint,Defend,None,0,0,,,,"Probing kick attempts before the scoring strike; possible pump/push-kick setup, not fully resolvable frame-to-frame. [boundary confidence: Low]"
+MATCH_20260711_M1,1,54.0,10,CJ,OPP3,Attack,Defend,F1,2,0,,,,"Larger, more committed kicking action ~00:54 consistent with a head kick or spinning technique worth 2 points; referee arm raised high by 01:00. Exact technique not resolvable at this resolution. [boundary confidence: Medium]"
+MATCH_20260711_M1,1,60.0,11,CJ,OPP3,Disengage,Disengage,None,0,0,,,,Reset after the 2-point call. [boundary confidence: Medium]
+MATCH_20260711_M1,1,64.0,12,CJ,OPP3,Attack,Defend,None,0,0,,,,"Engagement and clinch visible, referee gesture at 01:10 reads as a stop call; initiator unclear, both appear to close distance together. Low-confidence Attack -- could be Feint. [boundary confidence: Low]"
+MATCH_20260711_M1,1,70.0,13,CJ,OPP3,Disengage,Disengage,None,0,0,,,,Brief reset. [boundary confidence: Medium]
+MATCH_20260711_M1,1,72.0,14,CJ,OPP3,Defend,Feint,None,0,0,,,,Opponent initiates probing/closing distance; coded as Opponent Feint since no clean strike registers yet. [boundary confidence: Low]
+MATCH_20260711_M1,1,78.0,15,CJ,OPP3,Defend,Attack,F2,0,1,,,,"Only opponent-scoring exchange; visible kick motion blur ~01:14 from opponent's side, referee point call by 01:25. Lowest-confidence who-kicked-whom attribution in the set due to motion blur. [boundary confidence: Medium]"
+MATCH_20260711_M1,1,85.0,16,CJ,OPP3,Disengage,Disengage,None,0,0,,,,Reset after opponent's point. [boundary confidence: Medium]
+MATCH_20260711_M1,1,89.0,17,CJ,OPP3,Feint,Defend,None,0,0,,,,Short probing phase before the scoring attack; footwork/hand positioning changes visible but not resolvable to a named technique. [boundary confidence: Low]
+MATCH_20260711_M1,1,93.0,18,CJ,OPP3,Attack,Defend,F1,1,0,,,,Referee finger-point call visible at 01:37. [boundary confidence: Medium]
+MATCH_20260711_M1,1,97.0,19,CJ,OPP3,Disengage,Disengage,None,0,0,,,,"Very brief reset, fighters re-engage quickly. [boundary confidence: Medium]"
+MATCH_20260711_M1,1,99.0,20,CJ,OPP3,Attack,Defend,F1,1,0,,,,"Fast, crisp exchange (~2s), window too short for a separable feint phase at 2fps; clear kicking motion with motion blur, referee hand raised by 01:41. [boundary confidence: Medium]"
+MATCH_20260711_M1,1,101.0,21,CJ,OPP3,Disengage,Disengage,None,0,0,,,,Reset after point call. [boundary confidence: Medium]
+MATCH_20260711_M1,1,105.0,22,CJ,OPP3,Feint,Feint,None,0,0,,,,Probing/setup phase; a large kicking motion visible ~01:47-01:49 but cannot confidently attribute to either fighter due to motion blur -- flagging rather than guessing. Feint vs Feint state pair. [boundary confidence: Low]
+MATCH_20260711_M1,1,109.0,23,CJ,OPP3,Attack,Defend,F1,1,0,,,,"Final scoring exchange; referee arms raised high at 01:51. Identity of kicker in preceding frame (01:49) was ambiguous, timing approximate. [boundary confidence: Low]"
